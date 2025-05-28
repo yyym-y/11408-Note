@@ -1,3 +1,6 @@
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HZR5NL55RB"></script>
+<script src="scripts/google-analytics.js"></script>
+
 # 11408 笔记简介
 
 ![Cover](img/Cover.jpg)
