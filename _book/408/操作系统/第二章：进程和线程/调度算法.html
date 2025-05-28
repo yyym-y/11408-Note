@@ -3,7 +3,7 @@
 <html lang="cn" >
     <head>
         <meta charset="UTF-8">
-        <title>信号 · yyym 11408 Notes</title>
+        <title>调度算法 · yyym 11408 Notes</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 6.0.3">
@@ -52,10 +52,10 @@
     <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="线程的概念和特点.html" />
+    <link rel="next" href="多处理机调度.html" />
     
     
-    <link rel="prev" href="进程通信.html" />
+    <link rel="prev" href="调度算法的评估指标.html" />
     
 
     </head>
@@ -361,7 +361,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.1.2.2.5" data-path="信号.html">
+        <li class="chapter " data-level="4.1.2.2.5" data-path="信号.html">
             
                 <a href="信号.html">
             
@@ -452,7 +452,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.2.2.12" data-path="调度算法.html">
+        <li class="chapter active" data-level="4.1.2.2.12" data-path="调度算法.html">
             
                 <a href="调度算法.html">
             
@@ -549,7 +549,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../.." >信号</a>
+        <a href="../../.." >调度算法</a>
     </h1>
 </div>
 
@@ -564,17 +564,76 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="信号">信号</h1>
+                                <h1 id="调度算法">调度算法</h1>
 <ul>
-<li>信号<ul>
-<li>信号用于通知进程特定事件的发生，每种信号都有序号和名称，“信号"常作为异常处理的一种配套机制</li>
-<li>PCB 中包含两个N位的向量，标识待处理信号和阻塞型号</li>
-<li>可以由一个进程给另一个进程发送信号，可以由操作系统内核给进程发送信号，一个进程也可以给自己发送信号</li>
-<li>进程在从内核态转为用户态时，会例行检查是否有待处理的信号，并处理这些信号， 待处理型号 &amp; （~阻塞信号）</li>
-<li>操作系统为每种信号都配置了默认的处理程序,用户进程可以通过系统调用自定义信号处理程序，覆盖默认处理逻辑</li>
-<li>信号处理程序运行结束后，通常会返回进程的下一条指令继续执行,除非该信号让进程终止或阻塞</li>
-<li>同时收到多个信号时，通常优先处理序号较小的信号，重复信号会被丢弃，处理完后待处理向量在改位变成0</li>
-<li>有些信号既不能被用户自定义处理函数，也不能被阻塞。</li>
+<li><strong>先来先服务（FCFS）</strong><ul>
+<li>按照进程或作业到达的先后顺序进行服务</li>
+<li>优点是公平，缺点是对短作业不利，可能导致长作业等待时间过长</li>
+</ul>
+</li>
+<li><strong>短作业优先（SJF）</strong><ul>
+<li>优先服务要求服务时间最短的作业或进程(每次调度选期望运行时间最短的)</li>
+<li>默认非抢占式，但也有抢占式版本SRTN(最短剩余时间优先)</li>
+<li>优点是减少平均等待时间和周转时间，缺点是对长作业不利，可能导致饥饿</li>
+<li>最短剩全时间优先算法(抢占式)：每当有进程加入就绪队列改变时就需要调度，如果新到的进程剩余时间比当前运行的进程剩余时间更短，则由新进程抢占处理机，当前运行进程重新回到就绪队列</li>
+<li>在所有进程同时可运行时(所有进程几乎同时到达的时候)，采用引SJF调度算法的平均等待时间、平均周转时间最短</li>
+<li>SRTN(最短剩余时间优先)的平均等待时间、平均周转时间最短</li>
+</ul>
+</li>
+<li><strong>最高响应比优先（HRRF）</strong><ul>
+<li>综合考虑等待时间和要求服务时间，选择响应比最高的作业或进程</li>
+<li>非抢占式的算法。因此只有当前运行的作业/进程主动放弃处理机时，才需要调度</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathsize="0.9em"><mtext><mi mathvariant="normal">相</mi><mi mathvariant="normal">应</mi><mi mathvariant="normal">比</mi></mtext><mo>=</mo><mfrac><mrow><mtext><mi mathvariant="normal">等</mi><mi mathvariant="normal">待</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi><mi mathvariant="normal">+</mi><mi mathvariant="normal">要</mi><mi mathvariant="normal">求</mi><mi mathvariant="normal">服</mi><mi mathvariant="normal">务</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mtext></mrow><mrow><mtext><mi mathvariant="normal">要</mi><mi mathvariant="normal">求</mi><mi mathvariant="normal">服</mi><mi mathvariant="normal">务</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mtext></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\small \text{相应比} = \dfrac{\text{等待时间+要求服务时间}}{\text{要求服务时间}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.224297em;"></span><span class="strut bottom" style="height:1.841697em;vertical-align:-0.6174000000000001em;"></span><span class="base textstyle uncramped"><span class="mord text textstyle uncramped sizing reset-size5 size4 textstyle uncramped"><span class="mord mathrm cjk_fallback">相应比</span></span><span class="mrel sizing reset-size5 size4 textstyle uncramped">=</span><span class="mord reset-textstyle displaystyle textstyle uncramped sizing reset-size5 size4 textstyle uncramped"><span class="mopen sizing reset-size4 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord text textstyle cramped"><span class="mord mathrm cjk_fallback">要求服务时间</span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm cjk_fallback">等待时间</span><span class="mord mathrm">+</span><span class="mord mathrm cjk_fallback">要求服务时间</span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose sizing reset-size4 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></li>
+<li>优点是避免长作业饥饿，缺点是计算响应比开销较大</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>上面三种一般使用在批处理系统中,接下来的方法才适合交互性操作系统等</p>
+</blockquote>
+<ul>
+<li><strong>时间片轮转调度算法</strong><ul>
+<li>按到达就绪队列顺序轮流执行一个时间片，时间片长短可变</li>
+<li>时间片用完后强行剥夺处理机，重新放入就绪队列 (通过时钟中断来控制)</li>
+<li>进程主动放弃处理机的时候也会开始调度</li>
+<li>优点: 公平；响应快，适用于分时操作系統; 缺点: 高频率的进程切换，因此有一定丌销；不区分任务的紧急程度</li>
+</ul>
+</li>
+<li><strong>优先级调度算法</strong><ul>
+<li>为每个作业或进程设置优先级，选择优先级最高的进程调度</li>
+<li>非抢占式只需在进程主动放弃处理机时进行调度即可，而抢占式还需在就绪队列变化时，检查是否会发生抢占</li>
+<li>就绪队列可能不止一个,可能根据优先级</li>
+<li>静态优先级<ul>
+<li>创建进程时确定，之后一直不变</li>
+</ul>
+</li>
+<li>动态优先级<ul>
+<li>创建进程时有一个初始值，之后会根据情况动态地调整优先级</li>
+</ul>
+</li>
+<li>系统进程优先级高于用户进程, 前台进程优先级高于后台进程, 操作系统更偏好I/O型进程</li>
+<li>优点：用优先级区分紧急程度、重要程度，适用于实时操作系统。</li>
+<li>缺点：若源源不断地有高优先级进程到来，则可能能饥饿</li>
+</ul>
+</li>
+<li><strong>多级反馈队列调度算法</strong><ul>
+<li>一般是抢占式算法</li>
+<li><img src="img/Snipaste_2025-05-28_13-08-35.png" alt="img"></img></li>
+<li>算法思想<ul>
+<li>设置多级就绪队列，各级队列优先级从高到低，时间片从小到大当新进程到达时先进入第1级队列，按FIFS原则排队等待被分配时间片，若用完时间片进程还未结束，则进程进入下一级队列队尾, 如果此时己经是在最下级的队列，则重新放回该队列队尾</li>
+<li>只有第k级队列为空时，才会为k+1级队头的进程分配时间片</li>
+<li>在k级队列的进程运行过程中，若更上级的队列（1~k-1级）中进入了一个新进程，则由于新进程处于优先级更高的队列中，因此新进程会抢占处理机，原来运行的进程放回k级队列队尾</li>
+</ul>
+</li>
+<li>对各类型进程相对公平, 每个新到达的进程都可以很快得到服务, 短进程只用较少的时间就可以完成,可以灵活的调整偏好</li>
+<li>会到导致饥饿</li>
+</ul>
+</li>
+<li><strong>多级队列调度算法</strong><ul>
+<li><img src="img/Snipaste_2025-05-28_13-17-44.png" alt="img"></img></li>
+<li>操作系统将进程划分为不同的类别,,每个队列可以采取固定优先级或者时间片划分</li>
+<li>固定优先级(如果高优先级有进程那么低优先级不会执行), 时间片划分(100ms高优先级执行50%, 中优先级执行30%, 低优先级执行20%)</li>
+<li>每个队列可以采用不同的调度算法</li>
 </ul>
 </li>
 </ul>
@@ -605,12 +664,12 @@
 
             
                 
-                <a href="进程通信.html" class="navigation navigation-prev " aria-label="Previous page: 进程通信">
+                <a href="调度算法的评估指标.html" class="navigation navigation-prev " aria-label="Previous page: 调度算法的评估指标">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="线程的概念和特点.html" class="navigation navigation-next " aria-label="Next page: 线程的概念和特点">
+                <a href="多处理机调度.html" class="navigation navigation-next " aria-label="Next page: 多处理机调度">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -621,7 +680,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"信号","level":"4.1.2.2.5","depth":4,"next":{"title":"线程的概念和特点","level":"4.1.2.2.6","depth":4,"path":"408/操作系统/第二章：进程和线程/线程的概念和特点.md","ref":"408/操作系统/第二章：进程和线程/线程的概念和特点.md","articles":[]},"previous":{"title":"进程通信","level":"4.1.2.2.4","depth":4,"path":"408/操作系统/第二章：进程和线程/进程通信.md","ref":"408/操作系统/第二章：进程和线程/进程通信.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"scripts":["https://www.googletagmanager.com/gtag/js?id=G-HZR5NL55RB","scripts/google-analytics.js"],"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/操作系统/第二章：进程和线程/信号.md","mtime":"2025-05-28T03:31:32.098Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-05-28T06:03:34.964Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"调度算法","level":"4.1.2.2.12","depth":4,"next":{"title":"多处理机调度","level":"4.1.2.2.13","depth":4,"path":"408/操作系统/第二章：进程和线程/多处理机调度.md","ref":"408/操作系统/第二章：进程和线程/多处理机调度.md","articles":[]},"previous":{"title":"调度算法的评估指标","level":"4.1.2.2.11","depth":4,"path":"408/操作系统/第二章：进程和线程/调度算法的评估指标.md","ref":"408/操作系统/第二章：进程和线程/调度算法的评估指标.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"scripts":["https://www.googletagmanager.com/gtag/js?id=G-HZR5NL55RB","scripts/google-analytics.js"],"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/操作系统/第二章：进程和线程/调度算法.md","mtime":"2025-05-28T05:39:56.272Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-05-28T06:03:34.964Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>

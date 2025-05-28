@@ -3,7 +3,7 @@
 <html lang="cn" >
     <head>
         <meta charset="UTF-8">
-        <title>信号 · yyym 11408 Notes</title>
+        <title>进程调度相关知识 · yyym 11408 Notes</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 6.0.3">
@@ -52,10 +52,10 @@
     <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="线程的概念和特点.html" />
+    <link rel="next" href="调度算法的评估指标.html" />
     
     
-    <link rel="prev" href="进程通信.html" />
+    <link rel="prev" href="处理机调度.html" />
     
 
     </head>
@@ -361,7 +361,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.1.2.2.5" data-path="信号.html">
+        <li class="chapter " data-level="4.1.2.2.5" data-path="信号.html">
             
                 <a href="信号.html">
             
@@ -426,7 +426,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.2.2.10" data-path="进程调度相关知识.html">
+        <li class="chapter active" data-level="4.1.2.2.10" data-path="进程调度相关知识.html">
             
                 <a href="进程调度相关知识.html">
             
@@ -549,7 +549,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../.." >信号</a>
+        <a href="../../.." >进程调度相关知识</a>
     </h1>
 </div>
 
@@ -564,17 +564,42 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="信号">信号</h1>
+                                <h1 id="进程调度相关知识">进程调度相关知识</h1>
 <ul>
-<li>信号<ul>
-<li>信号用于通知进程特定事件的发生，每种信号都有序号和名称，“信号"常作为异常处理的一种配套机制</li>
-<li>PCB 中包含两个N位的向量，标识待处理信号和阻塞型号</li>
-<li>可以由一个进程给另一个进程发送信号，可以由操作系统内核给进程发送信号，一个进程也可以给自己发送信号</li>
-<li>进程在从内核态转为用户态时，会例行检查是否有待处理的信号，并处理这些信号， 待处理型号 &amp; （~阻塞信号）</li>
-<li>操作系统为每种信号都配置了默认的处理程序,用户进程可以通过系统调用自定义信号处理程序，覆盖默认处理逻辑</li>
-<li>信号处理程序运行结束后，通常会返回进程的下一条指令继续执行,除非该信号让进程终止或阻塞</li>
-<li>同时收到多个信号时，通常优先处理序号较小的信号，重复信号会被丢弃，处理完后待处理向量在改位变成0</li>
-<li>有些信号既不能被用户自定义处理函数，也不能被阻塞。</li>
+<li>进程调度时机<ul>
+<li>进程主动放弃处理机<ul>
+<li>正常终止、异常终止、发出IO请求进入阻塞状态</li>
+</ul>
+</li>
+<li>进程被动放弃处理机<ul>
+<li>时间片用完、有更紧急的进程需要处理、优先级更高的进程进入就绪队列等</li>
+</ul>
+</li>
+<li>不能在下面的情况进行调度<ul>
+<li>进程访问操作系统内核程序临界资源(就绪队列等) (临界资源是可以的,如打印机)</li>
+<li>执行原语操作的时候</li>
+<li>不能在执行中断程序的时候进行调度</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>进程调度的方式<ul>
+<li>非剥夺调度方式<ul>
+<li>无论发生什么, 只允许进程主动放弃处理机，适用于早期批处理系统</li>
+</ul>
+</li>
+<li>剥夺调度方式<ul>
+<li>允许强制剥夺当前运行进程的处理机资源，适用于分时操作系统和实时操作系统</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>进程切换与进程调度<ul>
+<li>狭义的进程调度是从就绪队列中选中一个要运行的进程</li>
+<li>广义的进程调度包含选择一个进程和进程切换</li>
+<li>进程切换是指一个进程让出处理机，由另一个进程占用处理机的过程</li>
+<li>进程切换过程包括保存原来进程的数据和处理机运行环境，恢复新进程的运行环境。</li>
+<li>进程切换是有代价的，过于频繁的切换会导致系统效率降低</li>
 </ul>
 </li>
 </ul>
@@ -605,12 +630,12 @@
 
             
                 
-                <a href="进程通信.html" class="navigation navigation-prev " aria-label="Previous page: 进程通信">
+                <a href="处理机调度.html" class="navigation navigation-prev " aria-label="Previous page: 处理机调度">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="线程的概念和特点.html" class="navigation navigation-next " aria-label="Next page: 线程的概念和特点">
+                <a href="调度算法的评估指标.html" class="navigation navigation-next " aria-label="Next page: 调度算法的评估指标">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -621,7 +646,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"信号","level":"4.1.2.2.5","depth":4,"next":{"title":"线程的概念和特点","level":"4.1.2.2.6","depth":4,"path":"408/操作系统/第二章：进程和线程/线程的概念和特点.md","ref":"408/操作系统/第二章：进程和线程/线程的概念和特点.md","articles":[]},"previous":{"title":"进程通信","level":"4.1.2.2.4","depth":4,"path":"408/操作系统/第二章：进程和线程/进程通信.md","ref":"408/操作系统/第二章：进程和线程/进程通信.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"scripts":["https://www.googletagmanager.com/gtag/js?id=G-HZR5NL55RB","scripts/google-analytics.js"],"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/操作系统/第二章：进程和线程/信号.md","mtime":"2025-05-28T03:31:32.098Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-05-28T06:03:34.964Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"进程调度相关知识","level":"4.1.2.2.10","depth":4,"next":{"title":"调度算法的评估指标","level":"4.1.2.2.11","depth":4,"path":"408/操作系统/第二章：进程和线程/调度算法的评估指标.md","ref":"408/操作系统/第二章：进程和线程/调度算法的评估指标.md","articles":[]},"previous":{"title":"处理机调度","level":"4.1.2.2.9","depth":4,"path":"408/操作系统/第二章：进程和线程/处理机调度.md","ref":"408/操作系统/第二章：进程和线程/处理机调度.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"scripts":["https://www.googletagmanager.com/gtag/js?id=G-HZR5NL55RB","scripts/google-analytics.js"],"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/操作系统/第二章：进程和线程/进程调度相关知识.md","mtime":"2025-05-28T04:16:03.318Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-05-28T06:03:34.964Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>

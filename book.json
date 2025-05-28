@@ -3,5 +3,12 @@
     "author": "yyym",
     "language": "cn",
     "direction": "ltr",
-    "plugins": ["katex"]
+    "plugins": ["katex"],
+    "styles": {
+        "website": "styles/website.css"
+    },
+    "scripts": [
+        "https://www.googletagmanager.com/gtag/js?id=G-HZR5NL55RB",
+        "scripts/google-analytics.js"
+    ]
 }

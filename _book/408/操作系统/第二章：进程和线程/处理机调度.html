@@ -3,7 +3,7 @@
 <html lang="cn" >
     <head>
         <meta charset="UTF-8">
-        <title>信号 · yyym 11408 Notes</title>
+        <title>处理机调度 · yyym 11408 Notes</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 6.0.3">
@@ -52,10 +52,10 @@
     <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="线程的概念和特点.html" />
+    <link rel="next" href="进程调度相关知识.html" />
     
     
-    <link rel="prev" href="进程通信.html" />
+    <link rel="prev" href="线程的状态和转换-组织和控制.html" />
     
 
     </head>
@@ -361,7 +361,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.1.2.2.5" data-path="信号.html">
+        <li class="chapter " data-level="4.1.2.2.5" data-path="信号.html">
             
                 <a href="信号.html">
             
@@ -413,7 +413,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.2.2.9" data-path="处理机调度.html">
+        <li class="chapter active" data-level="4.1.2.2.9" data-path="处理机调度.html">
             
                 <a href="处理机调度.html">
             
@@ -549,7 +549,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../.." >信号</a>
+        <a href="../../.." >处理机调度</a>
     </h1>
 </div>
 
@@ -564,17 +564,49 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="信号">信号</h1>
+                                <h1 id="处理机调度">处理机调度</h1>
 <ul>
-<li>信号<ul>
-<li>信号用于通知进程特定事件的发生，每种信号都有序号和名称，“信号"常作为异常处理的一种配套机制</li>
-<li>PCB 中包含两个N位的向量，标识待处理信号和阻塞型号</li>
-<li>可以由一个进程给另一个进程发送信号，可以由操作系统内核给进程发送信号，一个进程也可以给自己发送信号</li>
-<li>进程在从内核态转为用户态时，会例行检查是否有待处理的信号，并处理这些信号， 待处理型号 &amp; （~阻塞信号）</li>
-<li>操作系统为每种信号都配置了默认的处理程序,用户进程可以通过系统调用自定义信号处理程序，覆盖默认处理逻辑</li>
-<li>信号处理程序运行结束后，通常会返回进程的下一条指令继续执行,除非该信号让进程终止或阻塞</li>
-<li>同时收到多个信号时，通常优先处理序号较小的信号，重复信号会被丢弃，处理完后待处理向量在改位变成0</li>
-<li>有些信号既不能被用户自定义处理函数，也不能被阻塞。</li>
+<li>处理机调度<ul>
+<li>指在资源有限的情况下，按照一定规则处理任务的顺序</li>
+<li><strong>高级调度(发生频率:低)</strong><ul>
+<li>又称为作业调度，负责从作业后备队列中选择作业调入内存并建立进程</li>
+<li>高级调度作用：决定哪个作业先被调入内存，需要时为其建立PCB</li>
+<li>作业<ul>
+<li>指用户提交给操作系统处理的具体任务,即我们日常允许的程序</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>中极调度(发生频率:中)</strong><ul>
+<li>又称为内存调度，负责将暂时不会运行的进程数据调到外存，需要时再调回内存</li>
+<li>中级调度作用：在内存不足时，将不太紧急或不重要的进程数据调到外存，释放内存空间</li>
+<li>进程的挂起状态<ul>
+<li>处于挂起状态的进程数据存放在外存中，操作系统会将其PCB组织成挂起队列</li>
+<li>挂起队列：类似于就绪队列或阻塞队列，操作系统根据调度策略选择要调回内存的进程</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>低级调度(发生频率:高)</strong><ul>
+<li>又称为进程调度或处理机调度，负责从进程就绪队列中选择进程，分配处理机资源</li>
+<li>低级调度作用：决定哪个进程获得处理机资源，多道程序并发执行需要进程调度</li>
+<li>高频率的进程调度可以让各个进程快速轮流执行，用户在宏观上看到好像是同时执行。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>补充进程挂起状态<ul>
+<li>挂起状态的细分：包括<strong>就绪挂起</strong>和<strong>阻塞挂起</strong>两种状态</li>
+<li>就绪挂起<ul>
+<li>系统负载高或内存空间不足时，将处于就绪态的进程调到外存，成为就绪挂起状态</li>
+<li>有些时候如果创建的时候内存不足也会直接从创建态转化为就绪挂起状态</li>
+</ul>
+</li>
+<li>阻塞挂起<ul>
+<li>处于阻塞态的进程也可以被挂起，当阻塞事件发生时，直接进入就绪挂起状态</li>
+<li>处在阻塞挂起的进程如果阻塞结束, 再结束挂起的时候会直接变成就绪态</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -605,12 +637,12 @@
 
             
                 
-                <a href="进程通信.html" class="navigation navigation-prev " aria-label="Previous page: 进程通信">
+                <a href="线程的状态和转换-组织和控制.html" class="navigation navigation-prev " aria-label="Previous page: 线程的状态和转换-组织和控制">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="线程的概念和特点.html" class="navigation navigation-next " aria-label="Next page: 线程的概念和特点">
+                <a href="进程调度相关知识.html" class="navigation navigation-next " aria-label="Next page: 进程调度相关知识">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -621,7 +653,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"信号","level":"4.1.2.2.5","depth":4,"next":{"title":"线程的概念和特点","level":"4.1.2.2.6","depth":4,"path":"408/操作系统/第二章：进程和线程/线程的概念和特点.md","ref":"408/操作系统/第二章：进程和线程/线程的概念和特点.md","articles":[]},"previous":{"title":"进程通信","level":"4.1.2.2.4","depth":4,"path":"408/操作系统/第二章：进程和线程/进程通信.md","ref":"408/操作系统/第二章：进程和线程/进程通信.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"scripts":["https://www.googletagmanager.com/gtag/js?id=G-HZR5NL55RB","scripts/google-analytics.js"],"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/操作系统/第二章：进程和线程/信号.md","mtime":"2025-05-28T03:31:32.098Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-05-28T06:03:34.964Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"处理机调度","level":"4.1.2.2.9","depth":4,"next":{"title":"进程调度相关知识","level":"4.1.2.2.10","depth":4,"path":"408/操作系统/第二章：进程和线程/进程调度相关知识.md","ref":"408/操作系统/第二章：进程和线程/进程调度相关知识.md","articles":[]},"previous":{"title":"线程的状态和转换-组织和控制","level":"4.1.2.2.8","depth":4,"path":"408/操作系统/第二章：进程和线程/线程的状态和转换-组织和控制.md","ref":"408/操作系统/第二章：进程和线程/线程的状态和转换-组织和控制.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"scripts":["https://www.googletagmanager.com/gtag/js?id=G-HZR5NL55RB","scripts/google-analytics.js"],"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/操作系统/第二章：进程和线程/处理机调度.md","mtime":"2025-05-28T04:00:19.836Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-05-28T06:03:34.964Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
