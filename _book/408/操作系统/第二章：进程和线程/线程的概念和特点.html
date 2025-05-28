@@ -3,7 +3,7 @@
 <html lang="cn" >
     <head>
         <meta charset="UTF-8">
-        <title>中断和异常和系统调用 · yyym 11408 Notes</title>
+        <title>线程的概念和特点 · yyym 11408 Notes</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 6.0.3">
@@ -60,10 +60,10 @@
     <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="操作系统的体系结构.html" />
+    <link rel="next" href="线程的实现方式.html" />
     
     
-    <link rel="prev" href="操作系统的运行机制.html" />
+    <link rel="prev" href="信号.html" />
     
 
     </head>
@@ -193,9 +193,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="4.1.2.1" data-path="./">
+        <li class="chapter " data-level="4.1.2.1" data-path="../第一章：计算机系统概述/">
             
-                <a href="./">
+                <a href="../第一章：计算机系统概述/">
             
                     
                     第一章：计算机系统概述
@@ -207,9 +207,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="4.1.2.1.1" data-path="操作系统的概念-基本特征.html">
+        <li class="chapter " data-level="4.1.2.1.1" data-path="../第一章：计算机系统概述/操作系统的概念-基本特征.html">
             
-                <a href="操作系统的概念-基本特征.html">
+                <a href="../第一章：计算机系统概述/操作系统的概念-基本特征.html">
             
                     
                     操作系统的概念/基本特征
@@ -220,9 +220,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.2.1.2" data-path="操作系统的发展和分类.html">
+        <li class="chapter " data-level="4.1.2.1.2" data-path="../第一章：计算机系统概述/操作系统的发展和分类.html">
             
-                <a href="操作系统的发展和分类.html">
+                <a href="../第一章：计算机系统概述/操作系统的发展和分类.html">
             
                     
                     操作系统的发展和分类
@@ -233,9 +233,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.2.1.3" data-path="操作系统的运行机制.html">
+        <li class="chapter " data-level="4.1.2.1.3" data-path="../第一章：计算机系统概述/操作系统的运行机制.html">
             
-                <a href="操作系统的运行机制.html">
+                <a href="../第一章：计算机系统概述/操作系统的运行机制.html">
             
                     
                     操作系统的运行机制
@@ -246,9 +246,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.1.2.1.4" data-path="中断和异常和系统调用.html">
+        <li class="chapter " data-level="4.1.2.1.4" data-path="../第一章：计算机系统概述/中断和异常和系统调用.html">
             
-                <a href="中断和异常和系统调用.html">
+                <a href="../第一章：计算机系统概述/中断和异常和系统调用.html">
             
                     
                     中断和异常和系统调用
@@ -259,9 +259,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.2.1.5" data-path="操作系统的体系结构.html">
+        <li class="chapter " data-level="4.1.2.1.5" data-path="../第一章：计算机系统概述/操作系统的体系结构.html">
             
-                <a href="操作系统的体系结构.html">
+                <a href="../第一章：计算机系统概述/操作系统的体系结构.html">
             
                     
                     操作系统的体系结构
@@ -272,9 +272,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.2.1.6" data-path="操作系统引导.html">
+        <li class="chapter " data-level="4.1.2.1.6" data-path="../第一章：计算机系统概述/操作系统引导.html">
             
-                <a href="操作系统引导.html">
+                <a href="../第一章：计算机系统概述/操作系统引导.html">
             
                     
                     操作系统引导
@@ -285,9 +285,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.2.1.7" data-path="虚拟机.html">
+        <li class="chapter " data-level="4.1.2.1.7" data-path="../第一章：计算机系统概述/虚拟机.html">
             
-                <a href="虚拟机.html">
+                <a href="../第一章：计算机系统概述/虚拟机.html">
             
                     
                     虚拟机
@@ -303,9 +303,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.2.2" data-path="../第二章：进程和线程/">
+        <li class="chapter " data-level="4.1.2.2" data-path="./">
             
-                <a href="../第二章：进程和线程/">
+                <a href="./">
             
                     
                     第二章：进程和线程
@@ -317,9 +317,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="4.1.2.2.1" data-path="../第二章：进程和线程/进程的概念、组成、特征.html">
+        <li class="chapter " data-level="4.1.2.2.1" data-path="进程的概念、组成、特征.html">
             
-                <a href="../第二章：进程和线程/进程的概念、组成、特征.html">
+                <a href="进程的概念、组成、特征.html">
             
                     
                     进程的概念、组成、特征
@@ -330,9 +330,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.2.2.2" data-path="../第二章：进程和线程/进程的状态与转换.html">
+        <li class="chapter " data-level="4.1.2.2.2" data-path="进程的状态与转换.html">
             
-                <a href="../第二章：进程和线程/进程的状态与转换.html">
+                <a href="进程的状态与转换.html">
             
                     
                     进程的状态与转换
@@ -343,9 +343,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.2.2.3" data-path="../第二章：进程和线程/进程控制.html">
+        <li class="chapter " data-level="4.1.2.2.3" data-path="进程控制.html">
             
-                <a href="../第二章：进程和线程/进程控制.html">
+                <a href="进程控制.html">
             
                     
                     进程控制
@@ -356,9 +356,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.2.2.4" data-path="../第二章：进程和线程/进程通信.html">
+        <li class="chapter " data-level="4.1.2.2.4" data-path="进程通信.html">
             
-                <a href="../第二章：进程和线程/进程通信.html">
+                <a href="进程通信.html">
             
                     
                     进程通信
@@ -369,9 +369,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.2.2.5" data-path="../第二章：进程和线程/信号.html">
+        <li class="chapter " data-level="4.1.2.2.5" data-path="信号.html">
             
-                <a href="../第二章：进程和线程/信号.html">
+                <a href="信号.html">
             
                     
                     信号
@@ -382,9 +382,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.2.2.6" data-path="../第二章：进程和线程/线程的概念和特点.html">
+        <li class="chapter active" data-level="4.1.2.2.6" data-path="线程的概念和特点.html">
             
-                <a href="../第二章：进程和线程/线程的概念和特点.html">
+                <a href="线程的概念和特点.html">
             
                     
                     线程的概念和特点
@@ -395,9 +395,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.2.2.7" data-path="../第二章：进程和线程/线程的实现方式.html">
+        <li class="chapter " data-level="4.1.2.2.7" data-path="线程的实现方式.html">
             
-                <a href="../第二章：进程和线程/线程的实现方式.html">
+                <a href="线程的实现方式.html">
             
                     
                     线程的实现方式
@@ -479,7 +479,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../.." >中断和异常和系统调用</a>
+        <a href="../../.." >线程的概念和特点</a>
     </h1>
 </div>
 
@@ -494,52 +494,21 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="中断和异常和系统调用">中断和异常和系统调用</h1>
+                                <h1 id="线程的概念和特点">线程的概念和特点</h1>
 <ul>
-<li>中断和异常<ul>
-<li>中断的作用：中断是操作系统内核重新夺回CPU使用权的方式<ul>
-<li>中断会使CPU由用户态变为内核态</li>
-<li>没有中断技术无法实现多道程序并发，甚至没有操作系统</li>
-<li>操作系统必须拥有中断，甚至为此可以不存在系统调用</li>
+<li>线程的概念和特点<ul>
+<li>线程是程序执行流的最小单位， 基本CPU执行单元</li>
+<li>特点<ul>
+<li>资源分配：进程成为资源分配的基本单位，线程是处理机调度的基本单位</li>
+<li>并发性：进程之间和线程之间都可以并发执行，提高了系统的并发度。</li>
+<li>系统开销：线程切换不需要切换进程运行环境，系统开销降低</li>
 </ul>
 </li>
-<li>中断的类型<ul>
-<li><strong>内中断（异常/例外/软中断）</strong> 与当前执行的指令有关，信号来源于CPU内部（应用程序引起）<ul>
-<li>非法事件/ CPU执行非法或参数非法的指令/应用程序执行陷入指令会主动引发内中断来请求服务</li>
-<li><strong>陷入（trap）</strong>：程序自己故意引发</li>
-<li><strong>故障</strong>：由错误条件引起的，可能·内核程序修复。内核程序修复故障后会把cpu使用权还给应用程序，比它继续执行</li>
-<li><strong>终止</strong>：由致命错误引起，内核程序无法修复该错误，因此一般不再将cpu使用权还给引终止的应用程序，而是直接终止</li>
-</ul>
-</li>
-<li><strong>外中断（中断/硬中断）</strong> 与当前执行的指令无关，信号来源于CPU外部（操作系统发起）<ul>
-<li><strong>时钟中断</strong>由时钟部件发出，实现多道程序并发运行</li>
-<li><strong>I/O中断</strong> </li>
-</ul>
-</li>
-</ul>
-</li>
-<li>中断机制的基本原理<ul>
-<li>CPU根据中断信号类型查询中断向量表，找到对应的中断处理程序</li>
-<li>中断处理程序是内核程序，需要在内核态下运行</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>系统调用<ul>
-<li>系统调用是操作系统内核向应用程序提供的服务接口</li>
-<li>系统调用比库函数更底层，直接与操作系统内核交互</li>
-<li>系统调用保证并发进程互斥访问共享资源，防止资源混杂</li>
-<li>系统调用的功能分类<ul>
-<li>设备管理、文件控制、进程控制、进程通信、内存管理</li>
-</ul>
-</li>
-<li>系统调用的基本过程<ul>
-<li>用户程序将系统调用号和参数压入堆栈中</li>
-<li>调用实际的调用指令，接着执行一个陷入执行</li>
-<li>操作系统内核程序和硬件保护现场，将PC，PSW和通用寄存器信息压入堆栈中</li>
-<li>实际执行系统调用程序</li>
-<li>复原调用时信息</li>
-<li>（断点信息一般由CPU在中断响应的时候自动保存在堆栈中，即硬件实现）</li>
+<li>基本属性<ul>
+<li>多个CPU的计算机中每个线程可以占用不同的CPU核心</li>
+<li>线程有线程ID和线程控制块(TCB)这样的数据结构，也有就绪、阻塞、运行三种基本状态</li>
+<li>线程几乎不拥有系统资源，但可以共享进程所拥有的系统资源，如IO设备和内存地址空间</li>
+<li>同一个进程中的线程切换不会引起进程切换，但不同进程中的线程切换会引起进程切换</li>
 </ul>
 </li>
 </ul>
@@ -572,12 +541,12 @@
 
             
                 
-                <a href="操作系统的运行机制.html" class="navigation navigation-prev " aria-label="Previous page: 操作系统的运行机制">
+                <a href="信号.html" class="navigation navigation-prev " aria-label="Previous page: 信号">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="操作系统的体系结构.html" class="navigation navigation-next " aria-label="Next page: 操作系统的体系结构">
+                <a href="线程的实现方式.html" class="navigation navigation-next " aria-label="Next page: 线程的实现方式">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -588,7 +557,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"中断和异常和系统调用","level":"4.1.2.1.4","depth":4,"next":{"title":"操作系统的体系结构","level":"4.1.2.1.5","depth":4,"path":"408/操作系统/第一章：计算机系统概述/操作系统的体系结构.md","ref":"408/操作系统/第一章：计算机系统概述/操作系统的体系结构.md","articles":[]},"previous":{"title":"操作系统的运行机制","level":"4.1.2.1.3","depth":4,"path":"408/操作系统/第一章：计算机系统概述/操作系统的运行机制.md","ref":"408/操作系统/第一章：计算机系统概述/操作系统的运行机制.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/操作系统/第一章：计算机系统概述/中断和异常和系统调用.md","mtime":"2025-05-28T03:10:47.784Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-05-28T03:34:42.603Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"线程的概念和特点","level":"4.1.2.2.6","depth":4,"next":{"title":"线程的实现方式","level":"4.1.2.2.7","depth":4,"path":"408/操作系统/第二章：进程和线程/线程的实现方式.md","ref":"408/操作系统/第二章：进程和线程/线程的实现方式.md","articles":[]},"previous":{"title":"信号","level":"4.1.2.2.5","depth":4,"path":"408/操作系统/第二章：进程和线程/信号.md","ref":"408/操作系统/第二章：进程和线程/信号.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/操作系统/第二章：进程和线程/线程的概念和特点.md","mtime":"2025-05-28T03:31:31.361Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-05-28T03:34:42.603Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
