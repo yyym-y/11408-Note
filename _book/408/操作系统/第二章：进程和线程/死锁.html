@@ -3,7 +3,7 @@
 <html lang="cn" >
     <head>
         <meta charset="UTF-8">
-        <title>调度算法的评估指标 · yyym 11408 Notes</title>
+        <title>死锁 · yyym 11408 Notes</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 6.0.3">
@@ -52,10 +52,10 @@
     <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="调度算法.html" />
+    <link rel="next" href="../../计算机组成原理/" />
     
     
-    <link rel="prev" href="进程调度相关知识.html" />
+    <link rel="prev" href="管程.html" />
     
 
     </head>
@@ -439,7 +439,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.1.2.2.11" data-path="调度算法的评估指标.html">
+        <li class="chapter " data-level="4.1.2.2.11" data-path="调度算法的评估指标.html">
             
                 <a href="调度算法的评估指标.html">
             
@@ -569,7 +569,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.2.2.21" data-path="死锁.html">
+        <li class="chapter active" data-level="4.1.2.2.21" data-path="死锁.html">
             
                 <a href="死锁.html">
             
@@ -730,7 +730,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../.." >调度算法的评估指标</a>
+        <a href="../../.." >死锁</a>
     </h1>
 </div>
 
@@ -745,34 +745,129 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="调度算法的评估指标">调度算法的评估指标</h1>
-<p>&nbsp;
-&nbsp;</p>
+                                <h1 id="死锁">死锁</h1>
 <ul>
-<li>CPU 利用率<ul>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathsize="0.9em"><mtext><mi mathvariant="normal">利</mi><mi mathvariant="normal">用</mi><mi mathvariant="normal">率</mi></mtext><mo>=</mo><mfrac><mrow><mtext><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">U</mi><mi mathvariant="normal">工</mi><mi mathvariant="normal">作</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mtext></mrow><mrow><mtext><mi mathvariant="normal">总</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mtext></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\small \text{利用率} = \dfrac{\text{CPU工作的时间}}{\text{总时间}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.224297em;"></span><span class="strut bottom" style="height:1.841697em;vertical-align:-0.6174000000000001em;"></span><span class="base textstyle uncramped"><span class="mord text textstyle uncramped sizing reset-size5 size4 textstyle uncramped"><span class="mord mathrm cjk_fallback">利用率</span></span><span class="mrel sizing reset-size5 size4 textstyle uncramped">=</span><span class="mord reset-textstyle displaystyle textstyle uncramped sizing reset-size5 size4 textstyle uncramped"><span class="mopen sizing reset-size4 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord text textstyle cramped"><span class="mord mathrm cjk_fallback">总时间</span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm">CPU</span><span class="mord mathrm cjk_fallback">工作的时间</span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose sizing reset-size4 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></li>
-<li>有些题目会让我们计算其他设备的利用率，同理。</li>
+<li>死锁<ul>
+<li>死锁是指多个进程在竞争资源时，因互相等待对方释放资源而造成的一种阻塞现象，导致进程无法向前推进</li>
+<li>死锁产生的必要条件<ul>
+<li><strong>互斥条件</strong>：进程对互斥使用的资源进行争抢，导致死锁</li>
+<li><strong>不可剥夺条件</strong>：进程在获得资源后，其他进程不能强行抢夺，只能由该进程自己释放</li>
+<li><strong>请求和保持条件</strong>：进程在持有资源的同时，请求其他资源，且这些资源被其他进程持有</li>
+<li><strong>循环等待条件</strong>：存在进程资源的循环等待链</li>
 </ul>
 </li>
-<li>系统吞吐量<ul>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathsize="0.9em"><mtext><mi mathvariant="normal">系</mi><mi mathvariant="normal">统</mi><mi mathvariant="normal">吞</mi><mi mathvariant="normal">吐</mi><mi mathvariant="normal">量</mi></mtext><mo>=</mo><mfrac><mrow><mtext><mi mathvariant="normal">总</mi><mi mathvariant="normal">共</mi><mi mathvariant="normal">完</mi><mi mathvariant="normal">成</mi><mi mathvariant="normal">了</mi><mi mathvariant="normal">多</mi><mi mathvariant="normal">少</mi><mi mathvariant="normal">道</mi><mi mathvariant="normal">作</mi><mi mathvariant="normal">业</mi></mtext></mrow><mrow><mtext><mi mathvariant="normal">总</mi><mi mathvariant="normal">共</mi><mi mathvariant="normal">花</mi><mi mathvariant="normal">了</mi><mi mathvariant="normal">多</mi><mi mathvariant="normal">少</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mtext></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\small \text{系统吞吐量} = \dfrac{\text{总共完成了多少道作业}}{\text{总共花了多少时间}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.224297em;"></span><span class="strut bottom" style="height:1.841697em;vertical-align:-0.6174000000000001em;"></span><span class="base textstyle uncramped"><span class="mord text textstyle uncramped sizing reset-size5 size4 textstyle uncramped"><span class="mord mathrm cjk_fallback">系统吞吐量</span></span><span class="mrel sizing reset-size5 size4 textstyle uncramped">=</span><span class="mord reset-textstyle displaystyle textstyle uncramped sizing reset-size5 size4 textstyle uncramped"><span class="mopen sizing reset-size4 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord text textstyle cramped"><span class="mord mathrm cjk_fallback">总共花了多少时间</span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm cjk_fallback">总共完成了多少道作业</span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose sizing reset-size4 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></li>
-<li>即计算单位时间内能完成多少道作业。</li>
+<li>死锁发生的三种情况<ul>
+<li>对不可剥夺的系统资源竞争时可能引起死锁</li>
+<li>进程推进顺序非法</li>
+<li>信号量使用不当</li>
 </ul>
 </li>
-<li>周转时间<ul>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathsize="0.9em"><mtext><mi mathvariant="normal">周</mi><mi mathvariant="normal">转</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mtext><mo>=</mo><mtext><mi mathvariant="normal">作</mi><mi mathvariant="normal">业</mi><mi mathvariant="normal">完</mi><mi mathvariant="normal">成</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mtext><mo>−</mo><mtext><mi mathvariant="normal">作</mi><mi mathvariant="normal">业</mi><mi mathvariant="normal">提</mi><mi mathvariant="normal">交</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mtext></mstyle></mrow><annotation encoding="application/x-tex">\small \text{周转时间} = \text{作业完成时间} - \text{作业提交时间}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.614997em;"></span><span class="strut bottom" style="height:0.689994em;vertical-align:-0.07499700000000001em;"></span><span class="base textstyle uncramped"><span class="mord text textstyle uncramped sizing reset-size5 size4 textstyle uncramped"><span class="mord mathrm cjk_fallback">周转时间</span></span><span class="mrel sizing reset-size5 size4 textstyle uncramped">=</span><span class="mord text textstyle uncramped sizing reset-size5 size4 textstyle uncramped"><span class="mord mathrm cjk_fallback">作业完成时间</span></span><span class="mbin sizing reset-size5 size4 textstyle uncramped">−</span><span class="mord text textstyle uncramped sizing reset-size5 size4 textstyle uncramped"><span class="mord mathrm cjk_fallback">作业提交时间</span></span></span></span></span></li>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathsize="0.9em"><mtext><mi mathvariant="normal">平</mi><mi mathvariant="normal">均</mi><mi mathvariant="normal">周</mi><mi mathvariant="normal">转</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mtext><mo>=</mo><mfrac><mrow><mtext><mi mathvariant="normal">每</mi><mi mathvariant="normal">一</mi><mi mathvariant="normal">个</mi><mi mathvariant="normal">作</mi><mi mathvariant="normal">业</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">周</mi><mi mathvariant="normal">转</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi><mi mathvariant="normal">之</mi><mi mathvariant="normal">和</mi></mtext></mrow><mrow><mtext><mi mathvariant="normal">作</mi><mi mathvariant="normal">业</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">个</mi><mi mathvariant="normal">数</mi></mtext></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\small \text{平均周转时间} = \dfrac{\text{每一个作业的周转时间之和}}{\text{作业的个数}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.224297em;"></span><span class="strut bottom" style="height:1.841697em;vertical-align:-0.6174000000000001em;"></span><span class="base textstyle uncramped"><span class="mord text textstyle uncramped sizing reset-size5 size4 textstyle uncramped"><span class="mord mathrm cjk_fallback">平均周转时间</span></span><span class="mrel sizing reset-size5 size4 textstyle uncramped">=</span><span class="mord reset-textstyle displaystyle textstyle uncramped sizing reset-size5 size4 textstyle uncramped"><span class="mopen sizing reset-size4 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord text textstyle cramped"><span class="mord mathrm cjk_fallback">作业的个数</span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm cjk_fallback">每一个作业的周转时间之和</span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose sizing reset-size4 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></li>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathsize="0.9em"><mtext><mi mathvariant="normal">带</mi><mi mathvariant="normal">权</mi><mi mathvariant="normal">周</mi><mi mathvariant="normal">转</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mtext><mo>=</mo><mfrac><mrow><mtext><mi mathvariant="normal">作</mi><mi mathvariant="normal">业</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">周</mi><mi mathvariant="normal">转</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mtext></mrow><mrow><mtext><mi mathvariant="normal">作</mi><mi mathvariant="normal">业</mi><mi mathvariant="normal">实</mi><mi mathvariant="normal">际</mi><mi mathvariant="normal">运</mi><mi mathvariant="normal">行</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mtext></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\small \text{带权周转时间} = \dfrac{\text{作业的周转时间}}{\text{作业实际运行的时间}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.224297em;"></span><span class="strut bottom" style="height:1.841697em;vertical-align:-0.6174000000000001em;"></span><span class="base textstyle uncramped"><span class="mord text textstyle uncramped sizing reset-size5 size4 textstyle uncramped"><span class="mord mathrm cjk_fallback">带权周转时间</span></span><span class="mrel sizing reset-size5 size4 textstyle uncramped">=</span><span class="mord reset-textstyle displaystyle textstyle uncramped sizing reset-size5 size4 textstyle uncramped"><span class="mopen sizing reset-size4 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord text textstyle cramped"><span class="mord mathrm cjk_fallback">作业实际运行的时间</span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm cjk_fallback">作业的周转时间</span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose sizing reset-size4 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></li>
-<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathsize="0.9em"><mtext><mi mathvariant="normal">平</mi><mi mathvariant="normal">均</mi><mi mathvariant="normal">带</mi><mi mathvariant="normal">权</mi><mi mathvariant="normal">周</mi><mi mathvariant="normal">转</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mtext><mo>=</mo><mfrac><mrow><mtext><mi mathvariant="normal">各</mi><mi mathvariant="normal">作</mi><mi mathvariant="normal">业</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">带</mi><mi mathvariant="normal">权</mi><mi mathvariant="normal">周</mi><mi mathvariant="normal">转</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi><mi mathvariant="normal">之</mi><mi mathvariant="normal">和</mi></mtext></mrow><mrow><mtext><mi mathvariant="normal">作</mi><mi mathvariant="normal">业</mi><mi mathvariant="normal">数</mi><mi mathvariant="normal">量</mi></mtext></mrow></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\small \text{平均带权周转时间} = \dfrac{\text{各作业的带权周转时间之和}}{\text{作业数量}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.224297em;"></span><span class="strut bottom" style="height:1.841697em;vertical-align:-0.6174000000000001em;"></span><span class="base textstyle uncramped"><span class="mord text textstyle uncramped sizing reset-size5 size4 textstyle uncramped"><span class="mord mathrm cjk_fallback">平均带权周转时间</span></span><span class="mrel sizing reset-size5 size4 textstyle uncramped">=</span><span class="mord reset-textstyle displaystyle textstyle uncramped sizing reset-size5 size4 textstyle uncramped"><span class="mopen sizing reset-size4 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord text textstyle cramped"><span class="mord mathrm cjk_fallback">作业数量</span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm cjk_fallback">各作业的带权周转时间之和</span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size4 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose sizing reset-size4 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></li>
+<li>死锁的处理策略<ul>
+<li>预防死锁：破坏死锁的四个必要条件中的一个或多个</li>
+<li>避免死锁：使用某种算法检查防止系统进入不安全状态，如银行家算法</li>
+<li>检测和解除死锁：允许死锁发生，但操作系统负责检查并解除死锁</li>
 </ul>
 </li>
-<li>等待时间<ul>
-<li>进程/线程等待被服务的时间之和（即周转时间减去 CPU 为其服务的时间再减去 I/O 设备时间）。</li>
-<li>平均等待时间：每一个进程/线程等待时间的平均值。</li>
 </ul>
 </li>
-<li>响应时间<ul>
-<li>从用户提交到首次响应之间的时间。</li>
+<li><p>死锁的处理</p>
+<ul>
+<li><p>不允许死锁发生</p>
+<ul>
+<li>静态策略：预防死锁<ul>
+<li>破坏死锁的四个必要条件中的某一个</li>
+<li>破坏互斥条件： SPOOLing技术：将独占设备逻辑上改造为共享设备<ul>
+<li>适用的范围不广</li>
+</ul>
+</li>
+<li>破坏不剥夺条件：<ul>
+<li>进程暂时得不到资源时，必须立即释放所有资源</li>
+<li>操作系统协助强行剥夺资源，适用于优先级高的进程</li>
+<li>实现复杂、可能导致进程工作失效、增加系统开销、可能导致进程饥饿</li>
+</ul>
+</li>
+<li>破坏请求和保持条件<ul>
+<li>进程在运行前一次性申请完所需全部资源</li>
+<li>可能导致资源浪费、系统资源利用率低、可能导致进程饥饿</li>
+</ul>
+</li>
+<li>破坏循环等待条件<ul>
+<li>顺序资源分配法：给资源编号，进程按编号递增顺序申请资源</li>
+<li>只有拥有小编号资源的进程才能申请大编号资源</li>
+<li>优点：避免循环等待链、系统资源利用率高，缺点：系统资源编号不便、可能导致资源浪费、用户编程麻烦</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>动态策略：避免死锁</p>
+<ul>
+<li>安全序列与不安全状态<ul>
+<li><strong>安全序列定义</strong>：系统按照安全序列的顺序依次给各个进程分配资源，进程可以顺利完成并归还资源</li>
+<li><strong>不安全状态定义</strong>：系统找不到任何安全序列，可能发生死锁（不一定发生死锁）</li>
+</ul>
+</li>
+<li><p><strong>银行家算法</strong></p>
+<ul>
+<li>预先判断资源分配是否会导致系统进入不安全状态，避免死锁</li>
+<li><pre><code class="lang-c">  <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">SourceItems</span> {</span>
+      <span class="hljs-type">int</span> sorces[N] = {a_1, a_2, a_3 ... a_N} <span class="hljs-comment">// 有 N 个资源， 每个资源有 a_i 个</span>
+  };
+  <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Process</span> {</span>
+      SourceItems maxNeed; <span class="hljs-comment">// 最大需求</span>
+      SourceItems ownedSources; <span class="hljs-comment">// 已拥有的资源</span>
+      SourceItems stillNeed; <span class="hljs-comment">// 还需要多少资源</span>
+  } processes[M]; <span class="hljs-comment">// 有 M 个资源</span>
+
+  <span class="hljs-type">bool</span> <span class="hljs-title function_">checkIfSave</span><span class="hljs-params">(SourcesItems OShaves)</span> { <span class="hljs-comment">// 传入系统还有多少资源</span>
+      ...... <span class="hljs-comment">// 更新 stillNeed (stillNeed 中的每一项是 maxNeed - owendSources)</span>
+      <span class="hljs-type">bool</span> tem[M] = {<span class="hljs-literal">false</span>} <span class="hljs-comment">// 用来记录是否能满足这个进程</span>
+      <span class="hljs-keyword">while</span>( <span class="hljs-literal">true</span> ) {
+          <span class="hljs-type">bool</span> ifAddSources = <span class="hljs-literal">false</span>; <span class="hljs-comment">// 判断本轮循环中中是否有进程被满足</span>
+          <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span> ; i &lt; M ; i ++) {
+              <span class="hljs-keyword">if</span>(tem[i] == ture) <span class="hljs-keyword">continue</span>;
+              <span class="hljs-keyword">if</span>(processes[i].stillNeed &lt;=  OShaves) {<span class="hljs-comment">// 如果当前系统存在的资源能完全满足这个进程， 把这个进程加入安全序列</span>
+                  ifAddSources = <span class="hljs-literal">true</span>;
+                  tem[i] = ture
+                  OShaves += processes[i].ownedSources; <span class="hljs-comment">// 假设这个进程已拥有的资源被释放， 检查是否能将新的进程纳入安全序列</span>
+              }
+          }   
+          <span class="hljs-keyword">if</span>(ifAddSources == <span class="hljs-literal">false</span>) {
+              <span class="hljs-type">bool</span> all = <span class="hljs-literal">true</span>; <span class="hljs-comment">// 判断是不是所有的进程都加入安全序列中了</span>
+              <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span> ; i &lt; M ; i ++) all &amp;= tem[i];
+              <span class="hljs-keyword">return</span> all;
+          }                         
+      }
+  }
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>允许死锁：死锁的检测和解除<ul>
+<li>死锁的检测<ul>
+<li>使用资源分配图记录系统资源情况，包括进程节点和资源节点， 通过算法检测系统是否进入死锁状态</li>
+<li>资源分配图<ul>
+<li><img src="img/Snipaste_2025-05-30_21-27-32.png" alt="img"></img></li>
+</ul>
+</li>
+<li>如果系统中剩余的可用资源数满足进程的要求， 那么这个进程是不会被阻塞的，可用顺利完成， 这个进程执行完成后吧资源还给操作系统， 这时会激活等待的进程</li>
+<li>进程运行完成，那么会消除连接的资源边，如果不断有进程完成，最后能消除所有的边， 那么就叫这个图可以被简化，也就一定没发生死锁</li>
+<li>如果不能发生简化， 那么就发生了死锁</li>
+<li><img src="img/Snipaste_2025-05-30_21-32-17.png" alt=""></img></li>
+</ul>
+</li>
+<li>死锁的消除<ul>
+<li><strong>资源剥夺法</strong>：挂起死锁进程并抢占其资源</li>
+<li><strong>撤销进程法</strong>：强制撤销死锁进程并剥夺其资源</li>
+<li><strong>进程回退法</strong>：让死锁进程回退到避免死锁的状态</li>
+<li>选择牺牲进程的标准：优先级、执行时间、剩余时间、使用资源、批处理式进程优先</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -803,12 +898,12 @@
 
             
                 
-                <a href="进程调度相关知识.html" class="navigation navigation-prev " aria-label="Previous page: 进程调度相关知识">
+                <a href="管程.html" class="navigation navigation-prev " aria-label="Previous page: 管程">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="调度算法.html" class="navigation navigation-next " aria-label="Next page: 调度算法">
+                <a href="../../计算机组成原理/" class="navigation navigation-next " aria-label="Next page: 计算机组成原理">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -819,7 +914,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"调度算法的评估指标","level":"4.1.2.2.11","depth":4,"next":{"title":"调度算法","level":"4.1.2.2.12","depth":4,"path":"408/操作系统/第二章：进程和线程/调度算法.md","ref":"408/操作系统/第二章：进程和线程/调度算法.md","articles":[]},"previous":{"title":"进程调度相关知识","level":"4.1.2.2.10","depth":4,"path":"408/操作系统/第二章：进程和线程/进程调度相关知识.md","ref":"408/操作系统/第二章：进程和线程/进程调度相关知识.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/操作系统/第二章：进程和线程/调度算法的评估指标.md","mtime":"2025-05-28T05:39:36.896Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-05-30T13:36:20.154Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"死锁","level":"4.1.2.2.21","depth":4,"next":{"title":"计算机组成原理","level":"4.1.3","depth":2,"path":"408/计算机组成原理/README.md","ref":"408/计算机组成原理/README.md","articles":[{"title":"第一章：计算机系统概述","level":"4.1.3.1","depth":3,"path":"408/计算机组成原理/第一章：计算机系统概述/README.md","ref":"408/计算机组成原理/第一章：计算机系统概述/README.md","articles":[{"title":"计算机硬件","level":"4.1.3.1.1","depth":4,"path":"408/计算机组成原理/第一章：计算机系统概述/计算机硬件.md","ref":"408/计算机组成原理/第一章：计算机系统概述/计算机硬件.md","articles":[]},{"title":"计算机软件","level":"4.1.3.1.2","depth":4,"path":"408/计算机组成原理/第一章：计算机系统概述/计算机软件.md","ref":"408/计算机组成原理/第一章：计算机系统概述/计算机软件.md","articles":[]},{"title":"计算机系统的层次结构","level":"4.1.3.1.3","depth":4,"path":"408/计算机组成原理/第一章：计算机系统概述/计算机系统的层次结构.md","ref":"408/计算机组成原理/第一章：计算机系统概述/计算机系统的层次结构.md","articles":[]},{"title":"计算机系统的工作原理","level":"4.1.3.1.4","depth":4,"path":"408/计算机组成原理/第一章：计算机系统概述/计算机系统的工作原理.md","ref":"408/计算机组成原理/第一章：计算机系统概述/计算机系统的工作原理.md","articles":[]}]}]},"previous":{"title":"管程","level":"4.1.2.2.20","depth":4,"path":"408/操作系统/第二章：进程和线程/管程.md","ref":"408/操作系统/第二章：进程和线程/管程.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/操作系统/第二章：进程和线程/死锁.md","mtime":"2025-05-30T13:34:01.186Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-05-30T13:36:20.154Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
