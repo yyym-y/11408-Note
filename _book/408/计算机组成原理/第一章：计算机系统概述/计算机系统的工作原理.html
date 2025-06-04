@@ -52,7 +52,7 @@
     <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../../计算机网络/" />
+    <link rel="next" href="计算机的性能指标.html" />
     
     
     <link rel="prev" href="计算机系统的层次结构.html" />
@@ -847,6 +847,19 @@
             
         </li>
     
+        <li class="chapter " data-level="4.1.3.1.5" data-path="计算机的性能指标.html">
+            
+                <a href="计算机的性能指标.html">
+            
+                    
+                    计算机的性能指标
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -920,7 +933,71 @@
     
                                 <section class="normal markdown-section">
                                 
-                                
+                                <h1 id="计算机系统的工作原理">计算机系统的工作原理</h1>
+<h3 id="采用-存储程序-的工作方式">采用 "存储程序" 的工作方式</h3>
+<p>程序执行前，需要将程序所含的指令和数据送入主存储器， 一旦程序被启动执行，就无须操作人员的干预，自动逐条完成指令的取出和执行任务</p>
+<p>程序从 PC 所指向的主存地址中取出要执行的指令, 之后对指令进行译码, 同时 PC + "1", 这个 "1" 实际上是指令的长度，而不是简单的加1。不同的指令有不同的长度（例如，x86 指令长度从1字节到15字节不等），PC 每次会根据当前执行指令的实际长度来更新，指向下一条指令的起始地址</p>
+<p>更具指令的前几个字节判断指令的类型, 根据类型判断是否有操作数, 之后进行上 ALU 上执行之后进行访存操作, 完成一条指令之后将会自动执行下一条指令</p>
+<p><img src="img/Snipaste_2025-06-04_20-11-43.png" alt=""></img></p>
+<h3 id="从源程序到可执行文件的四个过程">从源程序到可执行文件的四个过程:</h3>
+<p>更多详细内容见我的另一个博客 <a href="https://yyym-y.github.io/2023/12/02/CSAPP_note5/" target="_blank">CSAPP - 链接</a></p>
+<p><img src="img/Snipaste_2025-06-04_20-12-44.png" alt=""></img></p>
+<p>我们详细说明一下着几个过程: (PS 下面的过程是在Linux系统下执行的)</p>
+<ol>
+<li>预处理器 <code>cpp</code>  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.36687em;"></span><span class="strut bottom" style="height:0.36687em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mrel">→</span></span></span></span> <code>hello.i</code><blockquote>
+<p>在这一阶段,将会将宏定义<code>#define</code>的内容直接替换掉, 同时将引入的库函数<code>#include&lt;stdio.h&gt;</code> 的内容直接替换成实际上 <code>stdio.h</code> 的内容, 同时将 <code>#if</code>、<code>#ifdef</code>、<code>#ifndef</code>、<code>#else</code>、<code>#elif</code> 和 <code>#endif</code> 这些条件指令按照条件判断替换</p>
+<pre><code class="lang-bash">   gcc -E -o main.i main.c
+</code></pre>
+</blockquote>
+</li>
+<li>编译器<code>ccl</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.36687em;"></span><span class="strut bottom" style="height:0.36687em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mrel">→</span></span></span></span> <code>hello.s</code><blockquote>
+<p>将上述生产的中间文件编译成汇编语言</p>
+<pre><code class="lang-bash">   gcc -S -o main.s main.i <span class="hljs-comment"># 任选一个</span>
+   cc -S -o main.s main.i
+</code></pre>
+</blockquote>
+</li>
+<li>汇编器<code>as</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.36687em;"></span><span class="strut bottom" style="height:0.36687em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mrel">→</span></span></span></span> <code>hello.o</code><blockquote>
+<p>将汇编语言编译为可重定向文件, 将上面的汇编语言编译为机器语言指令</p>
+<pre><code class="lang-bash">   as -o main.o main.s
+</code></pre>
+<p>可重定向文件的的起始地址是从 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">0</span></span></span></span> 开始的, 在 Linux 中, 可重定向文件时使用 <code>ELF</code> 格式的, 
+<img src="img/link-2.png" alt=""></img></p>
+<p>PS: 哪怕这个文件所有的符号都知道具体的地址，链接器不需要链接其他文件，链接后产生的可执行文件和这个可重定位文件也不一样, 通常情况下操作系统都是不能直接执行可重定向文件的</p>
+</blockquote>
+</li>
+<li>链接器 <code>ld</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.36687em;"></span><span class="strut bottom" style="height:0.36687em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mrel">→</span></span></span></span> 可执行文件<blockquote>
+<p>将多个可执行文件打包为一个完整的可执行文件</p>
+<pre><code class="lang-bash">     ld -static -o prog main.o sum.o
+     /usr/lib/x86_64-linux-gnu/crt1.o
+     /usr/lib/x86_64-linux-gnu/crti.o
+     -L/usr/lib/gcc/x86_64-linux-gnu/7/crtbeginT.o
+     -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib
+     -L/usr/lib
+     --static-group -lgcc -lgcc_eh -lc --end-group
+     -L/usr/lib/gcc/x86_64-linux-gnu/7/crtend.o
+     /usr/lib/x86_64-linux-gnu/crtn.o
+</code></pre>
+<p>每个人的路径不一样，大家具体情况具体执行, 对于这些文件有兴趣的同学可以看《程序员的自我修养》一书</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="指令执行过程的描述">指令执行过程的描述</h3>
+<ol>
+<li>取指令 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">P</mi><mi mathvariant="normal">C</mi></mtext><mo>→</mo><mtext><mi mathvariant="normal">M</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">R</mi></mtext><mo>→</mo><mtext><mi mathvariant="normal">M</mi></mtext><mo>→</mo><mtext><mi mathvariant="normal">M</mi><mi mathvariant="normal">D</mi><mi mathvariant="normal">R</mi></mtext><mo>→</mo><mtext><mi mathvariant="normal">I</mi><mi mathvariant="normal">R</mi></mtext></mrow><annotation encoding="application/x-tex">\text{PC} \to \text{MAR} \to \text{M} \to \text{MDR} \to \text{IR}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm">PC</span></span><span class="mrel">→</span><span class="mord text textstyle uncramped"><span class="mord mathrm">MAR</span></span><span class="mrel">→</span><span class="mord text textstyle uncramped"><span class="mord mathrm">M</span></span><span class="mrel">→</span><span class="mord text textstyle uncramped"><span class="mord mathrm">MDR</span></span><span class="mrel">→</span><span class="mord text textstyle uncramped"><span class="mord mathrm">IR</span></span></span></span></span><blockquote>
+<p>吧 <code>PC</code> 的地址放在 <code>MAR</code> 中(MAR 中存储着即将进行访存的地址), 之后会在主存中将这个地址的内容存储在 MDR 中(这个寄存器专门用来存储从内存中地区的数据) , 之后再将 MDR 寄存器的内容放置再 IR(指令寄存器) 中</p>
+</blockquote>
+</li>
+<li>分析指令<blockquote>
+<p>通过分析指令的操作码, 生成对应的控制信号, 同时判断是否存在的操作数以及操作数的类型和数量</p>
+</blockquote>
+</li>
+<li>执行指令 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">A</mi><mi mathvariant="normal">D</mi><mi mathvariant="normal">(</mi><mi mathvariant="normal">I</mi><mi mathvariant="normal">R</mi><mi mathvariant="normal">)</mi></mtext><mo>→</mo><mtext><mi mathvariant="normal">M</mi><mi mathvariant="normal">A</mi><mi mathvariant="normal">R</mi></mtext><mo>→</mo><mtext><mi mathvariant="normal">M</mi></mtext><mo>→</mo><mtext><mi mathvariant="normal">M</mi><mi mathvariant="normal">D</mi><mi mathvariant="normal">R</mi></mtext><mo>→</mo><mtext><mi mathvariant="normal">A</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">C</mi></mtext></mrow><annotation encoding="application/x-tex">\text{AD(IR)} \to \text{MAR} \to \text{M} \to \text{MDR} \to \text{ACC}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm">AD(IR)</span></span><span class="mrel">→</span><span class="mord text textstyle uncramped"><span class="mord mathrm">MAR</span></span><span class="mrel">→</span><span class="mord text textstyle uncramped"><span class="mord mathrm">M</span></span><span class="mrel">→</span><span class="mord text textstyle uncramped"><span class="mord mathrm">MDR</span></span><span class="mrel">→</span><span class="mord text textstyle uncramped"><span class="mord mathrm">ACC</span></span></span></span></span><blockquote>
+<p>拆解出指令中的操作数, 我们这里假设操作数是地址, 我们将操作的地址放在 MAR 中, 之后访存, 将读取的数据放在 MDR 中, 之后转在 ALU 中, 这里我们假设的是进行加法操作, 所以放在累加寄存器 ACC 中</p>
+</blockquote>
+</li>
+</ol>
+
                                 
                                 </section>
                             
@@ -952,7 +1029,7 @@
                 </a>
                 
                 
-                <a href="../../计算机网络/" class="navigation navigation-next " aria-label="Next page: 计算机网络">
+                <a href="计算机的性能指标.html" class="navigation navigation-next " aria-label="Next page: 计算机的性能指标">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -963,7 +1040,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"计算机系统的工作原理","level":"4.1.3.1.4","depth":4,"next":{"title":"计算机网络","level":"4.1.4","depth":2,"path":"408/计算机网络/README.md","ref":"408/计算机网络/README.md","articles":[]},"previous":{"title":"计算机系统的层次结构","level":"4.1.3.1.3","depth":4,"path":"408/计算机组成原理/第一章：计算机系统概述/计算机系统的层次结构.md","ref":"408/计算机组成原理/第一章：计算机系统概述/计算机系统的层次结构.md","articles":[]},"dir":"neutral"},"config":{"plugins":["katex"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/计算机组成原理/第一章：计算机系统概述/计算机系统的工作原理.md","mtime":"2025-05-29T13:28:34.988Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-06-04T07:33:32.328Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"计算机系统的工作原理","level":"4.1.3.1.4","depth":4,"next":{"title":"计算机的性能指标","level":"4.1.3.1.5","depth":4,"path":"408/计算机组成原理/第一章：计算机系统概述/计算机的性能指标.md","ref":"408/计算机组成原理/第一章：计算机系统概述/计算机的性能指标.md","articles":[]},"previous":{"title":"计算机系统的层次结构","level":"4.1.3.1.3","depth":4,"path":"408/计算机组成原理/第一章：计算机系统概述/计算机系统的层次结构.md","ref":"408/计算机组成原理/第一章：计算机系统概述/计算机系统的层次结构.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/计算机组成原理/第一章：计算机系统概述/计算机系统的工作原理.md","mtime":"2025-06-04T12:45:49.702Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-06-04T13:32:28.087Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>

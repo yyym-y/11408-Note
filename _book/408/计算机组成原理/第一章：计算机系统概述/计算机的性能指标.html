@@ -3,7 +3,7 @@
 <html lang="cn" >
     <head>
         <meta charset="UTF-8">
-        <title>计算机系统的层次结构 · yyym 11408 Notes</title>
+        <title>计算机的性能指标 · yyym 11408 Notes</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 6.0.3">
@@ -52,10 +52,10 @@
     <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="计算机系统的工作原理.html" />
+    <link rel="next" href="../../计算机网络/" />
     
     
-    <link rel="prev" href="计算机软件.html" />
+    <link rel="prev" href="计算机系统的工作原理.html" />
     
 
     </head>
@@ -821,7 +821,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.1.3.1.3" data-path="计算机系统的层次结构.html">
+        <li class="chapter " data-level="4.1.3.1.3" data-path="计算机系统的层次结构.html">
             
                 <a href="计算机系统的层次结构.html">
             
@@ -847,7 +847,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.3.1.5" data-path="计算机的性能指标.html">
+        <li class="chapter active" data-level="4.1.3.1.5" data-path="计算机的性能指标.html">
             
                 <a href="计算机的性能指标.html">
             
@@ -918,7 +918,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../.." >计算机系统的层次结构</a>
+        <a href="../../.." >计算机的性能指标</a>
     </h1>
 </div>
 
@@ -933,18 +933,61 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="计算机系统的层次结构">计算机系统的层次结构</h1>
-<p>层次结构如图所示：
-<img src="img/Snipaste_2025-06-04_19-52-33.png" alt=""></img></p>
-<p>我们从高到低依次解释每一层的内容:</p>
+                                <h1 id="计算机的性能指标">计算机的性能指标</h1>
+<h4 id="机器字长">机器字长</h4>
+<p>机器字长实际上可以被简称为字长, 他是CPU一次能处理的二进制数据位数, 通常情况下, 字长为一个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05017em;">B</span></span></span></span> (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>8</mn><mtext><mi mathvariant="normal">b</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi></mtext></mrow><annotation encoding="application/x-tex">8\text{bit}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">8</span><span class="mord text textstyle uncramped"><span class="mord mathrm">bit</span></span></span></span></span>) 的整数倍</p>
+<h4 id="数据通路带宽">数据通路带宽</h4>
+<p>数据通路带宽是指数据总线一次所能并行传送信息的位数。这里所说的数据通路宽度是指外部数据总线的宽度，它与CPU内部的数据总线宽度（内部寄存器的大小）有可能不同</p>
+<p>数据通路带宽直接影响CPU与内存之间数据传输的效率</p>
+<h4 id="主存容量">主存容量</h4>
+<p>主存容量是指主存储器所能存储信息的最大容量，通常以字节（B）来衡量</p>
+<h4 id="运算速度">运算速度</h4>
 <ol>
-<li>虚拟机器M4 (高级语言层) : 这一层就是我们平常使用的高级语言,如 C++, Java 等</li>
-<li>虚拟机器M3 (汇编语言层) : 这一层是高级语言需要转化为汇编语言才能进行下一步的运行</li>
-<li>虚拟机器M2 (操作系统层) : 哪怕是汇编语言, 也需要使用到操作系统提供的系统调用, 比如如果我们进行I/O的时候,需要调用系统的 <code>read</code> 指令</li>
-<li>传统机器M1 (机器语言层) : 计算机无法直接执行上面的所有指令, 需要转化为机器指令, 即纯二进制构成的指令</li>
-<li>微程序机器M0 (微程序机器层) : 机器指令序列由一个一个的机器指令构成, 这是一个实在的硬件层，它由机器硬件直接执行微指令</li>
+<li>吞吐量<blockquote>
+<p>CPU 在单位时间内能处理的指令的数量</p>
+</blockquote>
+</li>
+<li>响应时间<blockquote>
+<p>用户向CPU发送一个请求, 到系统对请求做出响应并获取到最终结果的时间,包括CPU执行时间和CPU等待时间</p>
+</blockquote>
+</li>
+<li>CPU时钟周期<blockquote>
+<p>机器内部主时钟脉冲信号的宽度, 指令流水线每个流水线的最大执行时间</p>
+</blockquote>
+</li>
+<li>主频<blockquote>
+<p>机器内部主时钟的频率  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">主</mi><mi mathvariant="normal">频</mi></mtext><mo>=</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mtext><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">U</mi><mtext>&nbsp;</mtext><mi mathvariant="normal">时</mi><mi mathvariant="normal">钟</mi><mi mathvariant="normal">周</mi><mi mathvariant="normal">期</mi></mtext></mrow></mfrac></mrow><annotation encoding="application/x-tex">\text{主频} = \dfrac{1}{\text{CPU 时钟周期}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.32144em;"></span><span class="strut bottom" style="height:2.00744em;vertical-align:-0.686em;"></span><span class="base textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm cjk_fallback">主频</span></span><span class="mrel">=</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="mopen sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord text textstyle cramped"><span class="mord mathrm">CPU&nbsp;</span><span class="mord mathrm cjk_fallback">时钟周期</span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathrm">1</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></p>
+<p>主频通常以 Hz（赫兹）为单位，10Hz表示每秒10个时钟周期</p>
+</blockquote>
+</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">I</mi></mtext></mrow><annotation encoding="application/x-tex">\text{CPI}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm">CPI</span></span></span></span></span><blockquote>
+<p>执行一条指令需要的时钟周期数</p>
+<p>不同指令的时钟周期数可能不同，因此对于一个程序或一台机器来说，其CPI指该程序或该 机器指令集中的所有指令执行所需的平均时钟周期数，即<strong>平均CPI</strong></p>
+</blockquote>
+</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">I</mi><mi mathvariant="normal">S</mi><mi mathvariant="normal">P</mi></mtext></mrow><annotation encoding="application/x-tex">\text{ISP}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm">ISP</span></span></span></span></span><blockquote>
+<p>即每秒执行多少条指令， <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">I</mi><mi mathvariant="normal">S</mi><mi mathvariant="normal">P</mi></mtext><mo>=</mo><mfrac><mrow><mtext><mi mathvariant="normal">主</mi><mi mathvariant="normal">频</mi></mtext></mrow><mrow><mtext><mi mathvariant="normal">平</mi><mi mathvariant="normal">均</mi><mtext>&nbsp;</mtext><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">I</mi></mtext></mrow></mfrac></mrow><annotation encoding="application/x-tex">\text{ISP} = \dfrac{\text{主频}}{\text{平均 CPI}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.36033em;"></span><span class="strut bottom" style="height:2.04633em;vertical-align:-0.686em;"></span><span class="base textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm">ISP</span></span><span class="mrel">=</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="mopen sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord text textstyle cramped"><span class="mord mathrm cjk_fallback">平均</span><span class="mord mathrm">&nbsp;CPI</span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm cjk_fallback">主频</span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></p>
+</blockquote>
+</li>
+<li>CPU 执行时间<blockquote>
+<p>指运行一个程序所花费的时间, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">U</mi><mtext>&nbsp;</mtext><mi mathvariant="normal">执</mi><mi mathvariant="normal">行</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mtext><mo>=</mo><mfrac><mrow><mtext><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">U</mi><mtext>&nbsp;</mtext><mi mathvariant="normal">时</mi><mi mathvariant="normal">钟</mi><mi mathvariant="normal">周</mi><mi mathvariant="normal">期</mi><mi mathvariant="normal">数</mi></mtext></mrow><mrow><mtext><mi mathvariant="normal">主</mi><mi mathvariant="normal">频</mi></mtext></mrow></mfrac><mo>=</mo><mfrac><mrow><mtext><mi mathvariant="normal">指</mi><mi mathvariant="normal">令</mi><mi mathvariant="normal">条</mi><mi mathvariant="normal">数</mi></mtext><mo>×</mo><mtext><mi mathvariant="normal">平</mi><mi mathvariant="normal">均</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">I</mi></mtext></mrow><mrow><mtext><mi mathvariant="normal">主</mi><mi mathvariant="normal">频</mi></mtext></mrow></mfrac></mrow><annotation encoding="application/x-tex">\text{CPU 执行时间} = \dfrac{\text{CPU 时钟周期数}}{\text{主频}} = \dfrac{\text{指令条数} \times \text{平均CPI}}{\text{主频}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.36033em;"></span><span class="strut bottom" style="height:2.04633em;vertical-align:-0.686em;"></span><span class="base textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm">CPU&nbsp;</span><span class="mord mathrm cjk_fallback">执行时间</span></span><span class="mrel">=</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="mopen sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord text textstyle cramped"><span class="mord mathrm cjk_fallback">主频</span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm">CPU&nbsp;</span><span class="mord mathrm cjk_fallback">时钟周期数</span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mrel">=</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="mopen sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord text textstyle cramped"><span class="mord mathrm cjk_fallback">主频</span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm cjk_fallback">指令条数</span></span><span class="mbin">×</span><span class="mord text textstyle uncramped"><span class="mord mathrm cjk_fallback">平均</span><span class="mord mathrm">CPI</span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></p>
+<p>CPU的性能（CPU执行时间）取决于三个要素：主频、CPI和指令条数。主频、 CPI和指令条数是相互制约的</p>
+</blockquote>
+</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">M</mi><mi mathvariant="normal">I</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">S</mi></mtext></mrow><annotation encoding="application/x-tex">\text{MIPS}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm">MIPS</span></span></span></span></span><blockquote>
+<p>每秒执行多少百万条指令  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">M</mi><mi mathvariant="normal">I</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">S</mi></mtext><mo>=</mo><mfrac><mrow><mtext><mi mathvariant="normal">指</mi><mi mathvariant="normal">令</mi><mi mathvariant="normal">条</mi><mi mathvariant="normal">数</mi></mtext></mrow><mrow><mtext><mi mathvariant="normal">执</mi><mi mathvariant="normal">行</mi><mi mathvariant="normal">时</mi><mi mathvariant="normal">间</mi></mtext><mo>×</mo><mn>1</mn><msup><mn>0</mn><mn>6</mn></msup></mrow></mfrac><mo>=</mo><mfrac><mrow><mtext><mi mathvariant="normal">主</mi><mi mathvariant="normal">频</mi></mtext></mrow><mrow><mtext><mi mathvariant="normal">平</mi><mi mathvariant="normal">均</mi><mi mathvariant="normal">C</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">I</mi></mtext><mo>×</mo><mn>1</mn><msup><mn>0</mn><mn>6</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\text{MIPS} = \dfrac{\text{指令条数}}{\text{执行时间} \times 10^6} = \dfrac{\text{主频}}{\text{平均CPI} \times 10^6}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.36033em;"></span><span class="strut bottom" style="height:2.1296600000000003em;vertical-align:-0.7693300000000001em;"></span><span class="base textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm">MIPS</span></span><span class="mrel">=</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="mopen sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord text textstyle cramped"><span class="mord mathrm cjk_fallback">执行时间</span></span><span class="mbin">×</span><span class="mord mathrm">1</span><span class="mord"><span class="mord mathrm">0</span><span class="msupsub"><span class="vlist"><span style="top:-0.289em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">6</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm cjk_fallback">指令条数</span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mrel">=</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="mopen sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord text textstyle cramped"><span class="mord mathrm cjk_fallback">平均</span><span class="mord mathrm">CPI</span></span><span class="mbin">×</span><span class="mord mathrm">1</span><span class="mord"><span class="mord mathrm">0</span><span class="msupsub"><span class="vlist"><span style="top:-0.289em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathrm mtight">6</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm cjk_fallback">主频</span></span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></p>
+</blockquote>
+</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext><mi mathvariant="normal">F</mi><mi mathvariant="normal">L</mi><mi mathvariant="normal">O</mi><mi mathvariant="normal">P</mi><mi mathvariant="normal">S</mi></mtext></mrow><annotation encoding="application/x-tex">\text{FLOPS}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord text textstyle uncramped"><span class="mord mathrm">FLOPS</span></span></span></span></span><blockquote>
+<p>每秒执行多少次浮点运算</p>
+<p>其他的同类型指标 <code>MFLOPS</code> <code>GFLOPS</code> <code>TFLOPS</code> <code>PFLOPS</code> <code>EFLOPS</code>  <code>ZFLOPS</code> </p>
+</blockquote>
+</li>
+<li>基准程序<blockquote>
+<p>基准程序（Benchmarks)是专门用来进行性能评价的一组程序</p>
+</blockquote>
+</li>
 </ol>
-<p>软硬件的交界面在 M1 和 M2 之间分割, 他们之间的交互通过 ISA(指令集体系结构) 来规定</p>
 
                                 
                                 </section>
@@ -972,12 +1015,12 @@
 
             
                 
-                <a href="计算机软件.html" class="navigation navigation-prev " aria-label="Previous page: 计算机软件">
+                <a href="计算机系统的工作原理.html" class="navigation navigation-prev " aria-label="Previous page: 计算机系统的工作原理">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="计算机系统的工作原理.html" class="navigation navigation-next " aria-label="Next page: 计算机系统的工作原理">
+                <a href="../../计算机网络/" class="navigation navigation-next " aria-label="Next page: 计算机网络">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -988,7 +1031,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"计算机系统的层次结构","level":"4.1.3.1.3","depth":4,"next":{"title":"计算机系统的工作原理","level":"4.1.3.1.4","depth":4,"path":"408/计算机组成原理/第一章：计算机系统概述/计算机系统的工作原理.md","ref":"408/计算机组成原理/第一章：计算机系统概述/计算机系统的工作原理.md","articles":[]},"previous":{"title":"计算机软件","level":"4.1.3.1.2","depth":4,"path":"408/计算机组成原理/第一章：计算机系统概述/计算机软件.md","ref":"408/计算机组成原理/第一章：计算机系统概述/计算机软件.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/计算机组成原理/第一章：计算机系统概述/计算机系统的层次结构.md","mtime":"2025-06-04T12:03:23.388Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-06-04T13:32:28.087Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"计算机的性能指标","level":"4.1.3.1.5","depth":4,"next":{"title":"计算机网络","level":"4.1.4","depth":2,"path":"408/计算机网络/README.md","ref":"408/计算机网络/README.md","articles":[]},"previous":{"title":"计算机系统的工作原理","level":"4.1.3.1.4","depth":4,"path":"408/计算机组成原理/第一章：计算机系统概述/计算机系统的工作原理.md","ref":"408/计算机组成原理/第一章：计算机系统概述/计算机系统的工作原理.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/计算机组成原理/第一章：计算机系统概述/计算机的性能指标.md","mtime":"2025-06-04T13:26:16.015Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-06-04T13:32:28.087Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
