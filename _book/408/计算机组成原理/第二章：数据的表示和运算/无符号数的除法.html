@@ -3,7 +3,7 @@
 <html lang="cn" >
     <head>
         <meta charset="UTF-8">
-        <title>C语言中的整数类型和数据转换 · yyym 11408 Notes</title>
+        <title>无符号数的除法 · yyym 11408 Notes</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="HonKit 6.0.3">
@@ -52,10 +52,10 @@
     <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="逻辑门电路.html" />
+    <link rel="next" href="浮点数的表示（IEEE754）.html" />
     
     
-    <link rel="prev" href="定点数的编码表示.html" />
+    <link rel="prev" href="定点数的乘法运算.html" />
     
 
     </head>
@@ -1281,7 +1281,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.1.3.2.3" data-path="C语言中的整数类型和数据转换.html">
+        <li class="chapter " data-level="4.1.3.2.3" data-path="C语言中的整数类型和数据转换.html">
             
                 <a href="C语言中的整数类型和数据转换.html">
             
@@ -1359,7 +1359,7 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.3.2.9" data-path="无符号数的除法.html">
+        <li class="chapter active" data-level="4.1.3.2.9" data-path="无符号数的除法.html">
             
                 <a href="无符号数的除法.html">
             
@@ -1443,7 +1443,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../.." >C语言中的整数类型和数据转换</a>
+        <a href="../../.." >无符号数的除法</a>
     </h1>
 </div>
 
@@ -1458,116 +1458,52 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="c语言中的整数类型和数据转换">C语言中的整数类型和数据转换</h1>
-<h3 id="常见c语言类型大小"><strong>常见C语言类型大小</strong></h3>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">有符号</th>
-<th style="text-align:center">无符号</th>
-<th style="text-align:center">32位</th>
-<th style="text-align:center">64位</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">[signed] char</td>
-<td style="text-align:center">unsigned char</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">short</td>
-<td style="text-align:center">unsigned short</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">2</td>
-</tr>
-<tr>
-<td style="text-align:center">int</td>
-<td style="text-align:center">unsigned int</td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">4</td>
-</tr>
-<tr>
-<td style="text-align:center">long</td>
-<td style="text-align:center">unsigned long</td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">8</td>
-</tr>
-<tr>
-<td style="text-align:center">int32_t</td>
-<td style="text-align:center">uint32_t</td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">4</td>
-</tr>
-<tr>
-<td style="text-align:center">int64_t</td>
-<td style="text-align:center">uint64_t</td>
-<td style="text-align:center">8</td>
-<td style="text-align:center">8</td>
-</tr>
-<tr>
-<td style="text-align:center">char*</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">8</td>
-</tr>
-<tr>
-<td style="text-align:center">float</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">4</td>
-</tr>
-<tr>
-<td style="text-align:center">double</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">8</td>
-<td style="text-align:center">8</td>
-</tr>
-</tbody>
-</table>
-<h3 id="左移和右移的两种方式"><strong>左移和右移的两种方式</strong></h3>
-<p>逻辑左移（SHL）和算数左移(SAL)，规则相同，右边统一添0</p>
-<p>逻辑右移(SHR)，左边<strong>统一添0</strong></p>
-<p>算数右移(SAR)，左边添加的数和符号有关 <strong>(正数补0，负数补1)</strong></p>
-<p>我们做一个简单的实验 ：</p>
-<pre><code class="lang-c++"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span>
-<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;
-<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">showBits</span><span class="hljs-params">(<span class="hljs-type">int</span> num)</span> </span>{
-    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">31</span> ; i &gt;= <span class="hljs-number">0</span> ; i--)
-        cout &lt;&lt; (num &gt;&gt; i &amp; <span class="hljs-number">1</span>);
-    cout &lt;&lt; <span class="hljs-string">"\n"</span>;
-}
-<span class="hljs-function"><span class="hljs-type">signed</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>
-</span>{
-    <span class="hljs-type">int</span> num = INT_MIN;
-    <span class="hljs-built_in">showBits</span>(num);
-    <span class="hljs-built_in">showBits</span>(num &gt;&gt; <span class="hljs-number">1</span>);
-    <span class="hljs-built_in">showBits</span>(num &gt;&gt; <span class="hljs-number">10</span>);
-    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-}
-<span class="hljs-comment">/*
-10000000000000000000000000000000
-11000000000000000000000000000000
-11111111111000000000000000000000
-*/</span>
-</code></pre>
-<p>我们发现 C 族系都是默认是算数右移，所以有些时候会产生混乱， 所以像 JAVA 就有明确规定了</p>
-<p><code>&gt;&gt;</code> 算数右移 <code>&gt;&gt;&gt;</code> 逻辑右移</p>
-<p><strong>扩展：当移动位数大于实际位数时该怎么办？</strong></p>
-<p>假设我们现在有一个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn><mn>2</mn></mrow><annotation encoding="application/x-tex">32</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">3</span><span class="mord mathrm">2</span></span></span></span> 位整数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">x</span></span></span></span> ， 我们执行操作 <code>x &gt;&gt; 1234567</code> </p>
-<p>系统并不会直接将这个整数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">x</span></span></span></span> 变成 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">0</span></span></span></span></p>
-<p>相反的，计算机会将 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mn>2</mn><mn>3</mn><mn>4</mn><mn>5</mn><mn>6</mn><mn>7</mn></mrow><annotation encoding="application/x-tex">1234567</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">2</span><span class="mord mathrm">3</span><span class="mord mathrm">4</span><span class="mord mathrm">5</span><span class="mord mathrm">6</span><span class="mord mathrm">7</span></span></span></span> 转化为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mn>2</mn><mn>3</mn><mn>4</mn><mn>5</mn><mn>6</mn><mn>7</mn><mo><mo>mod</mo></mo><mn>3</mn><mn>2</mn></mrow><annotation encoding="application/x-tex">1234567 \bmod 32</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">2</span><span class="mord mathrm">3</span><span class="mord mathrm">4</span><span class="mord mathrm">5</span><span class="mord mathrm">6</span><span class="mord mathrm">7</span><span class="mbin"><span class="mspace negativemediumspace"></span><span class="mspace thickspace"></span>mod</span><span class="mord mathrm"><span class="mspace thickspace"></span><span class="mspace negativemediumspace"></span><span class="mord mathrm">3</span></span><span class="mord mathrm">2</span></span></span></span>，</p>
-<p>更一般的来讲： 对于一个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02691em;">w</span></span></span></span> 位的数字， 移动 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span></span> 位， 这个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span></span> 会被计算机隐式的转换为  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mo><mo>mod</mo></mo><mi>w</mi></mrow><annotation encoding="application/x-tex">k \bmod w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03148em;">k</span><span class="mbin"><span class="mspace negativemediumspace"></span><span class="mspace thickspace"></span>mod</span><span class="mord mathit"><span class="mspace thickspace"></span><span class="mspace negativemediumspace"></span><span class="mord mathit" style="margin-right:0.02691em;">w</span></span></span></span></span></p>
-<h3 id="数字的拓展和截断"><strong>数字的拓展和截断</strong></h3>
-<p><strong>拓展</strong></p>
-<p>​        要将一个无符号数转换为一个更大的数据类型，我们只要简单地在表示的开头添加 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">0</span></span></span></span>。这种运算被称为<strong>零扩展</strong>（ zero extension）。</p>
-<p>​        要将一个补码数字转换为一个更大的数据类型，可以执行一个<strong>符号扩展</strong>（ sign exten sion），即扩展符号位。举个例子 :  <code>100000101</code>  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>⇒</mo></mrow><annotation encoding="application/x-tex">\Rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.36687em;"></span><span class="strut bottom" style="height:0.36687em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mrel">⇒</span></span></span></span> <code>1111111100000101</code></p>
-<p>​    更普遍的来说， 我们只需要对一个数进行算数右移即可完成拓展</p>
-<p><strong>截断</strong></p>
-<p>对于无符号整数来说， 如果你要从无符号编码的第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span></span> 位开始截断， 那么这个数就会变成对 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mrow><mi>k</mi></mrow></msup></mrow><annotation encoding="application/x-tex">2^{k}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.849108em;"></span><span class="strut bottom" style="height:0.849108em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathrm">2</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord scriptstyle uncramped mtight"><span class="mord mathit mtight" style="margin-right:0.03148em;">k</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span> 取模后的余数</p>
-<p>简单来说就是  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>U</mi><mo>→</mo><mi>U</mi><mo><mo>mod</mo></mo><msup><mn>2</mn><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">U \to U \bmod 2^k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.849108em;"></span><span class="strut bottom" style="height:0.849108em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.10903em;">U</span><span class="mrel">→</span><span class="mord mathit" style="margin-right:0.10903em;">U</span><span class="mbin"><span class="mspace negativemediumspace"></span><span class="mspace thickspace"></span>mod</span><span class="mord"><span class="mspace thickspace"></span><span class="mspace negativemediumspace"></span><span class="mord mathrm">2</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathit mtight" style="margin-right:0.03148em;">k</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span></p>
-<p>对于补码的截断来说， 我们采用两步， 我们先把补码转化为无符号编码，之后再视作无符号进行截断，最后再转化为补码</p>
+                                <h1 id="无符号数的除法">无符号数的除法</h1>
+<p>除法的核心也和我们人手算的过程是差不多的， 所以我们直接使用电路模拟下面的过程：</p>
+<p><img src="img/Snipaste_2025-06-17_15-03-14.png" alt=""></img></p>
+<p>我们的除法器支持 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mi>n</mi></mrow><annotation encoding="application/x-tex">2n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathit">n</span></span></span></span> 位的背除数以及 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span> 位的除数, 如果使用低于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mi>n</mi></mrow><annotation encoding="application/x-tex">2n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathit">n</span></span></span></span> 位的除数, 我们需要零拓展至 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mi>n</mi></mrow><annotation encoding="application/x-tex">2n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathit">n</span></span></span></span> 位</p>
+<blockquote>
+<p>值得注意的是, 如果是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mi>n</mi></mrow><annotation encoding="application/x-tex">2n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathit">n</span></span></span></span>位的被除数, 那么这次除法是双精度除法, 如果被除数是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span> 位的, 那么就是单精度除法</p>
+</blockquote>
+<p>我们用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mn>1</mn><mn>1</mn><mn>1</mn></mrow><annotation encoding="application/x-tex">1111</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">1</span><span class="mord mathrm">1</span><span class="mord mathrm">1</span></span></span></span> 除以 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn><mn>0</mn><mn>1</mn><mn>0</mn></mrow><annotation encoding="application/x-tex">0010</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">0</span><span class="mord mathrm">0</span><span class="mord mathrm">1</span><span class="mord mathrm">0</span></span></span></span> 来作为模拟: </p>
+<p>首先我们要先进行初始化:</p>
+<ol>
+<li>我们先将除数放在除数寄存器中</li>
+<li>将被除数放在余数/商寄存器Q中, 注意:Q和R这两个寄存器看成一个整体, 一共有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mi>n</mi></mrow><annotation encoding="application/x-tex">2n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathit">n</span></span></span></span> 位, 所以要将被除数零拓展至 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mi>n</mi></mrow><annotation encoding="application/x-tex">2n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathit">n</span></span></span></span> 位</li>
+<li>将控制逻辑计数器的值设置为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span></li>
+<li>进行特殊情况的检查<ol>
+<li>如果除数寄存器为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">0</span></span></span></span>, 那么就会触发除数为零的异常, 产生外中断, 从未转为执行异常处理程序</li>
+<li>如果被除数小于除数, 那么不会进行除法操作,应为此时商为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">0</span></span></span></span>, 余数为被除数本身</li>
+</ol>
+</li>
+</ol>
+<p>注意: 除法进行的过程中会发生商溢出, 所以我们要进行判断</p>
+<blockquote>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mi>n</mi></mrow><annotation encoding="application/x-tex">2n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathit">n</span></span></span></span> 位的被除数除以 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span> 位的除数会产生 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span><span class="mbin">+</span><span class="mord mathrm">1</span></span></span></span> 位的商, 但是 CPU 只会保留低位的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span> 位, 最高位会直接被舍弃</p>
+<p>所以我们要对最高位商进行判断, 如果商的最高位是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span></span></span></span>, 那么发生了商溢出, 除法操作将会终止, 会产生商溢出的异常, 从而执行对应的异常处理程序</p>
+<p>注意: 只有双精度除法会产生商溢出, 单精度除法不会产生商溢出</p>
+</blockquote>
+<p>整个除法过程会进行 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span><span class="mbin">+</span><span class="mord mathrm">1</span></span></span></span> 次循环, 所以我们分开讨论:</p>
+<ol>
+<li>当进行第一次循环的时候:<ol>
+<li>控制逻辑计数器向 ALU 发出减法信号, 让除数寄存器Y的值减去余数寄存器R的值, 并将结果写回到余数寄存器R中</li>
+<li>如果计算过程中发生了溢出(即 Y &lt; R) , 那么说明本轮的商为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">0</span></span></span></span> , 也就说明最高位的商为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">0</span></span></span></span>, 不会发生商溢出, 之后控制逻辑计数器向 ALU 发出加法指令,除数寄存器Y的值加上余数寄存器R的值, 目的是恢复原本余数寄存器的值(计算的过程为 R - Y + Y = R)</li>
+<li>如果计算的过程中没有发生溢出(即 Y &gt;= R), 那么说明本轮的商为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span></span></span></span> , 也就说明最高位的商为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span></span></span></span>, 发生商溢出, 除法操作将会终止, 会产生商溢出的异常, 从而执行对应的异常处理程序</li>
+</ol>
+</li>
+<li>之后的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span> 次循环(只要控制逻辑计数器的值不为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">0</span></span></span></span>)<ol>
+<li>将 R 和 Q 两个寄存器看成一个整体, 逻辑左移一位, 空出的最低位将用来存储商</li>
+<li>控制逻辑计数器向 ALU 发出减法信号, 让除数寄存器Y的值减去余数寄存器R的值, 并将结果写回到余数寄存器R中</li>
+<li>如果计算过程中发生了溢出(即 Y &lt; R) , 那么说明本轮的商为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">0</span></span></span></span>, 写到刚刚空出的最低位中, 同时恢复原本 R 的内容(和第一次循环一致)</li>
+<li>如果计算的过程中没有发生溢出(即 Y &gt;= R), 那么说明本轮的商为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span></span></span></span>, 写到刚刚空出的最低位中, 此时不需要恢复 R 的内容</li>
+<li>将控制逻辑寄存器的值减一</li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p>关于恢复寄存器 R 中的值, 有恢复余数法和不恢复余数法,</p>
+<p>除数为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">0</span></span></span></span> , 商溢出都属于除法错异常, 也可以简称为除法异常</p>
+</blockquote>
 
                                 
                                 </section>
@@ -1595,12 +1531,12 @@
 
             
                 
-                <a href="定点数的编码表示.html" class="navigation navigation-prev " aria-label="Previous page: 定点数的编码表示">
+                <a href="定点数的乘法运算.html" class="navigation navigation-prev " aria-label="Previous page: 定点数的乘法运算">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="逻辑门电路.html" class="navigation navigation-next " aria-label="Next page: 逻辑门电路">
+                <a href="浮点数的表示（IEEE754）.html" class="navigation navigation-next " aria-label="Next page: 浮点数的表示(IEEE754)">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1611,7 +1547,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"C语言中的整数类型和数据转换","level":"4.1.3.2.3","depth":4,"next":{"title":"逻辑门电路","level":"4.1.3.2.4","depth":4,"path":"408/计算机组成原理/第二章：数据的表示和运算/逻辑门电路.md","ref":"408/计算机组成原理/第二章：数据的表示和运算/逻辑门电路.md","articles":[]},"previous":{"title":"定点数的编码表示","level":"4.1.3.2.2","depth":4,"path":"408/计算机组成原理/第二章：数据的表示和运算/定点数的编码表示.md","ref":"408/计算机组成原理/第二章：数据的表示和运算/定点数的编码表示.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/计算机组成原理/第二章：数据的表示和运算/C语言中的整数类型和数据转换.md","mtime":"2025-06-10T14:52:14.434Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-06-17T09:17:58.119Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"无符号数的除法","level":"4.1.3.2.9","depth":4,"next":{"title":"浮点数的表示(IEEE754)","level":"4.1.3.2.10","depth":4,"path":"408/计算机组成原理/第二章：数据的表示和运算/浮点数的表示（IEEE754）.md","ref":"408/计算机组成原理/第二章：数据的表示和运算/浮点数的表示（IEEE754）.md","articles":[]},"previous":{"title":"定点数的乘法运算","level":"4.1.3.2.8","depth":4,"path":"408/计算机组成原理/第二章：数据的表示和运算/定点数的乘法运算.md","ref":"408/计算机组成原理/第二章：数据的表示和运算/定点数的乘法运算.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/计算机组成原理/第二章：数据的表示和运算/无符号数的除法.md","mtime":"2025-06-17T08:54:56.585Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-06-17T09:17:58.119Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
