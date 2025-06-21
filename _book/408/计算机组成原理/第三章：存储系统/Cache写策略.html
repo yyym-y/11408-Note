@@ -1,0 +1,1906 @@
+
+<!DOCTYPE HTML>
+<html lang="cn" >
+    <head>
+        <meta charset="UTF-8">
+        <title>Cache写策略 · yyym 11408 Notes</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 6.0.3">
+        <meta name="author" content="yyym">
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../../计算机网络/" />
+    
+    
+    <link rel="prev" href="Cache替换方法.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">数学（一）</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../../数学一/">
+            
+                <a href="../../../数学一/">
+            
+                    
+                    Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">英语（一）</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../../英语一/">
+            
+                <a href="../../../英语一/">
+            
+                    
+                    Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">408</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Summary
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../数据结构/">
+            
+                <a href="../../数据结构/">
+            
+                    
+                    数据结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../../操作系统/">
+            
+                <a href="../../操作系统/">
+            
+                    
+                    操作系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.1" data-path="../../操作系统/第一章：计算机系统概述/">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/">
+            
+                    
+                    第一章：计算机系统概述
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.1.1" data-path="../../操作系统/第一章：计算机系统概述/操作系统的概念-基本特征.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/操作系统的概念-基本特征.html">
+            
+                    
+                    操作系统的概念/基本特征
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.2" data-path="../../操作系统/第一章：计算机系统概述/操作系统的发展和分类.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/操作系统的发展和分类.html">
+            
+                    
+                    操作系统的发展和分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.3" data-path="../../操作系统/第一章：计算机系统概述/操作系统的运行机制.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/操作系统的运行机制.html">
+            
+                    
+                    操作系统的运行机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.4" data-path="../../操作系统/第一章：计算机系统概述/中断和异常和系统调用.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/中断和异常和系统调用.html">
+            
+                    
+                    中断和异常和系统调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.5" data-path="../../操作系统/第一章：计算机系统概述/操作系统的体系结构.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/操作系统的体系结构.html">
+            
+                    
+                    操作系统的体系结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.6" data-path="../../操作系统/第一章：计算机系统概述/操作系统引导.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/操作系统引导.html">
+            
+                    
+                    操作系统引导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.7" data-path="../../操作系统/第一章：计算机系统概述/虚拟机.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/虚拟机.html">
+            
+                    
+                    虚拟机
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2" data-path="../../操作系统/第二章：进程和线程/">
+            
+                <a href="../../操作系统/第二章：进程和线程/">
+            
+                    
+                    第二章：进程和线程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.2.1" data-path="../../操作系统/第二章：进程和线程/进程的概念、组成、特征.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程的概念、组成、特征.html">
+            
+                    
+                    进程的概念、组成、特征
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.2" data-path="../../操作系统/第二章：进程和线程/进程的状态与转换.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程的状态与转换.html">
+            
+                    
+                    进程的状态与转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.3" data-path="../../操作系统/第二章：进程和线程/进程控制.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程控制.html">
+            
+                    
+                    进程控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.4" data-path="../../操作系统/第二章：进程和线程/进程通信.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程通信.html">
+            
+                    
+                    进程通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.5" data-path="../../操作系统/第二章：进程和线程/信号.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/信号.html">
+            
+                    
+                    信号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.6" data-path="../../操作系统/第二章：进程和线程/线程的概念和特点.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/线程的概念和特点.html">
+            
+                    
+                    线程的概念和特点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.7" data-path="../../操作系统/第二章：进程和线程/线程的实现方式.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/线程的实现方式.html">
+            
+                    
+                    线程的实现方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.8" data-path="../../操作系统/第二章：进程和线程/线程的状态和转换-组织和控制.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/线程的状态和转换-组织和控制.html">
+            
+                    
+                    线程的状态和转换-组织和控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.9" data-path="../../操作系统/第二章：进程和线程/处理机调度.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/处理机调度.html">
+            
+                    
+                    处理机调度
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.10" data-path="../../操作系统/第二章：进程和线程/进程调度相关知识.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程调度相关知识.html">
+            
+                    
+                    进程调度相关知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.11" data-path="../../操作系统/第二章：进程和线程/调度算法的评估指标.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/调度算法的评估指标.html">
+            
+                    
+                    调度算法的评估指标
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.12" data-path="../../操作系统/第二章：进程和线程/调度算法.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/调度算法.html">
+            
+                    
+                    调度算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.13" data-path="../../操作系统/第二章：进程和线程/多处理机调度.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/多处理机调度.html">
+            
+                    
+                    多处理机调度
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.14" data-path="../../操作系统/第二章：进程和线程/进程同步和互斥.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程同步和互斥.html">
+            
+                    
+                    进程同步和互斥
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.15" data-path="../../操作系统/第二章：进程和线程/实现进程互斥的软件方法.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/实现进程互斥的软件方法.html">
+            
+                    
+                    实现进程互斥的软件方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.16" data-path="../../操作系统/第二章：进程和线程/实现进程互斥的硬件方法.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/实现进程互斥的硬件方法.html">
+            
+                    
+                    实现进程互斥的硬件方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.17" data-path="../../操作系统/第二章：进程和线程/信号量机制.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/信号量机制.html">
+            
+                    
+                    信号量机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.18" data-path="../../操作系统/第二章：进程和线程/信号量实现互斥同步前驱.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/信号量实现互斥同步前驱.html">
+            
+                    
+                    信号量实现互斥同步前驱
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.19" data-path="../../操作系统/第二章：进程和线程/经典信号量问题.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/经典信号量问题.html">
+            
+                    
+                    经典信号量问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.20" data-path="../../操作系统/第二章：进程和线程/管程.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/管程.html">
+            
+                    
+                    管程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.21" data-path="../../操作系统/第二章：进程和线程/死锁.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/死锁.html">
+            
+                    
+                    死锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3" data-path="../../操作系统/第三章：内存管理/">
+            
+                <a href="../../操作系统/第三章：内存管理/">
+            
+                    
+                    第三章：内存管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.3.1" data-path="../../操作系统/第三章：内存管理/内存基本知识.html">
+            
+                <a href="../../操作系统/第三章：内存管理/内存基本知识.html">
+            
+                    
+                    内存基本知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.2" data-path="../../操作系统/第三章：内存管理/进程的内存映像.html">
+            
+                <a href="../../操作系统/第三章：内存管理/进程的内存映像.html">
+            
+                    
+                    进程的内存映像
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.3" data-path="../../操作系统/第三章：内存管理/连续分配管理方式.html">
+            
+                <a href="../../操作系统/第三章：内存管理/连续分配管理方式.html">
+            
+                    
+                    连续分配管理方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.4" data-path="../../操作系统/第三章：内存管理/动态分区分配算法.html">
+            
+                <a href="../../操作系统/第三章：内存管理/动态分区分配算法.html">
+            
+                    
+                    动态分区分配算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.5" data-path="../../操作系统/第三章：内存管理/基本分页存储管理概念.html">
+            
+                <a href="../../操作系统/第三章：内存管理/基本分页存储管理概念.html">
+            
+                    
+                    基本分页存储管理概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.6" data-path="../../操作系统/第三章：内存管理/基本地址变换机构.html">
+            
+                <a href="../../操作系统/第三章：内存管理/基本地址变换机构.html">
+            
+                    
+                    基本地址变换机构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.7" data-path="../../操作系统/第三章：内存管理/具有快表的地址变换机构.html">
+            
+                <a href="../../操作系统/第三章：内存管理/具有快表的地址变换机构.html">
+            
+                    
+                    具有快表的地址变换机构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.8" data-path="../../操作系统/第三章：内存管理/两级页表.html">
+            
+                <a href="../../操作系统/第三章：内存管理/两级页表.html">
+            
+                    
+                    两级页表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.9" data-path="../../操作系统/第三章：内存管理/基本分段式存储结构.html">
+            
+                <a href="../../操作系统/第三章：内存管理/基本分段式存储结构.html">
+            
+                    
+                    基本分段式存储结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.10" data-path="../../操作系统/第三章：内存管理/段页式管理方式.html">
+            
+                <a href="../../操作系统/第三章：内存管理/段页式管理方式.html">
+            
+                    
+                    段页式管理方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.11" data-path="../../操作系统/第三章：内存管理/虚拟内存.html">
+            
+                <a href="../../操作系统/第三章：内存管理/虚拟内存.html">
+            
+                    
+                    虚拟内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.12" data-path="../../操作系统/第三章：内存管理/页面置换算法.html">
+            
+                <a href="../../操作系统/第三章：内存管理/页面置换算法.html">
+            
+                    
+                    页面置换算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.13" data-path="../../操作系统/第三章：内存管理/页面分配策略概述.html">
+            
+                <a href="../../操作系统/第三章：内存管理/页面分配策略概述.html">
+            
+                    
+                    页面分配策略概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.14" data-path="../../操作系统/第三章：内存管理/内存映射文件.html">
+            
+                <a href="../../操作系统/第三章：内存管理/内存映射文件.html">
+            
+                    
+                    内存映射文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4" data-path="../../操作系统/第四章：文件管理/">
+            
+                <a href="../../操作系统/第四章：文件管理/">
+            
+                    
+                    第四章：文件管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.4.1" data-path="../../操作系统/第四章：文件管理/文件管理概述.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件管理概述.html">
+            
+                    
+                    文件管理概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.2" data-path="../../操作系统/第四章：文件管理/文件逻辑结构.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件逻辑结构.html">
+            
+                    
+                    文件逻辑结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.3" data-path="../../操作系统/第四章：文件管理/文件目录.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件目录.html">
+            
+                    
+                    文件目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.4" data-path="../../操作系统/第四章：文件管理/文件的物理结构.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件的物理结构.html">
+            
+                    
+                    文件的物理结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.5" data-path="../../操作系统/第四章：文件管理/文件存储空间.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件存储空间.html">
+            
+                    
+                    文件存储空间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.6" data-path="../../操作系统/第四章：文件管理/文件操作.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件操作.html">
+            
+                    
+                    文件操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.7" data-path="../../操作系统/第四章：文件管理/文件共享.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件共享.html">
+            
+                    
+                    文件共享
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.8" data-path="../../操作系统/第四章：文件管理/文件保护.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件保护.html">
+            
+                    
+                    文件保护
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.9" data-path="../../操作系统/第四章：文件管理/文件系统中的层次结构.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件系统中的层次结构.html">
+            
+                    
+                    文件系统中的层次结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.10" data-path="../../操作系统/第四章：文件管理/文件系统的布局.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件系统的布局.html">
+            
+                    
+                    文件系统的布局
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.11" data-path="../../操作系统/第四章：文件管理/虚拟文件系统和文件系统的挂载.html">
+            
+                <a href="../../操作系统/第四章：文件管理/虚拟文件系统和文件系统的挂载.html">
+            
+                    
+                    虚拟文件系统和文件系统的挂载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5" data-path="../../操作系统/第五章：输入输出管理/">
+            
+                <a href="../../操作系统/第五章：输入输出管理/">
+            
+                    
+                    第五章：输入输出管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.5.1" data-path="../../操作系统/第五章：输入输出管理/IO设备管理的概念和分类.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/IO设备管理的概念和分类.html">
+            
+                    
+                    IO设备管理的概念和分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.2" data-path="../../操作系统/第五章：输入输出管理/IO控制器和控制方式.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/IO控制器和控制方式.html">
+            
+                    
+                    IO控制器和控制方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.3" data-path="../../操作系统/第五章：输入输出管理/IO软件层次结构.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/IO软件层次结构.html">
+            
+                    
+                    IO软件层次结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.4" data-path="../../操作系统/第五章：输入输出管理/输入输出应用程序接口和驱动程序接口.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/输入输出应用程序接口和驱动程序接口.html">
+            
+                    
+                    输入输出应用程序接口和驱动程序接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.5" data-path="../../操作系统/第五章：输入输出管理/IO核心子技术.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/IO核心子技术.html">
+            
+                    
+                    IO核心子技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.6" data-path="../../操作系统/第五章：输入输出管理/假脱机技术.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/假脱机技术.html">
+            
+                    
+                    假脱机技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.7" data-path="../../操作系统/第五章：输入输出管理/设备的分配和回收.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/设备的分配和回收.html">
+            
+                    
+                    设备的分配和回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.8" data-path="../../操作系统/第五章：输入输出管理/缓冲区管理.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/缓冲区管理.html">
+            
+                    
+                    缓冲区管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.9" data-path="../../操作系统/第五章：输入输出管理/磁盘的相关结构.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/磁盘的相关结构.html">
+            
+                    
+                    磁盘的相关结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.10" data-path="../../操作系统/第五章：输入输出管理/磁盘调度算法.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/磁盘调度算法.html">
+            
+                    
+                    磁盘调度算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.11" data-path="../../操作系统/第五章：输入输出管理/减少延迟时间.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/减少延迟时间.html">
+            
+                    
+                    减少延迟时间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.12" data-path="../../操作系统/第五章：输入输出管理/磁盘管理.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/磁盘管理.html">
+            
+                    
+                    磁盘管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.13" data-path="../../操作系统/第五章：输入输出管理/固态硬盘.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/固态硬盘.html">
+            
+                    
+                    固态硬盘
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    计算机组成原理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.1" data-path="../第一章：计算机系统概述/">
+            
+                <a href="../第一章：计算机系统概述/">
+            
+                    
+                    第一章：计算机系统概述
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.1.1" data-path="../第一章：计算机系统概述/计算机硬件.html">
+            
+                <a href="../第一章：计算机系统概述/计算机硬件.html">
+            
+                    
+                    计算机硬件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.1.2" data-path="../第一章：计算机系统概述/计算机软件.html">
+            
+                <a href="../第一章：计算机系统概述/计算机软件.html">
+            
+                    
+                    计算机软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.1.3" data-path="../第一章：计算机系统概述/计算机系统的层次结构.html">
+            
+                <a href="../第一章：计算机系统概述/计算机系统的层次结构.html">
+            
+                    
+                    计算机系统的层次结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.1.4" data-path="../第一章：计算机系统概述/计算机系统的工作原理.html">
+            
+                <a href="../第一章：计算机系统概述/计算机系统的工作原理.html">
+            
+                    
+                    计算机系统的工作原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.1.5" data-path="../第一章：计算机系统概述/计算机的性能指标.html">
+            
+                <a href="../第一章：计算机系统概述/计算机的性能指标.html">
+            
+                    
+                    计算机的性能指标
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2" data-path="../第二章：数据的表示和运算/">
+            
+                <a href="../第二章：数据的表示和运算/">
+            
+                    
+                    第二章：数据的表示和运算
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.2.1" data-path="../第二章：数据的表示和运算/进位计数制及其相互转换.html">
+            
+                <a href="../第二章：数据的表示和运算/进位计数制及其相互转换.html">
+            
+                    
+                    进位计数制及其相互转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.2" data-path="../第二章：数据的表示和运算/定点数的编码表示.html">
+            
+                <a href="../第二章：数据的表示和运算/定点数的编码表示.html">
+            
+                    
+                    定点数的编码表示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.3" data-path="../第二章：数据的表示和运算/C语言中的整数类型和数据转换.html">
+            
+                <a href="../第二章：数据的表示和运算/C语言中的整数类型和数据转换.html">
+            
+                    
+                    C语言中的整数类型和数据转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.4" data-path="../第二章：数据的表示和运算/逻辑门电路.html">
+            
+                <a href="../第二章：数据的表示和运算/逻辑门电路.html">
+            
+                    
+                    逻辑门电路
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.5" data-path="../第二章：数据的表示和运算/多路选择器和三态门.html">
+            
+                <a href="../第二章：数据的表示和运算/多路选择器和三态门.html">
+            
+                    
+                    多路选择器和三态门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.6" data-path="../第二章：数据的表示和运算/基本运算部件.html">
+            
+                <a href="../第二章：数据的表示和运算/基本运算部件.html">
+            
+                    
+                    基本运算部件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.7" data-path="../第二章：数据的表示和运算/定点数的加减运算.html">
+            
+                <a href="../第二章：数据的表示和运算/定点数的加减运算.html">
+            
+                    
+                    定点数的加减运算
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.8" data-path="../第二章：数据的表示和运算/定点数的乘法运算.html">
+            
+                <a href="../第二章：数据的表示和运算/定点数的乘法运算.html">
+            
+                    
+                    定点数的乘法运算
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.9" data-path="../第二章：数据的表示和运算/无符号数的除法.html">
+            
+                <a href="../第二章：数据的表示和运算/无符号数的除法.html">
+            
+                    
+                    无符号数的除法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.10" data-path="../第二章：数据的表示和运算/浮点数的表示（IEEE754）.html">
+            
+                <a href="../第二章：数据的表示和运算/浮点数的表示（IEEE754）.html">
+            
+                    
+                    浮点数的表示(IEEE754)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.11" data-path="../第二章：数据的表示和运算/数据的存储和排列.html">
+            
+                <a href="../第二章：数据的表示和运算/数据的存储和排列.html">
+            
+                    
+                    数据的存储和排列
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    第三章：存储系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.3.1" data-path="存储系统基本概念.html">
+            
+                <a href="存储系统基本概念.html">
+            
+                    
+                    存储系统基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.2" data-path="主存储器的基本组成.html">
+            
+                <a href="主存储器的基本组成.html">
+            
+                    
+                    主存储器的基本组成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.3" data-path="SRAM,DRAM,ROM.html">
+            
+                <a href="SRAM,DRAM,ROM.html">
+            
+                    
+                    SRAM, DRAM, ROM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.4" data-path="多模块存储器.html">
+            
+                <a href="多模块存储器.html">
+            
+                    
+                    多模块存储器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.5" data-path="主存储器与CPU的连接.html">
+            
+                <a href="主存储器与CPU的连接.html">
+            
+                    
+                    主存储器与CPU的连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.6" data-path="磁盘存储器.html">
+            
+                <a href="磁盘存储器.html">
+            
+                    
+                    磁盘存储器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.7" data-path="Cache基本原理.html">
+            
+                <a href="Cache基本原理.html">
+            
+                    
+                    Cache基本原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.8" data-path="Cache与主存的映射关系.html">
+            
+                <a href="Cache与主存的映射关系.html">
+            
+                    
+                    Cache与主存的映射关系
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.9" data-path="Cache替换方法.html">
+            
+                <a href="Cache替换方法.html">
+            
+                    
+                    Cache替换方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.1.3.3.10" data-path="Cache写策略.html">
+            
+                <a href="Cache写策略.html">
+            
+                    
+                    Cache写策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../../计算机网络/">
+            
+                <a href="../../计算机网络/">
+            
+                    
+                    计算机网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >Cache写策略</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="一、cache-写策略">一、Cache 写策略</h1>
+<h2 id="2-本节总览">2. 本节总览</h2>
+<p>本节主要探讨在 CPU 进行<strong>写操作</strong>时，Cache 如何与主存协作以维护数据一致性。需要注意的是，<strong>只有写操作才会导致数据不一致问题，读操作则不会。</strong></p>
+<p>我们将从两个维度来讨论写策略：</p>
+<ul>
+<li><strong>写命中 (Write Hit) 情况：</strong> 当 CPU 要写入的数据块已经在 Cache 中时，如何处理？<ul>
+<li><strong>写回法 (Write Back)</strong></li>
+<li><strong>全写法 (Write Through)</strong></li>
+</ul>
+</li>
+<li><strong>写不命中 (Write Miss) 情况：</strong> 当 CPU 要写入的数据块不在 Cache 中时，如何处理？<ul>
+<li><strong>写分配法 (Write Allocate)</strong></li>
+<li><strong>非写分配法 (No-Write Allocate)</strong></li>
+</ul>
+</li>
+</ul>
+<hr></hr>
+<h2 id="3-写命中">3. 写命中</h2>
+<p>当 CPU 要写入的数据块已经在 Cache 中时，有两种主要的策略来处理。</p>
+<h3 id="31-写回法-write-back">3.1 写回法 (Write Back)</h3>
+<p><strong>工作原理：</strong></p>
+<ul>
+<li>当 CPU 执行写操作且命中了 Cache 时，<strong>只修改 Cache 中的数据副本</strong>，而<strong>不立即写入主存</strong>。</li>
+<li>主存中的数据会在未来某个时刻才被更新。这个“未来时刻”通常是当该 Cache 行被<strong>替换（淘汰）出 Cache</strong> 时，才将其写回主存。</li>
+</ul>
+<p><strong>实现机制：</strong></p>
+<ul>
+<li>为了实现写回法，每个 Cache 行都需要额外增加一个 <strong>“脏位 (Dirty Bit)”</strong>（或称修改位/M 位）。</li>
+<li>当 Cache 行中的数据被 CPU 修改时，该行的脏位被置为 <strong>1</strong>。</li>
+<li>当 Cache 行要被替换出去时，系统会检查其脏位：<ul>
+<li>如果脏位为 <strong>1</strong>，表示该行已被修改且与主存不一致，必须将该行的数据<strong>写回主存</strong>，然后才能替换。</li>
+<li>如果脏位为 <strong>0</strong>，表示该行的数据与主存一致，可以直接<strong>淘汰</strong>（无需写回主存）。</li>
+</ul>
+</li>
+</ul>
+<p><strong>特点：</strong></p>
+<ul>
+<li><strong>减少访存次数：</strong> 由于不是每次写操作都访问主存，显著<strong>减少了写操作对主存的访问次数</strong>。</li>
+<li><strong>提升写操作速度：</strong> CPU 的写操作大部分在高速的 Cache 中完成，从而<strong>提升了写操作的速度</strong>。</li>
+<li><strong>存在数据不一致隐患：</strong> 在 Cache 中的数据被修改但尚未写回主存的这段时间内，主存中的数据是旧的、不一致的。这在多核或多总线系统中可能导致问题。</li>
+<li><strong>适合搭配写分配法使用：</strong> 由于其“延迟写入”的特性，写回法通常与<strong>写分配法</strong>（后面会介绍）配合使用，以充分利用局部性原理。</li>
+</ul>
+<h3 id="32-全写法-write-through">3.2 全写法 (Write Through)</h3>
+<p><strong>工作原理：</strong></p>
+<ul>
+<li>当 CPU 执行写操作且命中了 Cache 时，<strong>同时将数据写入 Cache 和主存</strong>。</li>
+<li>这保证了 Cache 和主存中的数据<strong>始终保持一致</strong>（或者说，主存中的数据总是最新的）。</li>
+</ul>
+<p><strong>实现优化：写缓冲 (Write Buffer)</strong></p>
+<ul>
+<li>为了避免直接写入主存的慢速影响 CPU 速度，全写法通常会引入一个<strong>写缓冲 (Write Buffer)</strong>。</li>
+<li>写缓冲是一个由 <strong>SRAM</strong> 实现的 <strong>FIFO（先进先出）队列</strong>。</li>
+<li>CPU 进行写操作时，数据会<strong>同时写入 Cache 和写缓冲</strong>。CPU 立即继续执行其他任务，由<strong>后台控制器</strong>将写缓冲中的数据异步写入主存。</li>
+</ul>
+<p><strong>特点：</strong></p>
+<ul>
+<li><strong>保证数据强一致性：</strong> Cache 和主存的数据总是保持同步，避免了不一致问题。</li>
+<li><strong>写缓冲饱和时 CPU 需等待：</strong> 如果写缓冲的速度跟不上 CPU 写入的速度，写缓冲可能饱和。此时 CPU 必须等待写缓冲有空闲才能继续写操作，导致性能下降。</li>
+<li><strong>写操作对主存依赖大：</strong> 每次写操作都必须访问主存，即使通过写缓冲优化，理论上访存次数也多于写回法。</li>
+<li><strong>适合搭配非写分配法使用：</strong> 由于其“实时写入”的特性，全写法通常与<strong>非写分配法</strong>配合使用。</li>
+</ul>
+<hr></hr>
+<h2 id="4-写不命中">4. 写不命中</h2>
+<p>当 CPU 要写入的数据块不在 Cache 中时，有两种主要策略来处理。</p>
+<h3 id="41-写分配法-write-allocate">4.1 写分配法 (Write Allocate)</h3>
+<p><strong>处理流程：</strong></p>
+<ul>
+<li>当写操作发生未命中时，系统会<strong>首先将目标主存块调入 Cache</strong>（即“分配”一个 Cache 行）。</li>
+<li>然后，在 Cache 中对该块的数据进行修改。</li>
+<li>后续对该块的访问就可以命中 Cache 了。</li>
+</ul>
+<p><strong>搭配策略：</strong></p>
+<ul>
+<li>写分配法通常与<strong>写回法</strong>配合使用。</li>
+<li>这意味着，当一个新块被调入 Cache 并被修改后，只有当它被替换出 Cache 时，其修改才会被写回主存。</li>
+<li>这种组合充分利用了<strong>时间局部性</strong>：如果一个数据块被写入，很可能在短时间内再次被访问（读或写），将其留在 Cache 中可以提高后续访问的命中率。</li>
+</ul>
+<p><strong>适用场景：</strong></p>
+<ul>
+<li>适合<strong>局部性较好的访问模式</strong>，尤其是写操作也具有良好局部性的场景。</li>
+</ul>
+<h3 id="42-非写分配法-no-write-allocate">4.2 非写分配法 (No-Write Allocate)</h3>
+<p><strong>处理流程：</strong></p>
+<ul>
+<li>当写操作发生未命中时，系统<strong>不将目标主存块调入 Cache</strong>。</li>
+<li>而是<strong>直接将数据写入主存</strong>。</li>
+</ul>
+<p><strong>搭配策略：</strong></p>
+<ul>
+<li>非写分配法通常与<strong>全写法</strong>配合使用。</li>
+<li>这意味着，只有在<strong>读不命中</strong>时，数据块才会被调入 Cache。写不命中时，数据直接绕过 Cache 写入主存。</li>
+</ul>
+<p><strong>适用场景：</strong></p>
+<ul>
+<li>适合<strong>随机写入</strong>的场景，因为这些写入操作不具有良好的局部性，调入 Cache 可能会污染 Cache 中的热点数据，反而降低效率。</li>
+</ul>
+<hr></hr>
+<h2 id="5-多级-cache">5. 多级 Cache</h2>
+<p>为了进一步优化性能和平衡成本，现代 CPU 通常采用<strong>多级 Cache 结构</strong>。</p>
+<p><strong>层级特点：</strong></p>
+<ul>
+<li><strong>L1 Cache：</strong> 最接近 CPU 核心，速度最快（例如，读写速度可达 <strong>1000GB/s</strong> 甚至更高），容量最小（通常几十到几百 KB，如 128KB），通常分为 L1 指令 Cache 和 L1 数据 Cache。延迟极低（例如 1.0ns）。</li>
+<li><strong>L2 Cache：</strong> 位于 L1 和 L3 之间，速度次之（例如，读写速度约 <strong>400GB/s</strong>），容量比 L1 大（通常几百 KB 到几 MB，如 2MB）。延迟稍高（例如 3.1ns）。</li>
+<li><strong>L3 Cache：</strong> 通常是片上共享 Cache，速度比 L2 慢（例如，读写速度约 <strong>250GB/s</strong>），容量最大（通常几 MB 到几十 MB）。延迟进一步增加（例如 13.5ns）。</li>
+<li><strong>主存 (Main Memory)：</strong> 速度最慢（例如，读写速度约 37GB/s），但容量最大（通常几 GB 到几百 GB）。延迟最高（例如 56.1ns）。</li>
+</ul>
+<p><strong>数据同步策略（分层组合）：</strong></p>
+<p>多级 Cache 系统中，各层级之间的数据同步策略也经过精心设计，以达到最佳性能和一致性：</p>
+<ul>
+<li><strong>各级 Cache 之间（例如 L1 与 L2 之间，L2 与 L3 之间）：</strong><ul>
+<li>通常采用<strong>全写法 (Write Through)</strong> + <strong>非写分配法 (No-Write Allocate)</strong>。</li>
+<li>原因：确保上层 Cache 的修改立即同步到下层 Cache，保持一致性。非写分配可以避免将不常用的数据块逐级调入上层 Cache。</li>
+</ul>
+</li>
+<li><strong>Cache 与主存之间（通常是 L3 Cache 与主存之间）：</strong><ul>
+<li>通常采用<strong>写回法 (Write Back)</strong> + <strong>写分配法 (Write Allocate)</strong>。</li>
+<li>原因：这是为了降低访存频率，利用写操作的局部性，提升整体性能。只有当 Cache 块被替换时才写回主存，从而减少了慢速主存的访问。</li>
+</ul>
+</li>
+</ul>
+<hr></hr>
+<h2 id="二、知识小结">二、知识小结</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">知识点</th>
+<th style="text-align:left">核心内容</th>
+<th style="text-align:left">考试重点/易混淆点</th>
+<th style="text-align:left">难度系数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Cache 写策略</strong></td>
+<td style="text-align:left">解决Cache与主存数据一致性问题，分为命中（写回法、全写法）和未命中（写分配法、非写分配法）两种情况。</td>
+<td style="text-align:left"><strong>写回法 vs 全写法：</strong> 写回法延迟同步（淘汰时写回），全写法实时同步（需写缓冲优化）。<strong>写分配法 vs 非写分配法：</strong> 写分配法先调入Cache再写，非写分配法直接写主存。</td>
+<td style="text-align:left">⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>多级Cache结构</strong></td>
+<td style="text-align:left">层级越接近CPU速度越快（如L1&gt;L2&gt;L3），容量越小。数据同步策略：<strong>各级Cache间用全写法+非写分配法，Cache与主存间用写回法+写分配法。</strong></td>
+<td style="text-align:left">多级Cache的读写速度差异（如L1<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≈</mo></mrow><annotation encoding="application/x-tex">\approx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.48312em;"></span><span class="strut bottom" style="height:0.48312em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mrel">≈</span></span></span></span>1000GB/s，L2<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≈</mo></mrow><annotation encoding="application/x-tex">\approx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.48312em;"></span><span class="strut bottom" style="height:0.48312em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mrel">≈</span></span></span></span>500GB/s）。</td>
+<td style="text-align:left">⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Cache映射方式</strong></td>
+<td style="text-align:left">主存与Cache数据块对应关系：全相联映射、直接映射、组相联映射。</td>
+<td style="text-align:left">组相联映射是前两者的折中方案，需掌握地址划分逻辑。</td>
+<td style="text-align:left">⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Cache替换算法</strong></td>
+<td style="text-align:left">淘汰策略：LRU（近期最少使用）、FIFO（先进先出）、随机等。</td>
+<td style="text-align:left">LRU算法的实际实现复杂度（需硬件支持计数器或栈）。</td>
+<td style="text-align:left">⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>数据一致性隐患</strong></td>
+<td style="text-align:left">写回法存在主存与Cache临时不一致问题，需<strong>脏位</strong>标记；全写法依赖写缓冲可能饱和。</td>
+<td style="text-align:left"><strong>脏位的硬件实现与淘汰判断逻辑。</strong> 这是写回法实现的关键。</td>
+<td style="text-align:left">⭐⭐⭐⭐</td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Cache替换方法.html" class="navigation navigation-prev " aria-label="Previous page: Cache替换方法">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../../计算机网络/" class="navigation navigation-next " aria-label="Next page: 计算机网络">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Cache写策略","level":"4.1.3.3.10","depth":4,"next":{"title":"计算机网络","level":"4.1.4","depth":2,"path":"408/计算机网络/README.md","ref":"408/计算机网络/README.md","articles":[]},"previous":{"title":"Cache替换方法","level":"4.1.3.3.9","depth":4,"path":"408/计算机组成原理/第三章：存储系统/Cache替换方法.md","ref":"408/计算机组成原理/第三章：存储系统/Cache替换方法.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/计算机组成原理/第三章：存储系统/Cache写策略.md","mtime":"2025-06-21T08:56:00.063Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-06-21T09:05:39.690Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

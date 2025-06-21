@@ -1,0 +1,1870 @@
+
+<!DOCTYPE HTML>
+<html lang="cn" >
+    <head>
+        <meta charset="UTF-8">
+        <title>Cache基本原理 · yyym 11408 Notes</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 6.0.3">
+        <meta name="author" content="yyym">
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Cache与主存的映射关系.html" />
+    
+    
+    <link rel="prev" href="磁盘存储器.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">数学（一）</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../../数学一/">
+            
+                <a href="../../../数学一/">
+            
+                    
+                    Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">英语（一）</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../../英语一/">
+            
+                <a href="../../../英语一/">
+            
+                    
+                    Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">408</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Summary
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../数据结构/">
+            
+                <a href="../../数据结构/">
+            
+                    
+                    数据结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../../操作系统/">
+            
+                <a href="../../操作系统/">
+            
+                    
+                    操作系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.1" data-path="../../操作系统/第一章：计算机系统概述/">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/">
+            
+                    
+                    第一章：计算机系统概述
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.1.1" data-path="../../操作系统/第一章：计算机系统概述/操作系统的概念-基本特征.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/操作系统的概念-基本特征.html">
+            
+                    
+                    操作系统的概念/基本特征
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.2" data-path="../../操作系统/第一章：计算机系统概述/操作系统的发展和分类.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/操作系统的发展和分类.html">
+            
+                    
+                    操作系统的发展和分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.3" data-path="../../操作系统/第一章：计算机系统概述/操作系统的运行机制.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/操作系统的运行机制.html">
+            
+                    
+                    操作系统的运行机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.4" data-path="../../操作系统/第一章：计算机系统概述/中断和异常和系统调用.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/中断和异常和系统调用.html">
+            
+                    
+                    中断和异常和系统调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.5" data-path="../../操作系统/第一章：计算机系统概述/操作系统的体系结构.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/操作系统的体系结构.html">
+            
+                    
+                    操作系统的体系结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.6" data-path="../../操作系统/第一章：计算机系统概述/操作系统引导.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/操作系统引导.html">
+            
+                    
+                    操作系统引导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.7" data-path="../../操作系统/第一章：计算机系统概述/虚拟机.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/虚拟机.html">
+            
+                    
+                    虚拟机
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2" data-path="../../操作系统/第二章：进程和线程/">
+            
+                <a href="../../操作系统/第二章：进程和线程/">
+            
+                    
+                    第二章：进程和线程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.2.1" data-path="../../操作系统/第二章：进程和线程/进程的概念、组成、特征.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程的概念、组成、特征.html">
+            
+                    
+                    进程的概念、组成、特征
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.2" data-path="../../操作系统/第二章：进程和线程/进程的状态与转换.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程的状态与转换.html">
+            
+                    
+                    进程的状态与转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.3" data-path="../../操作系统/第二章：进程和线程/进程控制.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程控制.html">
+            
+                    
+                    进程控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.4" data-path="../../操作系统/第二章：进程和线程/进程通信.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程通信.html">
+            
+                    
+                    进程通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.5" data-path="../../操作系统/第二章：进程和线程/信号.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/信号.html">
+            
+                    
+                    信号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.6" data-path="../../操作系统/第二章：进程和线程/线程的概念和特点.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/线程的概念和特点.html">
+            
+                    
+                    线程的概念和特点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.7" data-path="../../操作系统/第二章：进程和线程/线程的实现方式.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/线程的实现方式.html">
+            
+                    
+                    线程的实现方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.8" data-path="../../操作系统/第二章：进程和线程/线程的状态和转换-组织和控制.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/线程的状态和转换-组织和控制.html">
+            
+                    
+                    线程的状态和转换-组织和控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.9" data-path="../../操作系统/第二章：进程和线程/处理机调度.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/处理机调度.html">
+            
+                    
+                    处理机调度
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.10" data-path="../../操作系统/第二章：进程和线程/进程调度相关知识.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程调度相关知识.html">
+            
+                    
+                    进程调度相关知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.11" data-path="../../操作系统/第二章：进程和线程/调度算法的评估指标.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/调度算法的评估指标.html">
+            
+                    
+                    调度算法的评估指标
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.12" data-path="../../操作系统/第二章：进程和线程/调度算法.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/调度算法.html">
+            
+                    
+                    调度算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.13" data-path="../../操作系统/第二章：进程和线程/多处理机调度.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/多处理机调度.html">
+            
+                    
+                    多处理机调度
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.14" data-path="../../操作系统/第二章：进程和线程/进程同步和互斥.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程同步和互斥.html">
+            
+                    
+                    进程同步和互斥
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.15" data-path="../../操作系统/第二章：进程和线程/实现进程互斥的软件方法.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/实现进程互斥的软件方法.html">
+            
+                    
+                    实现进程互斥的软件方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.16" data-path="../../操作系统/第二章：进程和线程/实现进程互斥的硬件方法.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/实现进程互斥的硬件方法.html">
+            
+                    
+                    实现进程互斥的硬件方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.17" data-path="../../操作系统/第二章：进程和线程/信号量机制.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/信号量机制.html">
+            
+                    
+                    信号量机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.18" data-path="../../操作系统/第二章：进程和线程/信号量实现互斥同步前驱.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/信号量实现互斥同步前驱.html">
+            
+                    
+                    信号量实现互斥同步前驱
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.19" data-path="../../操作系统/第二章：进程和线程/经典信号量问题.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/经典信号量问题.html">
+            
+                    
+                    经典信号量问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.20" data-path="../../操作系统/第二章：进程和线程/管程.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/管程.html">
+            
+                    
+                    管程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.21" data-path="../../操作系统/第二章：进程和线程/死锁.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/死锁.html">
+            
+                    
+                    死锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3" data-path="../../操作系统/第三章：内存管理/">
+            
+                <a href="../../操作系统/第三章：内存管理/">
+            
+                    
+                    第三章：内存管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.3.1" data-path="../../操作系统/第三章：内存管理/内存基本知识.html">
+            
+                <a href="../../操作系统/第三章：内存管理/内存基本知识.html">
+            
+                    
+                    内存基本知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.2" data-path="../../操作系统/第三章：内存管理/进程的内存映像.html">
+            
+                <a href="../../操作系统/第三章：内存管理/进程的内存映像.html">
+            
+                    
+                    进程的内存映像
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.3" data-path="../../操作系统/第三章：内存管理/连续分配管理方式.html">
+            
+                <a href="../../操作系统/第三章：内存管理/连续分配管理方式.html">
+            
+                    
+                    连续分配管理方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.4" data-path="../../操作系统/第三章：内存管理/动态分区分配算法.html">
+            
+                <a href="../../操作系统/第三章：内存管理/动态分区分配算法.html">
+            
+                    
+                    动态分区分配算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.5" data-path="../../操作系统/第三章：内存管理/基本分页存储管理概念.html">
+            
+                <a href="../../操作系统/第三章：内存管理/基本分页存储管理概念.html">
+            
+                    
+                    基本分页存储管理概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.6" data-path="../../操作系统/第三章：内存管理/基本地址变换机构.html">
+            
+                <a href="../../操作系统/第三章：内存管理/基本地址变换机构.html">
+            
+                    
+                    基本地址变换机构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.7" data-path="../../操作系统/第三章：内存管理/具有快表的地址变换机构.html">
+            
+                <a href="../../操作系统/第三章：内存管理/具有快表的地址变换机构.html">
+            
+                    
+                    具有快表的地址变换机构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.8" data-path="../../操作系统/第三章：内存管理/两级页表.html">
+            
+                <a href="../../操作系统/第三章：内存管理/两级页表.html">
+            
+                    
+                    两级页表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.9" data-path="../../操作系统/第三章：内存管理/基本分段式存储结构.html">
+            
+                <a href="../../操作系统/第三章：内存管理/基本分段式存储结构.html">
+            
+                    
+                    基本分段式存储结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.10" data-path="../../操作系统/第三章：内存管理/段页式管理方式.html">
+            
+                <a href="../../操作系统/第三章：内存管理/段页式管理方式.html">
+            
+                    
+                    段页式管理方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.11" data-path="../../操作系统/第三章：内存管理/虚拟内存.html">
+            
+                <a href="../../操作系统/第三章：内存管理/虚拟内存.html">
+            
+                    
+                    虚拟内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.12" data-path="../../操作系统/第三章：内存管理/页面置换算法.html">
+            
+                <a href="../../操作系统/第三章：内存管理/页面置换算法.html">
+            
+                    
+                    页面置换算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.13" data-path="../../操作系统/第三章：内存管理/页面分配策略概述.html">
+            
+                <a href="../../操作系统/第三章：内存管理/页面分配策略概述.html">
+            
+                    
+                    页面分配策略概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.14" data-path="../../操作系统/第三章：内存管理/内存映射文件.html">
+            
+                <a href="../../操作系统/第三章：内存管理/内存映射文件.html">
+            
+                    
+                    内存映射文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4" data-path="../../操作系统/第四章：文件管理/">
+            
+                <a href="../../操作系统/第四章：文件管理/">
+            
+                    
+                    第四章：文件管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.4.1" data-path="../../操作系统/第四章：文件管理/文件管理概述.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件管理概述.html">
+            
+                    
+                    文件管理概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.2" data-path="../../操作系统/第四章：文件管理/文件逻辑结构.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件逻辑结构.html">
+            
+                    
+                    文件逻辑结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.3" data-path="../../操作系统/第四章：文件管理/文件目录.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件目录.html">
+            
+                    
+                    文件目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.4" data-path="../../操作系统/第四章：文件管理/文件的物理结构.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件的物理结构.html">
+            
+                    
+                    文件的物理结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.5" data-path="../../操作系统/第四章：文件管理/文件存储空间.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件存储空间.html">
+            
+                    
+                    文件存储空间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.6" data-path="../../操作系统/第四章：文件管理/文件操作.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件操作.html">
+            
+                    
+                    文件操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.7" data-path="../../操作系统/第四章：文件管理/文件共享.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件共享.html">
+            
+                    
+                    文件共享
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.8" data-path="../../操作系统/第四章：文件管理/文件保护.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件保护.html">
+            
+                    
+                    文件保护
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.9" data-path="../../操作系统/第四章：文件管理/文件系统中的层次结构.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件系统中的层次结构.html">
+            
+                    
+                    文件系统中的层次结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.10" data-path="../../操作系统/第四章：文件管理/文件系统的布局.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件系统的布局.html">
+            
+                    
+                    文件系统的布局
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.11" data-path="../../操作系统/第四章：文件管理/虚拟文件系统和文件系统的挂载.html">
+            
+                <a href="../../操作系统/第四章：文件管理/虚拟文件系统和文件系统的挂载.html">
+            
+                    
+                    虚拟文件系统和文件系统的挂载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5" data-path="../../操作系统/第五章：输入输出管理/">
+            
+                <a href="../../操作系统/第五章：输入输出管理/">
+            
+                    
+                    第五章：输入输出管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.5.1" data-path="../../操作系统/第五章：输入输出管理/IO设备管理的概念和分类.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/IO设备管理的概念和分类.html">
+            
+                    
+                    IO设备管理的概念和分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.2" data-path="../../操作系统/第五章：输入输出管理/IO控制器和控制方式.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/IO控制器和控制方式.html">
+            
+                    
+                    IO控制器和控制方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.3" data-path="../../操作系统/第五章：输入输出管理/IO软件层次结构.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/IO软件层次结构.html">
+            
+                    
+                    IO软件层次结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.4" data-path="../../操作系统/第五章：输入输出管理/输入输出应用程序接口和驱动程序接口.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/输入输出应用程序接口和驱动程序接口.html">
+            
+                    
+                    输入输出应用程序接口和驱动程序接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.5" data-path="../../操作系统/第五章：输入输出管理/IO核心子技术.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/IO核心子技术.html">
+            
+                    
+                    IO核心子技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.6" data-path="../../操作系统/第五章：输入输出管理/假脱机技术.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/假脱机技术.html">
+            
+                    
+                    假脱机技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.7" data-path="../../操作系统/第五章：输入输出管理/设备的分配和回收.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/设备的分配和回收.html">
+            
+                    
+                    设备的分配和回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.8" data-path="../../操作系统/第五章：输入输出管理/缓冲区管理.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/缓冲区管理.html">
+            
+                    
+                    缓冲区管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.9" data-path="../../操作系统/第五章：输入输出管理/磁盘的相关结构.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/磁盘的相关结构.html">
+            
+                    
+                    磁盘的相关结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.10" data-path="../../操作系统/第五章：输入输出管理/磁盘调度算法.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/磁盘调度算法.html">
+            
+                    
+                    磁盘调度算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.11" data-path="../../操作系统/第五章：输入输出管理/减少延迟时间.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/减少延迟时间.html">
+            
+                    
+                    减少延迟时间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.12" data-path="../../操作系统/第五章：输入输出管理/磁盘管理.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/磁盘管理.html">
+            
+                    
+                    磁盘管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.13" data-path="../../操作系统/第五章：输入输出管理/固态硬盘.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/固态硬盘.html">
+            
+                    
+                    固态硬盘
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    计算机组成原理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.1" data-path="../第一章：计算机系统概述/">
+            
+                <a href="../第一章：计算机系统概述/">
+            
+                    
+                    第一章：计算机系统概述
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.1.1" data-path="../第一章：计算机系统概述/计算机硬件.html">
+            
+                <a href="../第一章：计算机系统概述/计算机硬件.html">
+            
+                    
+                    计算机硬件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.1.2" data-path="../第一章：计算机系统概述/计算机软件.html">
+            
+                <a href="../第一章：计算机系统概述/计算机软件.html">
+            
+                    
+                    计算机软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.1.3" data-path="../第一章：计算机系统概述/计算机系统的层次结构.html">
+            
+                <a href="../第一章：计算机系统概述/计算机系统的层次结构.html">
+            
+                    
+                    计算机系统的层次结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.1.4" data-path="../第一章：计算机系统概述/计算机系统的工作原理.html">
+            
+                <a href="../第一章：计算机系统概述/计算机系统的工作原理.html">
+            
+                    
+                    计算机系统的工作原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.1.5" data-path="../第一章：计算机系统概述/计算机的性能指标.html">
+            
+                <a href="../第一章：计算机系统概述/计算机的性能指标.html">
+            
+                    
+                    计算机的性能指标
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2" data-path="../第二章：数据的表示和运算/">
+            
+                <a href="../第二章：数据的表示和运算/">
+            
+                    
+                    第二章：数据的表示和运算
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.2.1" data-path="../第二章：数据的表示和运算/进位计数制及其相互转换.html">
+            
+                <a href="../第二章：数据的表示和运算/进位计数制及其相互转换.html">
+            
+                    
+                    进位计数制及其相互转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.2" data-path="../第二章：数据的表示和运算/定点数的编码表示.html">
+            
+                <a href="../第二章：数据的表示和运算/定点数的编码表示.html">
+            
+                    
+                    定点数的编码表示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.3" data-path="../第二章：数据的表示和运算/C语言中的整数类型和数据转换.html">
+            
+                <a href="../第二章：数据的表示和运算/C语言中的整数类型和数据转换.html">
+            
+                    
+                    C语言中的整数类型和数据转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.4" data-path="../第二章：数据的表示和运算/逻辑门电路.html">
+            
+                <a href="../第二章：数据的表示和运算/逻辑门电路.html">
+            
+                    
+                    逻辑门电路
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.5" data-path="../第二章：数据的表示和运算/多路选择器和三态门.html">
+            
+                <a href="../第二章：数据的表示和运算/多路选择器和三态门.html">
+            
+                    
+                    多路选择器和三态门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.6" data-path="../第二章：数据的表示和运算/基本运算部件.html">
+            
+                <a href="../第二章：数据的表示和运算/基本运算部件.html">
+            
+                    
+                    基本运算部件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.7" data-path="../第二章：数据的表示和运算/定点数的加减运算.html">
+            
+                <a href="../第二章：数据的表示和运算/定点数的加减运算.html">
+            
+                    
+                    定点数的加减运算
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.8" data-path="../第二章：数据的表示和运算/定点数的乘法运算.html">
+            
+                <a href="../第二章：数据的表示和运算/定点数的乘法运算.html">
+            
+                    
+                    定点数的乘法运算
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.9" data-path="../第二章：数据的表示和运算/无符号数的除法.html">
+            
+                <a href="../第二章：数据的表示和运算/无符号数的除法.html">
+            
+                    
+                    无符号数的除法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.10" data-path="../第二章：数据的表示和运算/浮点数的表示（IEEE754）.html">
+            
+                <a href="../第二章：数据的表示和运算/浮点数的表示（IEEE754）.html">
+            
+                    
+                    浮点数的表示(IEEE754)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.11" data-path="../第二章：数据的表示和运算/数据的存储和排列.html">
+            
+                <a href="../第二章：数据的表示和运算/数据的存储和排列.html">
+            
+                    
+                    数据的存储和排列
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    第三章：存储系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.3.1" data-path="存储系统基本概念.html">
+            
+                <a href="存储系统基本概念.html">
+            
+                    
+                    存储系统基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.2" data-path="主存储器的基本组成.html">
+            
+                <a href="主存储器的基本组成.html">
+            
+                    
+                    主存储器的基本组成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.3" data-path="SRAM,DRAM,ROM.html">
+            
+                <a href="SRAM,DRAM,ROM.html">
+            
+                    
+                    SRAM, DRAM, ROM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.4" data-path="多模块存储器.html">
+            
+                <a href="多模块存储器.html">
+            
+                    
+                    多模块存储器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.5" data-path="主存储器与CPU的连接.html">
+            
+                <a href="主存储器与CPU的连接.html">
+            
+                    
+                    主存储器与CPU的连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.6" data-path="磁盘存储器.html">
+            
+                <a href="磁盘存储器.html">
+            
+                    
+                    磁盘存储器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.1.3.3.7" data-path="Cache基本原理.html">
+            
+                <a href="Cache基本原理.html">
+            
+                    
+                    Cache基本原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.8" data-path="Cache与主存的映射关系.html">
+            
+                <a href="Cache与主存的映射关系.html">
+            
+                    
+                    Cache与主存的映射关系
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.9" data-path="Cache替换方法.html">
+            
+                <a href="Cache替换方法.html">
+            
+                    
+                    Cache替换方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.10" data-path="Cache写策略.html">
+            
+                <a href="Cache写策略.html">
+            
+                    
+                    Cache写策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../../计算机网络/">
+            
+                <a href="../../计算机网络/">
+            
+                    
+                    计算机网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >Cache基本原理</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="一、cache-基本原理">一、Cache 基本原理</h1>
+<p><strong>物理实现：</strong>
+为了最大限度地减少延迟，现代计算机设计通常将 Cache <strong>集成在 CPU 内部</strong>。这消除了CPU与外部存储器之间的数据传输延迟。</p>
+<p><strong>硬件材料：</strong>
+Cache 使用的是 <strong>SRAM（静态随机存取存储器）</strong>芯片来实现。SRAM 比DRAM 更快，因为它不需要刷新，且电路结构更简单。</p>
+<h2 id="3-局部性原理">3. 局部性原理</h2>
+<p><strong>程序局部性原理</strong>是 Cache 能够有效工作的根本原因。它指出程序在执行时，对信息（指令和数据）的访问往往集中在存储空间的一个较小区域内，并且在一段时间内会重复访问这些信息。</p>
+<p><strong>1. 空间局部性 (Spatial Locality)：</strong></p>
+<ul>
+<li><strong>表现：</strong> 当程序访问了某个存储单元后，其<strong>相邻</strong>的存储单元（如数组中的下一个元素）在很短的时间内也极有可能被访问。</li>
+<li><strong>原因：</strong><ul>
+<li><strong>数据在内存中顺序存储：</strong> 数组元素通常在内存中是按行优先（或列优先）连续存放的。当访问一个元素时，其旁边的元素也已经在靠近的位置。</li>
+<li><strong>程序多顺序访问：</strong> 许多程序倾向于按顺序遍历数据结构（如数组、链表）。</li>
+<li><strong>指令表现：</strong> 机器指令在内存中也是顺序存放的。CPU在执行完一条指令后，很可能接着执行其后的指令，这也体现了指令的“空间局部性”。</li>
+</ul>
+</li>
+</ul>
+<p><strong>2. 时间局部性 (Temporal Locality)：</strong></p>
+<ul>
+<li><strong>表现：</strong> 在程序执行过程中，一个已经访问过的信息（指令或数据）在不久的将来很可能<strong>再次被访问</strong>。</li>
+<li><strong>典型场景：</strong><ul>
+<li><strong>循环结构：</strong> 这是体现时间局部性最典型的例子。在循环中，循环体内的指令（如加法、比较）会被重复执行多次，循环变量（如 <code>i</code>, <code>j</code>）和累加变量（<code>sum</code>）也会被周期性地访问和修改。</li>
+<li><strong>函数调用：</strong> 函数内部的指令和局部变量在函数执行期间会被频繁访问。</li>
+</ul>
+</li>
+</ul>
+<p><strong>Cache 策略：</strong>
+基于局部性原理，Cache 的管理策略通常是：当 CPU 访问某个地址时，不仅会把该地址的数据调入 Cache，还会将其<strong>周围的数据</strong>（即包含该地址的整个数据块）一并<strong>预取</strong>到 Cache 中。例如，访问数组元素 <code>array[i][j]</code> 时，会把 <code>array[i][j]</code> 所在的整个内存块都调入 Cache，以备后续对 <code>array[i][j+1]</code> 等相邻元素的访问。</p>
+<hr></hr>
+<h2 id="4-性能分析">4. 性能分析</h2>
+<p>有两种访存的策略: 1. 缓存未命中之后再访问主存, 2. 同时访问缓存和主存</p>
+<p>假设命中概率为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi></mrow><annotation encoding="application/x-tex">H</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.68333em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.08125em;">H</span></span></span></span></p>
+<p><strong>1. 同时访问策略下的平均访问时间：</strong>
+当 Cache 和主存同时被访问时：</p>
+<ul>
+<li><strong>命中时：</strong> 访问 Cache，时间为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>c</mi></msub></mrow><annotation encoding="application/x-tex">t_c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.61508em;"></span><span class="strut bottom" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">c</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span>。主存的访问虽然开始，但因为 Cache 命中而被忽略，所以有效访问时间就是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>c</mi></msub></mrow><annotation encoding="application/x-tex">t_c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.61508em;"></span><span class="strut bottom" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">c</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span>。</li>
+<li><strong>未命中时：</strong> Cache 未命中，CPU 必须等待主存完成访问。时间为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">t_m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.61508em;"></span><span class="strut bottom" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">m</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span>。</li>
+<li><strong>平均访问时间 (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>a</mi><mi>v</mi><mi>g</mi></mrow></msub></mrow><annotation encoding="application/x-tex">t_{avg}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.61508em;"></span><span class="strut bottom" style="height:0.9011879999999999em;vertical-align:-0.286108em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathit mtight">a</span><span class="mord mathit mtight" style="margin-right:0.03588em;">v</span><span class="mord mathit mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span>):</strong>
+  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>a</mi><mi>v</mi><mi>g</mi></mrow></msub><mo>=</mo><mi>H</mi><mo>×</mo><msub><mi>t</mi><mi>c</mi></msub><mo>+</mo><mo>(</mo><mn>1</mn><mo>−</mo><mi>H</mi><mo>)</mo><mo>×</mo><msub><mi>t</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">t_{avg} = H \times t_c + (1-H) \times t_m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathit mtight">a</span><span class="mord mathit mtight" style="margin-right:0.03588em;">v</span><span class="mord mathit mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="mbin">×</span><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">c</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mbin">+</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mbin">−</span><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="mclose">)</span><span class="mbin">×</span><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">m</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span></li>
+</ul>
+<p><strong>对比分析：若采用先访问 Cache 再访问主存策略：</strong>
+在这种策略下，CPU会先检查 Cache。如果未命中，才会再去访问主存。</p>
+<ul>
+<li><strong>命中时：</strong> 访问 Cache，时间为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>c</mi></msub></mrow><annotation encoding="application/x-tex">t_c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.61508em;"></span><span class="strut bottom" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">c</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span>。</li>
+<li><strong>未命中时：</strong> 先访问 Cache（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>c</mi></msub></mrow><annotation encoding="application/x-tex">t_c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.61508em;"></span><span class="strut bottom" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">c</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span>），再访问主存（<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">t_m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.61508em;"></span><span class="strut bottom" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">m</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span>）。总时间为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mi>c</mi></msub><mo>+</mo><msub><mi>t</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">t_c + t_m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.61508em;"></span><span class="strut bottom" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">c</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mbin">+</span><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">m</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span>。</li>
+<li><strong>平均访问时间 (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>t</mi><mrow><mi>a</mi><mi>v</mi><mi>g</mi></mrow><mrow><mi mathvariant="normal">′</mi></mrow></msubsup></mrow><annotation encoding="application/x-tex">t'_{avg}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.751892em;"></span><span class="strut bottom" style="height:1.135em;vertical-align:-0.383108em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.24700000000000003em;margin-left:0em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathit mtight">a</span><span class="mord mathit mtight" style="margin-right:0.03588em;">v</span><span class="mord mathit mtight" style="margin-right:0.03588em;">g</span></span></span></span><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord scriptstyle uncramped mtight"><span class="mord mathrm mtight">′</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span>):</strong>
+  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>t</mi><mrow><mi>a</mi><mi>v</mi><mi>g</mi></mrow><mrow><mi mathvariant="normal">′</mi></mrow></msubsup><mo>=</mo><mi>H</mi><mo>×</mo><msub><mi>t</mi><mi>c</mi></msub><mo>+</mo><mo>(</mo><mn>1</mn><mo>−</mo><mi>H</mi><mo>)</mo><mo>×</mo><mo>(</mo><msub><mi>t</mi><mi>c</mi></msub><mo>+</mo><msub><mi>t</mi><mi>m</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">t'_{avg} = H \times t_c + (1-H) \times (t_c + t_m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.751892em;"></span><span class="strut bottom" style="height:1.135em;vertical-align:-0.383108em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.24700000000000003em;margin-left:0em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathit mtight">a</span><span class="mord mathit mtight" style="margin-right:0.03588em;">v</span><span class="mord mathit mtight" style="margin-right:0.03588em;">g</span></span></span></span><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord scriptstyle uncramped mtight"><span class="mord mathrm mtight">′</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="mbin">×</span><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">c</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mbin">+</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mbin">−</span><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="mclose">)</span><span class="mbin">×</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">c</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mbin">+</span><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">m</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mclose">)</span></span></span></span></li>
+</ul>
+<p><strong>结论：</strong>
+通过对比可见，<strong>同时访问策略通常效率更高</strong>，因为它减少了未命中时等待 Cache 检查的时间，从而实现了更明显的性能提升。在这个例子中，同时访问策略提升了约 4.17 倍，而先访问策略提升了 4 倍。</p>
+<hr></hr>
+<p>基于局部性原理，系统将主存划分为固定大小的<strong>块（Block）</strong>。每个块是 Cache 与主存之间数据交换的最小单位，通常大小为几KB（如1KB、2KB、4KB等）。</p>
+<ul>
+<li>当CPU访问主存中的某个地址时，系统不会只调入该地址的数据，而是将该地址所在的<strong>整个主存块</strong>一并调入 Cache。</li>
+<li><p><strong>示例：</strong> 如果主存块大小为1KB，当CPU访问数组的某个元素时，其所在的1KB内存块（包含后续相邻的元素）都会被调入 Cache。</p>
+</li>
+<li><p><strong>交换单位：</strong> Cache 与主存之间的数据交换总是以<strong>“块”</strong>为单位进行。这意味着主存和 Cache 都被划分为大小相同的块。</p>
+</li>
+<li><strong>示例：</strong> 如果主存容量为4MB，每块大小为1KB，则主存被划分为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>4</mn><mi>M</mi><mi>B</mi><mi mathvariant="normal">/</mi><mn>1</mn><mi>K</mi><mi>B</mi><mo>=</mo><mn>4</mn><mn>0</mn><mn>9</mn><mn>6</mn></mrow><annotation encoding="application/x-tex">4MB / 1KB = 4096</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">4</span><span class="mord mathit" style="margin-right:0.10903em;">M</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mord mathrm">/</span><span class="mord mathrm">1</span><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mrel">=</span><span class="mord mathrm">4</span><span class="mord mathrm">0</span><span class="mord mathrm">9</span><span class="mord mathrm">6</span></span></span></span> 个块。如果 Cache 容量为8KB，每块大小为1KB，则 Cache 被划分为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>8</mn><mi>K</mi><mi>B</mi><mi mathvariant="normal">/</mi><mn>1</mn><mi>K</mi><mi>B</mi><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">8KB / 1KB = 8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">8</span><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mord mathrm">/</span><span class="mord mathrm">1</span><span class="mord mathit" style="margin-right:0.07153em;">K</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mrel">=</span><span class="mord mathrm">8</span></span></span></span> 个块。</li>
+<li><strong>术语说明：</strong><ul>
+<li>主存中的块通常也称作<strong>“页 (Page)”</strong>或<strong>“页框 (Page Frame)”</strong>（在虚拟内存管理中）。</li>
+<li>Cache 中的块通常称作<strong>“行 (Line)”</strong>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="54-主存地址的块号与块内地址">5.4 主存地址的块号与块内地址</h3>
+<p>CPU 发出的主存地址不再仅仅指向一个字节，而是包含了块的信息。</p>
+<ul>
+<li><strong>地址结构：</strong> 一个主存地址可以被逻辑上划分为两部分：<strong>块号 (Block Number)</strong> 和 <strong>块内地址 (Offset within Block)</strong>。<ul>
+<li>例如，对于一个 22 位的物理主存地址（对应4MB主存）和 1KB 的块大小：<ul>
+<li><strong>块内地址：</strong> 1KB = <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mrow><mn>1</mn><mn>0</mn></mrow></msup></mrow><annotation encoding="application/x-tex">2^{10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathrm">2</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord scriptstyle uncramped mtight"><span class="mord mathrm mtight">1</span><span class="mord mathrm mtight">0</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span> 字节，所以需要 10 位来表示块内的偏移量（0 到 1023）。</li>
+<li><strong>块号：</strong> 剩余的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mn>2</mn><mo>−</mo><mn>1</mn><mn>0</mn><mo>=</mo><mn>1</mn><mn>2</mn></mrow><annotation encoding="application/x-tex">22 - 10 = 12</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathrm">2</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mord mathrm">0</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mord mathrm">2</span></span></span></span> 位用于表示块号（0 到 4095）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>寻址过程：</strong> 当 CPU 给出 22 位地址时，前 12 位告诉我们数据在哪一个主存块，后 10 位告诉我们数据在这个块的哪个位置。</li>
+</ul>
+<h3 id="55-cpu-访问主存后的数据调入">5.5 CPU 访问主存后的数据调入</h3>
+<ul>
+<li><strong>调入机制：</strong> 当 CPU 访问主存中的某个单元（地址）且该数据不在 Cache 中时（Cache 未命中），系统会立即将其所属的<strong>整个主存块</strong>从主存调入到 Cache 中。</li>
+<li><strong>注意：</strong> 这是一个<strong>数据复制</strong>过程，而不是移动。主存中的数据母本会保留不变，Cache 中存放的是其副本。</li>
+<li><strong>后续问题：</strong> 数据调入 Cache 后，如何记录这个 Cache 块是从主存的哪个块复制过来的？CPU 如何知道 Cache 中某一块数据对应主存的哪个地址？这需要解决<strong>映射关系</strong>问题。</li>
+</ul>
+<hr></hr>
+<h2 id="二、知识小结">二、知识小结</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">知识点</th>
+<th style="text-align:left">核心内容</th>
+<th style="text-align:left">考试重点/易混淆点</th>
+<th style="text-align:left">难度系数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Cache 工作原理</strong></td>
+<td style="text-align:left">通过高速缓冲存储器（Cache）缓解CPU与主存速度矛盾，基于程序局部性原理（空间局部性、时间局部性）预加载相邻数据。</td>
+<td style="text-align:left"><strong>命中率计算</strong>（$h$）、<strong>平均访问时间公式</strong>（$t_{avg} = h \cdot t_c + (1-h) \cdot t_m$）。理解 Cache 存在的必要性。</td>
+<td style="text-align:left">⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>局部性原理</strong></td>
+<td style="text-align:left"><strong>空间局部性：</strong> 当访问一个数据后，其相邻数据很可能被连续访问；<strong>时间局部性：</strong> 循环结构导致同一指令/数据重复访问。</td>
+<td style="text-align:left">区分程序 A（行访问） vs 程序 B（列访问）在<strong>空间局部性</strong>上的差异，以及它们对 Cache 性能的影响。这是理解 Cache 有效性的基础。</td>
+<td style="text-align:left">⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>主存-Cache 映射</strong></td>
+<td style="text-align:left">主存与 Cache 以<strong>块</strong>（通常为1KB等）为单位交换数据。CPU 发出的主存地址被逻辑上划分为<strong>块号</strong>和<strong>块内地址</strong>。</td>
+<td style="text-align:left"><strong>主存块的别名</strong>（页/页框）与 <strong>Cache 块的别名</strong>（行）。理解地址划分的目的。</td>
+<td style="text-align:left">⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>性能提升计算</strong></td>
+<td style="text-align:left">掌握两种常见访问策略下的平均访问时间计算：1. <strong>先查 Cache 再查主存</strong> (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>a</mi><mi>v</mi><mi>g</mi></mrow></msub><mo>=</mo><mi>h</mi><mo>⋅</mo><msub><mi>t</mi><mi>c</mi></msub><mo>+</mo><mo>(</mo><mn>1</mn><mo>−</mo><mi>h</mi><mo>)</mo><mo>⋅</mo><mo>(</mo><msub><mi>t</mi><mi>c</mi></msub><mo>+</mo><msub><mi>t</mi><mi>m</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">t_{avg} = h \cdot t_c + (1-h) \cdot (t_c + t_m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathit mtight">a</span><span class="mord mathit mtight" style="margin-right:0.03588em;">v</span><span class="mord mathit mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mrel">=</span><span class="mord mathit">h</span><span class="mbin">⋅</span><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">c</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mbin">+</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mbin">−</span><span class="mord mathit">h</span><span class="mclose">)</span><span class="mbin">⋅</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">c</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mbin">+</span><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">m</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mclose">)</span></span></span></span>); 2. <strong>同时访问</strong> (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>t</mi><mrow><mi>a</mi><mi>v</mi><mi>g</mi></mrow></msub><mo>=</mo><mi>h</mi><mo>⋅</mo><msub><mi>t</mi><mi>c</mi></msub><mo>+</mo><mo>(</mo><mn>1</mn><mo>−</mo><mi>h</mi><mo>)</mo><mo>⋅</mo><msub><mi>t</mi><mi>m</mi></msub></mrow><annotation encoding="application/x-tex">t_{avg} = h \cdot t_c + (1-h) \cdot t_m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord scriptstyle cramped mtight"><span class="mord mathit mtight">a</span><span class="mord mathit mtight" style="margin-right:0.03588em;">v</span><span class="mord mathit mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mrel">=</span><span class="mord mathit">h</span><span class="mbin">⋅</span><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">c</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mbin">+</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mbin">−</span><span class="mord mathit">h</span><span class="mclose">)</span><span class="mbin">⋅</span><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped mtight"><span class="mord mathit mtight">m</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span>)。</td>
+<td style="text-align:left">典型例题：Cache 速度为主存 5 倍，命中率 95% → 性能提升约 4.17 倍。这是考试中常见的计算题型，需要熟练掌握。</td>
+<td style="text-align:left">⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>待解决问题</strong></td>
+<td style="text-align:left">1. <strong>映射方式</strong>（如何记录主存块与 Cache 块的关系）；2. <strong>替换算法</strong>（Cache 满时淘汰策略）；3. <strong>写策略</strong>（保证 Cache 与主存数据一致性）。</td>
+<td style="text-align:left">这些是 Cache 设计中的核心挑战，也是后续章节的重点内容。理解这些问题的存在是为了更好地过渡到后续的详细讲解。</td>
+<td style="text-align:left">⭐⭐⭐⭐</td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="磁盘存储器.html" class="navigation navigation-prev " aria-label="Previous page: 磁盘存储器">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Cache与主存的映射关系.html" class="navigation navigation-next " aria-label="Next page: Cache与主存的映射关系">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Cache基本原理","level":"4.1.3.3.7","depth":4,"next":{"title":"Cache与主存的映射关系","level":"4.1.3.3.8","depth":4,"path":"408/计算机组成原理/第三章：存储系统/Cache与主存的映射关系.md","ref":"408/计算机组成原理/第三章：存储系统/Cache与主存的映射关系.md","articles":[]},"previous":{"title":"磁盘存储器","level":"4.1.3.3.6","depth":4,"path":"408/计算机组成原理/第三章：存储系统/磁盘存储器.md","ref":"408/计算机组成原理/第三章：存储系统/磁盘存储器.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/计算机组成原理/第三章：存储系统/Cache基本原理.md","mtime":"2025-06-21T08:19:42.657Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-06-21T09:05:39.690Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
