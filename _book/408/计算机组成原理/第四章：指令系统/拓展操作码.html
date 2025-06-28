@@ -1,0 +1,2029 @@
+
+<!DOCTYPE HTML>
+<html lang="cn" >
+    <head>
+        <meta charset="UTF-8">
+        <title>拓展操作码 · yyym 11408 Notes</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 6.0.3">
+        <meta name="author" content="yyym">
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-atoc/atoc.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="指令寻址.html" />
+    
+    
+    <link rel="prev" href="指令的基本格式.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">数学（一）</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../../数学一/">
+            
+                <a href="../../../数学一/">
+            
+                    
+                    Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">英语（一）</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../../英语一/">
+            
+                <a href="../../../英语一/">
+            
+                    
+                    Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">408</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Summary
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../数据结构/">
+            
+                <a href="../../数据结构/">
+            
+                    
+                    数据结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../../操作系统/">
+            
+                <a href="../../操作系统/">
+            
+                    
+                    操作系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.1" data-path="../../操作系统/第一章：计算机系统概述/">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/">
+            
+                    
+                    第一章：计算机系统概述
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.1.1" data-path="../../操作系统/第一章：计算机系统概述/操作系统的概念-基本特征.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/操作系统的概念-基本特征.html">
+            
+                    
+                    操作系统的概念/基本特征
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.2" data-path="../../操作系统/第一章：计算机系统概述/操作系统的发展和分类.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/操作系统的发展和分类.html">
+            
+                    
+                    操作系统的发展和分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.3" data-path="../../操作系统/第一章：计算机系统概述/操作系统的运行机制.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/操作系统的运行机制.html">
+            
+                    
+                    操作系统的运行机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.4" data-path="../../操作系统/第一章：计算机系统概述/中断和异常和系统调用.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/中断和异常和系统调用.html">
+            
+                    
+                    中断和异常和系统调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.5" data-path="../../操作系统/第一章：计算机系统概述/操作系统的体系结构.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/操作系统的体系结构.html">
+            
+                    
+                    操作系统的体系结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.6" data-path="../../操作系统/第一章：计算机系统概述/操作系统引导.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/操作系统引导.html">
+            
+                    
+                    操作系统引导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.7" data-path="../../操作系统/第一章：计算机系统概述/虚拟机.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/虚拟机.html">
+            
+                    
+                    虚拟机
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2" data-path="../../操作系统/第二章：进程和线程/">
+            
+                <a href="../../操作系统/第二章：进程和线程/">
+            
+                    
+                    第二章：进程和线程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.2.1" data-path="../../操作系统/第二章：进程和线程/进程的概念、组成、特征.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程的概念、组成、特征.html">
+            
+                    
+                    进程的概念、组成、特征
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.2" data-path="../../操作系统/第二章：进程和线程/进程的状态与转换.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程的状态与转换.html">
+            
+                    
+                    进程的状态与转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.3" data-path="../../操作系统/第二章：进程和线程/进程控制.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程控制.html">
+            
+                    
+                    进程控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.4" data-path="../../操作系统/第二章：进程和线程/进程通信.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程通信.html">
+            
+                    
+                    进程通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.5" data-path="../../操作系统/第二章：进程和线程/信号.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/信号.html">
+            
+                    
+                    信号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.6" data-path="../../操作系统/第二章：进程和线程/线程的概念和特点.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/线程的概念和特点.html">
+            
+                    
+                    线程的概念和特点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.7" data-path="../../操作系统/第二章：进程和线程/线程的实现方式.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/线程的实现方式.html">
+            
+                    
+                    线程的实现方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.8" data-path="../../操作系统/第二章：进程和线程/线程的状态和转换-组织和控制.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/线程的状态和转换-组织和控制.html">
+            
+                    
+                    线程的状态和转换-组织和控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.9" data-path="../../操作系统/第二章：进程和线程/处理机调度.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/处理机调度.html">
+            
+                    
+                    处理机调度
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.10" data-path="../../操作系统/第二章：进程和线程/进程调度相关知识.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程调度相关知识.html">
+            
+                    
+                    进程调度相关知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.11" data-path="../../操作系统/第二章：进程和线程/调度算法的评估指标.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/调度算法的评估指标.html">
+            
+                    
+                    调度算法的评估指标
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.12" data-path="../../操作系统/第二章：进程和线程/调度算法.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/调度算法.html">
+            
+                    
+                    调度算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.13" data-path="../../操作系统/第二章：进程和线程/多处理机调度.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/多处理机调度.html">
+            
+                    
+                    多处理机调度
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.14" data-path="../../操作系统/第二章：进程和线程/进程同步和互斥.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程同步和互斥.html">
+            
+                    
+                    进程同步和互斥
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.15" data-path="../../操作系统/第二章：进程和线程/实现进程互斥的软件方法.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/实现进程互斥的软件方法.html">
+            
+                    
+                    实现进程互斥的软件方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.16" data-path="../../操作系统/第二章：进程和线程/实现进程互斥的硬件方法.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/实现进程互斥的硬件方法.html">
+            
+                    
+                    实现进程互斥的硬件方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.17" data-path="../../操作系统/第二章：进程和线程/信号量机制.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/信号量机制.html">
+            
+                    
+                    信号量机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.18" data-path="../../操作系统/第二章：进程和线程/信号量实现互斥同步前驱.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/信号量实现互斥同步前驱.html">
+            
+                    
+                    信号量实现互斥同步前驱
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.19" data-path="../../操作系统/第二章：进程和线程/经典信号量问题.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/经典信号量问题.html">
+            
+                    
+                    经典信号量问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.20" data-path="../../操作系统/第二章：进程和线程/管程.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/管程.html">
+            
+                    
+                    管程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.21" data-path="../../操作系统/第二章：进程和线程/死锁.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/死锁.html">
+            
+                    
+                    死锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3" data-path="../../操作系统/第三章：内存管理/">
+            
+                <a href="../../操作系统/第三章：内存管理/">
+            
+                    
+                    第三章：内存管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.3.1" data-path="../../操作系统/第三章：内存管理/内存基本知识.html">
+            
+                <a href="../../操作系统/第三章：内存管理/内存基本知识.html">
+            
+                    
+                    内存基本知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.2" data-path="../../操作系统/第三章：内存管理/进程的内存映像.html">
+            
+                <a href="../../操作系统/第三章：内存管理/进程的内存映像.html">
+            
+                    
+                    进程的内存映像
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.3" data-path="../../操作系统/第三章：内存管理/连续分配管理方式.html">
+            
+                <a href="../../操作系统/第三章：内存管理/连续分配管理方式.html">
+            
+                    
+                    连续分配管理方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.4" data-path="../../操作系统/第三章：内存管理/动态分区分配算法.html">
+            
+                <a href="../../操作系统/第三章：内存管理/动态分区分配算法.html">
+            
+                    
+                    动态分区分配算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.5" data-path="../../操作系统/第三章：内存管理/基本分页存储管理概念.html">
+            
+                <a href="../../操作系统/第三章：内存管理/基本分页存储管理概念.html">
+            
+                    
+                    基本分页存储管理概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.6" data-path="../../操作系统/第三章：内存管理/基本地址变换机构.html">
+            
+                <a href="../../操作系统/第三章：内存管理/基本地址变换机构.html">
+            
+                    
+                    基本地址变换机构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.7" data-path="../../操作系统/第三章：内存管理/具有快表的地址变换机构.html">
+            
+                <a href="../../操作系统/第三章：内存管理/具有快表的地址变换机构.html">
+            
+                    
+                    具有快表的地址变换机构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.8" data-path="../../操作系统/第三章：内存管理/两级页表.html">
+            
+                <a href="../../操作系统/第三章：内存管理/两级页表.html">
+            
+                    
+                    两级页表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.9" data-path="../../操作系统/第三章：内存管理/基本分段式存储结构.html">
+            
+                <a href="../../操作系统/第三章：内存管理/基本分段式存储结构.html">
+            
+                    
+                    基本分段式存储结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.10" data-path="../../操作系统/第三章：内存管理/段页式管理方式.html">
+            
+                <a href="../../操作系统/第三章：内存管理/段页式管理方式.html">
+            
+                    
+                    段页式管理方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.11" data-path="../../操作系统/第三章：内存管理/虚拟内存.html">
+            
+                <a href="../../操作系统/第三章：内存管理/虚拟内存.html">
+            
+                    
+                    虚拟内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.12" data-path="../../操作系统/第三章：内存管理/页面置换算法.html">
+            
+                <a href="../../操作系统/第三章：内存管理/页面置换算法.html">
+            
+                    
+                    页面置换算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.13" data-path="../../操作系统/第三章：内存管理/页面分配策略概述.html">
+            
+                <a href="../../操作系统/第三章：内存管理/页面分配策略概述.html">
+            
+                    
+                    页面分配策略概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.14" data-path="../../操作系统/第三章：内存管理/内存映射文件.html">
+            
+                <a href="../../操作系统/第三章：内存管理/内存映射文件.html">
+            
+                    
+                    内存映射文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4" data-path="../../操作系统/第四章：文件管理/">
+            
+                <a href="../../操作系统/第四章：文件管理/">
+            
+                    
+                    第四章：文件管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.4.1" data-path="../../操作系统/第四章：文件管理/文件管理概述.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件管理概述.html">
+            
+                    
+                    文件管理概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.2" data-path="../../操作系统/第四章：文件管理/文件逻辑结构.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件逻辑结构.html">
+            
+                    
+                    文件逻辑结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.3" data-path="../../操作系统/第四章：文件管理/文件目录.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件目录.html">
+            
+                    
+                    文件目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.4" data-path="../../操作系统/第四章：文件管理/文件的物理结构.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件的物理结构.html">
+            
+                    
+                    文件的物理结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.5" data-path="../../操作系统/第四章：文件管理/文件存储空间.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件存储空间.html">
+            
+                    
+                    文件存储空间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.6" data-path="../../操作系统/第四章：文件管理/文件操作.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件操作.html">
+            
+                    
+                    文件操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.7" data-path="../../操作系统/第四章：文件管理/文件共享.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件共享.html">
+            
+                    
+                    文件共享
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.8" data-path="../../操作系统/第四章：文件管理/文件保护.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件保护.html">
+            
+                    
+                    文件保护
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.9" data-path="../../操作系统/第四章：文件管理/文件系统中的层次结构.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件系统中的层次结构.html">
+            
+                    
+                    文件系统中的层次结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.10" data-path="../../操作系统/第四章：文件管理/文件系统的布局.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件系统的布局.html">
+            
+                    
+                    文件系统的布局
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.11" data-path="../../操作系统/第四章：文件管理/虚拟文件系统和文件系统的挂载.html">
+            
+                <a href="../../操作系统/第四章：文件管理/虚拟文件系统和文件系统的挂载.html">
+            
+                    
+                    虚拟文件系统和文件系统的挂载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5" data-path="../../操作系统/第五章：输入输出管理/">
+            
+                <a href="../../操作系统/第五章：输入输出管理/">
+            
+                    
+                    第五章：输入输出管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.5.1" data-path="../../操作系统/第五章：输入输出管理/IO设备管理的概念和分类.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/IO设备管理的概念和分类.html">
+            
+                    
+                    IO设备管理的概念和分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.2" data-path="../../操作系统/第五章：输入输出管理/IO控制器和控制方式.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/IO控制器和控制方式.html">
+            
+                    
+                    IO控制器和控制方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.3" data-path="../../操作系统/第五章：输入输出管理/IO软件层次结构.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/IO软件层次结构.html">
+            
+                    
+                    IO软件层次结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.4" data-path="../../操作系统/第五章：输入输出管理/输入输出应用程序接口和驱动程序接口.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/输入输出应用程序接口和驱动程序接口.html">
+            
+                    
+                    输入输出应用程序接口和驱动程序接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.5" data-path="../../操作系统/第五章：输入输出管理/IO核心子技术.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/IO核心子技术.html">
+            
+                    
+                    IO核心子技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.6" data-path="../../操作系统/第五章：输入输出管理/假脱机技术.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/假脱机技术.html">
+            
+                    
+                    假脱机技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.7" data-path="../../操作系统/第五章：输入输出管理/设备的分配和回收.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/设备的分配和回收.html">
+            
+                    
+                    设备的分配和回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.8" data-path="../../操作系统/第五章：输入输出管理/缓冲区管理.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/缓冲区管理.html">
+            
+                    
+                    缓冲区管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.9" data-path="../../操作系统/第五章：输入输出管理/磁盘的相关结构.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/磁盘的相关结构.html">
+            
+                    
+                    磁盘的相关结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.10" data-path="../../操作系统/第五章：输入输出管理/磁盘调度算法.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/磁盘调度算法.html">
+            
+                    
+                    磁盘调度算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.11" data-path="../../操作系统/第五章：输入输出管理/减少延迟时间.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/减少延迟时间.html">
+            
+                    
+                    减少延迟时间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.12" data-path="../../操作系统/第五章：输入输出管理/磁盘管理.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/磁盘管理.html">
+            
+                    
+                    磁盘管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.13" data-path="../../操作系统/第五章：输入输出管理/固态硬盘.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/固态硬盘.html">
+            
+                    
+                    固态硬盘
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    计算机组成原理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.1" data-path="../第一章：计算机系统概述/">
+            
+                <a href="../第一章：计算机系统概述/">
+            
+                    
+                    第一章：计算机系统概述
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.1.1" data-path="../第一章：计算机系统概述/计算机硬件.html">
+            
+                <a href="../第一章：计算机系统概述/计算机硬件.html">
+            
+                    
+                    计算机硬件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.1.2" data-path="../第一章：计算机系统概述/计算机软件.html">
+            
+                <a href="../第一章：计算机系统概述/计算机软件.html">
+            
+                    
+                    计算机软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.1.3" data-path="../第一章：计算机系统概述/计算机系统的层次结构.html">
+            
+                <a href="../第一章：计算机系统概述/计算机系统的层次结构.html">
+            
+                    
+                    计算机系统的层次结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.1.4" data-path="../第一章：计算机系统概述/计算机系统的工作原理.html">
+            
+                <a href="../第一章：计算机系统概述/计算机系统的工作原理.html">
+            
+                    
+                    计算机系统的工作原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.1.5" data-path="../第一章：计算机系统概述/计算机的性能指标.html">
+            
+                <a href="../第一章：计算机系统概述/计算机的性能指标.html">
+            
+                    
+                    计算机的性能指标
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2" data-path="../第二章：数据的表示和运算/">
+            
+                <a href="../第二章：数据的表示和运算/">
+            
+                    
+                    第二章：数据的表示和运算
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.2.1" data-path="../第二章：数据的表示和运算/进位计数制及其相互转换.html">
+            
+                <a href="../第二章：数据的表示和运算/进位计数制及其相互转换.html">
+            
+                    
+                    进位计数制及其相互转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.2" data-path="../第二章：数据的表示和运算/定点数的编码表示.html">
+            
+                <a href="../第二章：数据的表示和运算/定点数的编码表示.html">
+            
+                    
+                    定点数的编码表示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.3" data-path="../第二章：数据的表示和运算/C语言中的整数类型和数据转换.html">
+            
+                <a href="../第二章：数据的表示和运算/C语言中的整数类型和数据转换.html">
+            
+                    
+                    C语言中的整数类型和数据转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.4" data-path="../第二章：数据的表示和运算/逻辑门电路.html">
+            
+                <a href="../第二章：数据的表示和运算/逻辑门电路.html">
+            
+                    
+                    逻辑门电路
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.5" data-path="../第二章：数据的表示和运算/多路选择器和三态门.html">
+            
+                <a href="../第二章：数据的表示和运算/多路选择器和三态门.html">
+            
+                    
+                    多路选择器和三态门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.6" data-path="../第二章：数据的表示和运算/基本运算部件.html">
+            
+                <a href="../第二章：数据的表示和运算/基本运算部件.html">
+            
+                    
+                    基本运算部件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.7" data-path="../第二章：数据的表示和运算/定点数的加减运算.html">
+            
+                <a href="../第二章：数据的表示和运算/定点数的加减运算.html">
+            
+                    
+                    定点数的加减运算
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.8" data-path="../第二章：数据的表示和运算/定点数的乘法运算.html">
+            
+                <a href="../第二章：数据的表示和运算/定点数的乘法运算.html">
+            
+                    
+                    定点数的乘法运算
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.9" data-path="../第二章：数据的表示和运算/无符号数的除法.html">
+            
+                <a href="../第二章：数据的表示和运算/无符号数的除法.html">
+            
+                    
+                    无符号数的除法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.10" data-path="../第二章：数据的表示和运算/浮点数的表示（IEEE754）.html">
+            
+                <a href="../第二章：数据的表示和运算/浮点数的表示（IEEE754）.html">
+            
+                    
+                    浮点数的表示(IEEE754)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.11" data-path="../第二章：数据的表示和运算/数据的存储和排列.html">
+            
+                <a href="../第二章：数据的表示和运算/数据的存储和排列.html">
+            
+                    
+                    数据的存储和排列
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3" data-path="../第三章：存储系统/">
+            
+                <a href="../第三章：存储系统/">
+            
+                    
+                    第三章：存储系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.3.1" data-path="../第三章：存储系统/存储系统基本概念.html">
+            
+                <a href="../第三章：存储系统/存储系统基本概念.html">
+            
+                    
+                    存储系统基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.2" data-path="../第三章：存储系统/主存储器的基本组成.html">
+            
+                <a href="../第三章：存储系统/主存储器的基本组成.html">
+            
+                    
+                    主存储器的基本组成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.3" data-path="../第三章：存储系统/SRAM,DRAM,ROM.html">
+            
+                <a href="../第三章：存储系统/SRAM,DRAM,ROM.html">
+            
+                    
+                    SRAM, DRAM, ROM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.4" data-path="../第三章：存储系统/多模块存储器.html">
+            
+                <a href="../第三章：存储系统/多模块存储器.html">
+            
+                    
+                    多模块存储器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.5" data-path="../第三章：存储系统/主存储器与CPU的连接.html">
+            
+                <a href="../第三章：存储系统/主存储器与CPU的连接.html">
+            
+                    
+                    主存储器与CPU的连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.6" data-path="../第三章：存储系统/磁盘存储器.html">
+            
+                <a href="../第三章：存储系统/磁盘存储器.html">
+            
+                    
+                    磁盘存储器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.7" data-path="../第三章：存储系统/Cache基本原理.html">
+            
+                <a href="../第三章：存储系统/Cache基本原理.html">
+            
+                    
+                    Cache基本原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.8" data-path="../第三章：存储系统/Cache与主存的映射关系.html">
+            
+                <a href="../第三章：存储系统/Cache与主存的映射关系.html">
+            
+                    
+                    Cache与主存的映射关系
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.9" data-path="../第三章：存储系统/Cache替换方法.html">
+            
+                <a href="../第三章：存储系统/Cache替换方法.html">
+            
+                    
+                    Cache替换方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.10" data-path="../第三章：存储系统/Cache写策略.html">
+            
+                <a href="../第三章：存储系统/Cache写策略.html">
+            
+                    
+                    Cache写策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    第四章：指令系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.4.1" data-path="指令的基本格式.html">
+            
+                <a href="指令的基本格式.html">
+            
+                    
+                    指令的基本格式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.1.3.4.2" data-path="拓展操作码.html">
+            
+                <a href="拓展操作码.html">
+            
+                    
+                    拓展操作码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.4.3" data-path="指令寻址.html">
+            
+                <a href="指令寻址.html">
+            
+                    
+                    指令寻址
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.4.4" data-path="数据寻址.html">
+            
+                <a href="数据寻址.html">
+            
+                    
+                    数据寻址
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.4.5" data-path="汇编指令快速入门.html">
+            
+                <a href="汇编指令快速入门.html">
+            
+                    
+                    汇编指令快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.4.6" data-path="跳转指令的机器代码.html">
+            
+                <a href="跳转指令的机器代码.html">
+            
+                    
+                    跳转指令的机器代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../../计算机网络/">
+            
+                <a href="../../计算机网络/">
+            
+                    
+                    计算机网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >拓展操作码</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="扩展操作码">扩展操作码</h1>
+<hr></hr>
+<h2 id="1-扩展操作码概述">1. 扩展操作码概述</h2>
+<p>指令是计算机执行操作的基本命令，由<strong>操作码</strong>和若干个<strong>地址码</strong>组成。操作码定义了操作性质，而地址码指定了操作数的位置。在指令字结构上，指令可以分为<strong>定长指令字</strong>（所有指令长度相等）和<strong>变长指令字</strong>（指令长度不等）。同样，操作码格式也有<strong>定长操作码</strong>（所有指令操作码长度相同）和<strong>可变长操作码</strong>。</p>
+<p><strong>扩展操作码</strong>是一种巧妙的设计，它允许我们在<strong>定长指令字结构</strong>（指令总长度固定）下实现<strong>可变长度的操作码</strong>。这意味着不同地址数量的指令可以使用不同长度的操作码，从而在有限的指令字长内支持更丰富的指令集。</p>
+<h3 id="设计示例">设计示例</h3>
+<p>让我们通过一个具体的例子来理解扩展操作码的设计：假设<strong>指令字长为16位</strong>，且<strong>每个地址码占4位</strong>。</p>
+<ol>
+<li><p><strong>三地址指令</strong>:</p>
+<ul>
+<li>格式：<code>OP A1 A2 A3</code></li>
+<li>地址码占用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn><mo>×</mo><mn>4</mn><mo>=</mo><mn>1</mn><mn>2</mn></mrow><annotation encoding="application/x-tex">3 \times 4 = 12</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">3</span><span class="mbin">×</span><span class="mord mathrm">4</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mord mathrm">2</span></span></span></span> 位。</li>
+<li>操作码占用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mn>6</mn><mo>−</mo><mn>1</mn><mn>2</mn><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">16 - 12 = 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">6</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mord mathrm">2</span><span class="mrel">=</span><span class="mord mathrm">4</span></span></span></span> 位。</li>
+<li>这4位操作码最多能表示 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mn>4</mn></msup><mo>=</mo><mn>1</mn><mn>6</mn></mrow><annotation encoding="application/x-tex">2^4 = 16</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathrm">2</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathrm mtight">4</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mord mathrm">6</span></span></span></span> 种状态。为了进行扩展，我们会<strong>保留一个特定的操作码（例如 <code>1111</code>）作为扩展标志</strong>。</li>
+<li>因此，实际可用的三地址指令最多有 <strong>15条</strong>（操作码从 <code>0000</code> 到 <code>1110</code>）。</li>
+</ul>
+</li>
+<li><p><strong>二地址指令</strong>:</p>
+<ul>
+<li>格式：<code>1111 OP A1 A2</code></li>
+<li>指令的前4位固定为三地址指令中保留的<code>1111</code>，作为扩展前缀。</li>
+<li>地址码占用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mo>×</mo><mn>4</mn><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">2 \times 4 = 8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">2</span><span class="mbin">×</span><span class="mord mathrm">4</span><span class="mrel">=</span><span class="mord mathrm">8</span></span></span></span> 位。</li>
+<li>操作码占用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mn>6</mn><mo>−</mo><mn>4</mn><mo>(</mo><mtext><mi mathvariant="normal">前</mi><mi mathvariant="normal">缀</mi></mtext><mo>)</mo><mo>−</mo><mn>8</mn><mo>(</mo><mtext><mi mathvariant="normal">地</mi><mi mathvariant="normal">址</mi><mi mathvariant="normal">码</mi></mtext><mo>)</mo><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">16 - 4 (\text{前缀}) - 8 (\text{地址码}) = 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">6</span><span class="mbin">−</span><span class="mord mathrm">4</span><span class="mopen">(</span><span class="mord text textstyle uncramped"><span class="mord mathrm cjk_fallback">前缀</span></span><span class="mclose">)</span><span class="mbin">−</span><span class="mord mathrm">8</span><span class="mopen">(</span><span class="mord text textstyle uncramped"><span class="mord mathrm cjk_fallback">地址码</span></span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathrm">4</span></span></span></span> 位。</li>
+<li>这4位操作码同样能表示16种状态。我们需要<strong>保留一个状态（例如 <code>1111</code>）用于进一步扩展</strong>到一地址指令。</li>
+<li>因此，二地址指令最多有 <strong>15条</strong>。</li>
+</ul>
+</li>
+<li><p><strong>一地址指令</strong>:</p>
+<ul>
+<li>格式：<code>1111 1111 OP A1</code></li>
+<li>指令的前8位固定为二地址指令中保留的<code>1111</code>加上其自身保留的<code>1111</code>，即<code>11111111</code>。</li>
+<li>地址码占用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>×</mo><mn>4</mn><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">1 \times 4 = 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mbin">×</span><span class="mord mathrm">4</span><span class="mrel">=</span><span class="mord mathrm">4</span></span></span></span> 位。</li>
+<li>操作码占用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mn>6</mn><mo>−</mo><mn>8</mn><mo>(</mo><mtext><mi mathvariant="normal">前</mi><mi mathvariant="normal">缀</mi></mtext><mo>)</mo><mo>−</mo><mn>4</mn><mo>(</mo><mtext><mi mathvariant="normal">地</mi><mi mathvariant="normal">址</mi><mi mathvariant="normal">码</mi></mtext><mo>)</mo><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">16 - 8 (\text{前缀}) - 4 (\text{地址码}) = 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">6</span><span class="mbin">−</span><span class="mord mathrm">8</span><span class="mopen">(</span><span class="mord text textstyle uncramped"><span class="mord mathrm cjk_fallback">前缀</span></span><span class="mclose">)</span><span class="mbin">−</span><span class="mord mathrm">4</span><span class="mopen">(</span><span class="mord text textstyle uncramped"><span class="mord mathrm cjk_fallback">地址码</span></span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathrm">4</span></span></span></span> 位。</li>
+<li>这4位操作码同样能表示16种状态。我们仍需<strong>保留一个状态（例如 <code>1111</code>）用于扩展</strong>到零地址指令。</li>
+<li>因此，一地址指令最多有 <strong>15条</strong>。</li>
+</ul>
+</li>
+<li><p><strong>零地址指令</strong>:</p>
+<ul>
+<li>格式：<code>1111 1111 1111 OP</code></li>
+<li>指令的前12位固定为一地址指令中保留的<code>1111</code>加上其自身保留的<code>1111</code>，即<code>111111111111</code>。</li>
+<li>地址码占用0位。</li>
+<li>操作码占用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mn>6</mn><mo>−</mo><mn>1</mn><mn>2</mn><mo>(</mo><mtext><mi mathvariant="normal">前</mi><mi mathvariant="normal">缀</mi></mtext><mo>)</mo><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">16 - 12 (\text{前缀}) = 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">6</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mord mathrm">2</span><span class="mopen">(</span><span class="mord text textstyle uncramped"><span class="mord mathrm cjk_fallback">前缀</span></span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathrm">4</span></span></span></span> 位。</li>
+<li>零地址指令通常是指令扩展的最后一层，<strong>无需再保留扩展码</strong>。</li>
+<li>因此，零地址指令最多有 <strong>16条</strong>。</li>
+</ul>
+</li>
+</ol>
+<hr></hr>
+<h2 id="2-扩展操作码注意事项">2. 扩展操作码注意事项</h2>
+<p>设计扩展操作码时，需要遵循严格的原则以确保指令的正确译码和执行效率。</p>
+<h3 id="设计原则">设计原则</h3>
+<ul>
+<li><strong>前缀规则</strong>: <strong>短操作码不能是长操作码的前缀</strong>。这类似于<strong>哈夫曼编码</strong>的原则，它保证了CPU在译码时能够唯一地识别每条指令，避免混淆。</li>
+<li><strong>唯一性</strong>: <strong>各指令的操作码必须是唯一的</strong>，不能有重复。</li>
+</ul>
+<h3 id="优化策略">优化策略</h3>
+<ul>
+<li>为了提高指令执行效率，通常会将<strong>高频指令分配给短操作码</strong>，而将<strong>低频指令分配给长操作码</strong>。这种策略可以有效<strong>减少指令译码和分析的时间</strong>。</li>
+</ul>
+<h3 id="实现原理">实现原理</h3>
+<p>CPU在取到指令后，会通过以下逻辑按顺序检测操作码前缀：</p>
+<ol>
+<li><strong>三地址指令</strong>: 如果指令的<strong>前4位不是全1</strong>，则将其识别为三地址指令。</li>
+<li><strong>二地址指令</strong>: 如果指令的<strong>前4位是全1</strong>（即扩展标志），且紧随其后的4位（第5-8位）<strong>不是全1</strong>，则识别为二地址指令。</li>
+<li><strong>一地址指令</strong>: 如果指令的<strong>前8位是全1</strong>（即两层扩展标志），且紧随其后的4位（第9-12位）<strong>不是全1</strong>，则识别为一地址指令。</li>
+<li><strong>零地址指令</strong>: 如果指令的<strong>前12位是全1</strong>（即三层扩展标志），则识别为零地址指令。</li>
+</ol>
+<hr></hr>
+<h2 id="3-扩展操作码计算问题">3. 扩展操作码计算问题</h2>
+<p>理解扩展操作码的可用状态计算是设计指令集的关键。</p>
+<h3 id="状态计算规则">状态计算规则</h3>
+<p>如果上一层保留了 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">m</span></span></span></span> 种扩展状态（即有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">m</span></span></span></span> 个操作码被用于扩展），并且地址码的位数为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>，那么下一层可以扩展出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mo>×</mo><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">m \times 2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.664392em;"></span><span class="strut bottom" style="height:0.747722em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathit">m</span><span class="mbin">×</span><span class="mord"><span class="mord mathrm">2</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathit mtight">n</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span> 种操作码状态。每一种保留状态都能引出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.664392em;"></span><span class="strut bottom" style="height:0.664392em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathrm">2</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathit mtight">n</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span> 种新的操作码。</p>
+<h3 id="设计案例分析">设计案例分析</h3>
+<p>考虑一个实际的设计案例，来验证扩展操作码的分配是否合理：</p>
+<ul>
+<li><strong>15条三地址指令</strong>：保留 <strong>1种扩展状态</strong>。</li>
+<li><strong>12条二地址指令</strong>：保留 <strong>4种扩展状态</strong>。</li>
+<li><strong>62条一地址指令</strong>：保留 <strong>2种扩展状态</strong>。</li>
+<li><strong>32条零地址指令</strong>：<strong>无需再扩展</strong>。</li>
+</ul>
+<p>假设每个地址码为4位：</p>
+<ol>
+<li><strong>三地址指令层</strong>: 4位操作码共有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mn>4</mn></msup><mo>=</mo><mn>1</mn><mn>6</mn></mrow><annotation encoding="application/x-tex">2^4 = 16</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathrm">2</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathrm mtight">4</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mord mathrm">6</span></span></span></span> 种状态。使用了15条指令，剩下 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mn>6</mn><mo>−</mo><mn>1</mn><mn>5</mn><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">16 - 15 = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">6</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mord mathrm">5</span><span class="mrel">=</span><span class="mord mathrm">1</span></span></span></span> 种状态用于扩展。</li>
+<li><strong>二地址指令层</strong>: 三地址层保留的1种状态，可以扩展出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>×</mo><msup><mn>2</mn><mn>4</mn></msup><mo>=</mo><mn>1</mn><mn>6</mn></mrow><annotation encoding="application/x-tex">1 \times 2^4 = 16</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mbin">×</span><span class="mord"><span class="mord mathrm">2</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathrm mtight">4</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mord mathrm">6</span></span></span></span> 种二地址操作码。使用了12条指令，剩下 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mn>6</mn><mo>−</mo><mn>1</mn><mn>2</mn><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">16 - 12 = 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">6</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mord mathrm">2</span><span class="mrel">=</span><span class="mord mathrm">4</span></span></span></span> 种状态用于扩展。</li>
+<li><strong>一地址指令层</strong>: 二地址层保留的4种状态，可以扩展出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>4</mn><mo>×</mo><msup><mn>2</mn><mn>4</mn></msup><mo>=</mo><mn>6</mn><mn>4</mn></mrow><annotation encoding="application/x-tex">4 \times 2^4 = 64</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">4</span><span class="mbin">×</span><span class="mord"><span class="mord mathrm">2</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathrm mtight">4</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mrel">=</span><span class="mord mathrm">6</span><span class="mord mathrm">4</span></span></span></span> 种一地址操作码。使用了62条指令，剩下 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>6</mn><mn>4</mn><mo>−</mo><mn>6</mn><mn>2</mn><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">64 - 62 = 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">6</span><span class="mord mathrm">4</span><span class="mbin">−</span><span class="mord mathrm">6</span><span class="mord mathrm">2</span><span class="mrel">=</span><span class="mord mathrm">2</span></span></span></span> 种状态用于扩展。</li>
+<li><strong>零地址指令层</strong>: 一地址层保留的2种状态，可以扩展出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mo>×</mo><msup><mn>2</mn><mn>4</mn></msup><mo>=</mo><mn>3</mn><mn>2</mn></mrow><annotation encoding="application/x-tex">2 \times 2^4 = 32</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">2</span><span class="mbin">×</span><span class="mord"><span class="mord mathrm">2</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathrm mtight">4</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mrel">=</span><span class="mord mathrm">3</span><span class="mord mathrm">2</span></span></span></span> 种零地址操作码。使用了32条指令，剩下 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn><mn>2</mn><mo>−</mo><mn>3</mn><mn>2</mn><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">32 - 32 = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">3</span><span class="mord mathrm">2</span><span class="mbin">−</span><span class="mord mathrm">3</span><span class="mord mathrm">2</span><span class="mrel">=</span><span class="mord mathrm">0</span></span></span></span> 种状态，无需再扩展。</li>
+</ol>
+<p>这个分配方案在逻辑上是<strong>合理且可行的</strong>。</p>
+<hr></hr>
+<h2 id="二、指令操作码">二、指令操作码</h2>
+<p>指令操作码的设计是计算机体系结构中的核心部分，它涉及到在<strong>指令种类丰富性</strong>和<strong>硬件译码复杂度</strong>之间的权衡。</p>
+<h3 id="定长操作码">定长操作码</h3>
+<ul>
+<li><strong>表示能力</strong>: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span> 位操作码可以表示 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.664392em;"></span><span class="strut bottom" style="height:0.664392em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathrm">2</span><span class="msupsub"><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped mtight"><span class="mord mathit mtight">n</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span> 条指令。</li>
+<li><strong>优点</strong>: <strong>简化硬件设计</strong>，特别是译码电路，能够<strong>提高译码速度</strong>。</li>
+<li><strong>缺点</strong>: 当需要支持的指令数量增加时，可能会<strong>限制地址码的位数</strong>，从而降低寻址能力。</li>
+</ul>
+<h3 id="扩展操作码">扩展操作码</h3>
+<ul>
+<li><strong>优点</strong>: 在指令字长有限的情况下，仍能<strong>保持丰富的指令种类</strong>，并能通过短操作码优化高频指令的执行。</li>
+<li><strong>缺点</strong>: 增加了译码的难度，导致<strong>控制器设计更加复杂</strong>。</li>
+</ul>
+<h3 id="核心要点">核心要点</h3>
+<ul>
+<li>扩展操作码必须严格遵守“<strong>短码非长码前缀</strong>”的原则，这是确保指令译码唯一性的基础。</li>
+<li>操作码的长度与地址码的数量之间存在<strong>反比关系</strong>：为了在固定指令字长内容纳更多的地址码，操作码的长度通常需要缩短；反之，若操作码更长，地址码的空间就会相应减少。</li>
+</ul>
+<hr></hr>
+<h2 id="三、知识小结">三、知识小结</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">知识点</th>
+<th style="text-align:left">核心内容</th>
+<th style="text-align:left">考试重点/易混淆点</th>
+<th style="text-align:left">难度系数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>扩展操作码定义</strong></td>
+<td style="text-align:left">指令总长度固定但操作码长度可变的指令格式</td>
+<td style="text-align:left"><strong>定长指令字结构与变长操作码的结合</strong></td>
+<td style="text-align:left">⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>三地址指令设计</strong></td>
+<td style="text-align:left">16位指令中4位操作码 + 12位地址码（最多15条）</td>
+<td style="text-align:left"><strong>必须保留一个特定码（如<code>1111</code>）用于扩展</strong></td>
+<td style="text-align:left">⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>二地址指令设计</strong></td>
+<td style="text-align:left">前4位固定为<code>1111</code> + 中间4位操作码（最多15条）</td>
+<td style="text-align:left"><strong>短码不能是长码前缀原则</strong></td>
+<td style="text-align:left">⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>一地址指令设计</strong></td>
+<td style="text-align:left">前8位固定为<code>11111111</code> + 中间4位操作码</td>
+<td style="text-align:left"><strong>操作码空间分配策略</strong></td>
+<td style="text-align:left">⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>零地址指令设计</strong></td>
+<td style="text-align:left">前12位固定为<code>111111111111</code> + 最后4位操作码</td>
+<td style="text-align:left"><strong>无需再保留扩展码</strong></td>
+<td style="text-align:left">⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>设计约束条件</strong></td>
+<td style="text-align:left">1. 短操作码不能是长操作码前缀; 2. 操作码不可重复</td>
+<td style="text-align:left"><strong>哈夫曼编码相似性原则</strong></td>
+<td style="text-align:left">⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>指令解析流程</strong></td>
+<td style="text-align:left">CPU通过逐位检测操作码前缀（如1的数量）判断指令类型</td>
+<td style="text-align:left"><strong>译码电路复杂度分析</strong></td>
+<td style="text-align:left">⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>状态空间计算</strong></td>
+<td style="text-align:left">若上一层保留 $m$ 种状态 $\rightarrow$ 下一层可扩展 $m \times 2^n$ 种状态（n为地址码位数）</td>
+<td style="text-align:left"><strong>四地址码示例计算</strong></td>
+<td style="text-align:left">⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>优劣对比</strong></td>
+<td style="text-align:left">优点：指令种类丰富；缺点：译码复杂度高</td>
+<td style="text-align:left"><strong>与定长操作码对比</strong></td>
+<td style="text-align:left">⭐⭐</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>实际设计案例</strong></td>
+<td style="text-align:left">15条三地址 + 12条二地址 + 62条一地址 + 32条零地址的二进制范围分配示例</td>
+<td style="text-align:left"><strong>二进制范围分配示例</strong></td>
+<td style="text-align:left">⭐⭐⭐⭐</td>
+</tr>
+</tbody>
+</table>
+<script type="text/javascript">var className='atoc';</script>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="指令的基本格式.html" class="navigation navigation-prev " aria-label="Previous page: 指令的基本格式">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="指令寻址.html" class="navigation navigation-next " aria-label="Next page: 指令寻址">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"拓展操作码","level":"4.1.3.4.2","depth":4,"next":{"title":"指令寻址","level":"4.1.3.4.3","depth":4,"path":"408/计算机组成原理/第四章：指令系统/指令寻址.md","ref":"408/计算机组成原理/第四章：指令系统/指令寻址.md","articles":[]},"previous":{"title":"指令的基本格式","level":"4.1.3.4.1","depth":4,"path":"408/计算机组成原理/第四章：指令系统/指令的基本格式.md","ref":"408/计算机组成原理/第四章：指令系统/指令的基本格式.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","atoc"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"atoc":{"addClass":true,"className":"atoc"},"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/计算机组成原理/第四章：指令系统/拓展操作码.md","mtime":"2025-06-24T06:54:56.034Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-06-28T14:04:44.749Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

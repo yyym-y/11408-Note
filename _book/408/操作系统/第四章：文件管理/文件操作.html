@@ -20,6 +20,10 @@
                 
             
                 
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-atoc/atoc.css">
+                
+            
+                
                 <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-highlight/website.css">
                 
             
@@ -1552,6 +1556,103 @@
             
         </li>
     
+        <li class="chapter " data-level="4.1.3.4" data-path="../../计算机组成原理/第四章：指令系统/">
+            
+                <a href="../../计算机组成原理/第四章：指令系统/">
+            
+                    
+                    第四章：指令系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.4.1" data-path="../../计算机组成原理/第四章：指令系统/指令的基本格式.html">
+            
+                <a href="../../计算机组成原理/第四章：指令系统/指令的基本格式.html">
+            
+                    
+                    指令的基本格式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.4.2" data-path="../../计算机组成原理/第四章：指令系统/拓展操作码.html">
+            
+                <a href="../../计算机组成原理/第四章：指令系统/拓展操作码.html">
+            
+                    
+                    拓展操作码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.4.3" data-path="../../计算机组成原理/第四章：指令系统/指令寻址.html">
+            
+                <a href="../../计算机组成原理/第四章：指令系统/指令寻址.html">
+            
+                    
+                    指令寻址
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.4.4" data-path="../../计算机组成原理/第四章：指令系统/数据寻址.html">
+            
+                <a href="../../计算机组成原理/第四章：指令系统/数据寻址.html">
+            
+                    
+                    数据寻址
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.4.5" data-path="../../计算机组成原理/第四章：指令系统/汇编指令快速入门.html">
+            
+                <a href="../../计算机组成原理/第四章：指令系统/汇编指令快速入门.html">
+            
+                    
+                    汇编指令快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.4.6" data-path="../../计算机组成原理/第四章：指令系统/跳转指令的机器代码.html">
+            
+                <a href="../../计算机组成原理/第四章：指令系统/跳转指令的机器代码.html">
+            
+                    
+                    跳转指令的机器代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
             </ul>
             
@@ -1625,7 +1726,7 @@
 <p>当用户对一个文件实施多次读/写等操作时，每次都要从检索目录开始。为了避免多次重复地检索目录，大多数操作系统要求，当用户首次对某文件发出操作请求时，须先利用系统调用open 将该文件打开。系统维护一个包含所有打开文件信息的表，称为打开文件表。所谓“打开”，是 指系统检索到指定文件的目录项后，将该目录项从外存复制到内存中的打开文件表的一个表目中，并将该表目的索引号（也称文件描述符）返回给用户。当用户再次对该文件发出操作请求时， 可通过文件描述符在打开文件表中查找到文件信息，从而节省了大量的检索开销。当文件不再使用时，可利用系统调用close关闭它，则系统将会从打开文件表中删除这一表目</p>
 <p>在多个进程可以同时打开文件的操作系统中，通常采用两级表：整个系统表和每个进程表。 整个系统的打开文件表包含与进程无关的信息，如文件在磁盘上的位置、访问日期和文件大小。 每个进程的打开文件表保存的是进程对文件的使用信息，如文件的当前读写指针、文件访问权限， 并包含指向系统表中适当条目的指针。一旦有进程打开了一个文件，系统表就包含该文件的条目。 当另一个进程执行调用open时，只不过是在其打开文件表中增加一个条目，并指向系统表的相应 条目。通常，系统打开文件表为每个文件关联一个打开计数器（OpenCount)，以记录多少进程打开了该文件。当文件不再使用时，利用系统调用close关闭它，会删除单个进程的打开文件表中 的相应条目，系统表中的相应打开计数器也会递减。当打开计数器为0时，表示该文件不再被使用，并且可从系统表中删除相应条目</p>
 <p><img src="img/Snipaste_2025-06-09_16-31-53.png" alt=""></img></p>
-
+<script type="text/javascript">var className='atoc';</script>
                                 
                                 </section>
                             
@@ -1668,7 +1769,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"文件操作","level":"4.1.2.4.6","depth":4,"next":{"title":"文件共享","level":"4.1.2.4.7","depth":4,"path":"408/操作系统/第四章：文件管理/文件共享.md","ref":"408/操作系统/第四章：文件管理/文件共享.md","articles":[]},"previous":{"title":"文件存储空间","level":"4.1.2.4.5","depth":4,"path":"408/操作系统/第四章：文件管理/文件存储空间.md","ref":"408/操作系统/第四章：文件管理/文件存储空间.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/操作系统/第四章：文件管理/文件操作.md","mtime":"2025-06-09T08:32:15.052Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-06-21T09:05:39.690Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"文件操作","level":"4.1.2.4.6","depth":4,"next":{"title":"文件共享","level":"4.1.2.4.7","depth":4,"path":"408/操作系统/第四章：文件管理/文件共享.md","ref":"408/操作系统/第四章：文件管理/文件共享.md","articles":[]},"previous":{"title":"文件存储空间","level":"4.1.2.4.5","depth":4,"path":"408/操作系统/第四章：文件管理/文件存储空间.md","ref":"408/操作系统/第四章：文件管理/文件存储空间.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","atoc"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"atoc":{"addClass":true,"className":"atoc"},"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/操作系统/第四章：文件管理/文件操作.md","mtime":"2025-06-09T08:32:15.052Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-06-28T14:04:44.749Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -1720,6 +1821,10 @@
     </script>
     <script src="../../../gitbook/gitbook.js"></script>
     <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
+        
     
         
         <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>

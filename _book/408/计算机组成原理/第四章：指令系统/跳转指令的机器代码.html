@@ -1,0 +1,2321 @@
+
+<!DOCTYPE HTML>
+<html lang="cn" >
+    <head>
+        <meta charset="UTF-8">
+        <title>跳转指令的机器代码 · yyym 11408 Notes</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="HonKit 6.0.3">
+        <meta name="author" content="yyym">
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-atoc/atoc.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/@honkit/honkit-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../../../styles/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../../计算机网络/" />
+    
+    
+    <link rel="prev" href="汇编指令快速入门.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book honkit-cloak">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">数学（一）</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../../../数学一/">
+            
+                <a href="../../../数学一/">
+            
+                    
+                    Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">英语（一）</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../../英语一/">
+            
+                <a href="../../../英语一/">
+            
+                    
+                    Summary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">408</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Summary
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../../数据结构/">
+            
+                <a href="../../数据结构/">
+            
+                    
+                    数据结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../../操作系统/">
+            
+                <a href="../../操作系统/">
+            
+                    
+                    操作系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.1" data-path="../../操作系统/第一章：计算机系统概述/">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/">
+            
+                    
+                    第一章：计算机系统概述
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.1.1" data-path="../../操作系统/第一章：计算机系统概述/操作系统的概念-基本特征.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/操作系统的概念-基本特征.html">
+            
+                    
+                    操作系统的概念/基本特征
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.2" data-path="../../操作系统/第一章：计算机系统概述/操作系统的发展和分类.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/操作系统的发展和分类.html">
+            
+                    
+                    操作系统的发展和分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.3" data-path="../../操作系统/第一章：计算机系统概述/操作系统的运行机制.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/操作系统的运行机制.html">
+            
+                    
+                    操作系统的运行机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.4" data-path="../../操作系统/第一章：计算机系统概述/中断和异常和系统调用.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/中断和异常和系统调用.html">
+            
+                    
+                    中断和异常和系统调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.5" data-path="../../操作系统/第一章：计算机系统概述/操作系统的体系结构.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/操作系统的体系结构.html">
+            
+                    
+                    操作系统的体系结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.6" data-path="../../操作系统/第一章：计算机系统概述/操作系统引导.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/操作系统引导.html">
+            
+                    
+                    操作系统引导
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.1.7" data-path="../../操作系统/第一章：计算机系统概述/虚拟机.html">
+            
+                <a href="../../操作系统/第一章：计算机系统概述/虚拟机.html">
+            
+                    
+                    虚拟机
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2" data-path="../../操作系统/第二章：进程和线程/">
+            
+                <a href="../../操作系统/第二章：进程和线程/">
+            
+                    
+                    第二章：进程和线程
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.2.1" data-path="../../操作系统/第二章：进程和线程/进程的概念、组成、特征.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程的概念、组成、特征.html">
+            
+                    
+                    进程的概念、组成、特征
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.2" data-path="../../操作系统/第二章：进程和线程/进程的状态与转换.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程的状态与转换.html">
+            
+                    
+                    进程的状态与转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.3" data-path="../../操作系统/第二章：进程和线程/进程控制.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程控制.html">
+            
+                    
+                    进程控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.4" data-path="../../操作系统/第二章：进程和线程/进程通信.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程通信.html">
+            
+                    
+                    进程通信
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.5" data-path="../../操作系统/第二章：进程和线程/信号.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/信号.html">
+            
+                    
+                    信号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.6" data-path="../../操作系统/第二章：进程和线程/线程的概念和特点.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/线程的概念和特点.html">
+            
+                    
+                    线程的概念和特点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.7" data-path="../../操作系统/第二章：进程和线程/线程的实现方式.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/线程的实现方式.html">
+            
+                    
+                    线程的实现方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.8" data-path="../../操作系统/第二章：进程和线程/线程的状态和转换-组织和控制.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/线程的状态和转换-组织和控制.html">
+            
+                    
+                    线程的状态和转换-组织和控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.9" data-path="../../操作系统/第二章：进程和线程/处理机调度.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/处理机调度.html">
+            
+                    
+                    处理机调度
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.10" data-path="../../操作系统/第二章：进程和线程/进程调度相关知识.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程调度相关知识.html">
+            
+                    
+                    进程调度相关知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.11" data-path="../../操作系统/第二章：进程和线程/调度算法的评估指标.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/调度算法的评估指标.html">
+            
+                    
+                    调度算法的评估指标
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.12" data-path="../../操作系统/第二章：进程和线程/调度算法.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/调度算法.html">
+            
+                    
+                    调度算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.13" data-path="../../操作系统/第二章：进程和线程/多处理机调度.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/多处理机调度.html">
+            
+                    
+                    多处理机调度
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.14" data-path="../../操作系统/第二章：进程和线程/进程同步和互斥.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/进程同步和互斥.html">
+            
+                    
+                    进程同步和互斥
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.15" data-path="../../操作系统/第二章：进程和线程/实现进程互斥的软件方法.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/实现进程互斥的软件方法.html">
+            
+                    
+                    实现进程互斥的软件方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.16" data-path="../../操作系统/第二章：进程和线程/实现进程互斥的硬件方法.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/实现进程互斥的硬件方法.html">
+            
+                    
+                    实现进程互斥的硬件方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.17" data-path="../../操作系统/第二章：进程和线程/信号量机制.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/信号量机制.html">
+            
+                    
+                    信号量机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.18" data-path="../../操作系统/第二章：进程和线程/信号量实现互斥同步前驱.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/信号量实现互斥同步前驱.html">
+            
+                    
+                    信号量实现互斥同步前驱
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.19" data-path="../../操作系统/第二章：进程和线程/经典信号量问题.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/经典信号量问题.html">
+            
+                    
+                    经典信号量问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.20" data-path="../../操作系统/第二章：进程和线程/管程.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/管程.html">
+            
+                    
+                    管程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.2.21" data-path="../../操作系统/第二章：进程和线程/死锁.html">
+            
+                <a href="../../操作系统/第二章：进程和线程/死锁.html">
+            
+                    
+                    死锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3" data-path="../../操作系统/第三章：内存管理/">
+            
+                <a href="../../操作系统/第三章：内存管理/">
+            
+                    
+                    第三章：内存管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.3.1" data-path="../../操作系统/第三章：内存管理/内存基本知识.html">
+            
+                <a href="../../操作系统/第三章：内存管理/内存基本知识.html">
+            
+                    
+                    内存基本知识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.2" data-path="../../操作系统/第三章：内存管理/进程的内存映像.html">
+            
+                <a href="../../操作系统/第三章：内存管理/进程的内存映像.html">
+            
+                    
+                    进程的内存映像
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.3" data-path="../../操作系统/第三章：内存管理/连续分配管理方式.html">
+            
+                <a href="../../操作系统/第三章：内存管理/连续分配管理方式.html">
+            
+                    
+                    连续分配管理方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.4" data-path="../../操作系统/第三章：内存管理/动态分区分配算法.html">
+            
+                <a href="../../操作系统/第三章：内存管理/动态分区分配算法.html">
+            
+                    
+                    动态分区分配算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.5" data-path="../../操作系统/第三章：内存管理/基本分页存储管理概念.html">
+            
+                <a href="../../操作系统/第三章：内存管理/基本分页存储管理概念.html">
+            
+                    
+                    基本分页存储管理概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.6" data-path="../../操作系统/第三章：内存管理/基本地址变换机构.html">
+            
+                <a href="../../操作系统/第三章：内存管理/基本地址变换机构.html">
+            
+                    
+                    基本地址变换机构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.7" data-path="../../操作系统/第三章：内存管理/具有快表的地址变换机构.html">
+            
+                <a href="../../操作系统/第三章：内存管理/具有快表的地址变换机构.html">
+            
+                    
+                    具有快表的地址变换机构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.8" data-path="../../操作系统/第三章：内存管理/两级页表.html">
+            
+                <a href="../../操作系统/第三章：内存管理/两级页表.html">
+            
+                    
+                    两级页表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.9" data-path="../../操作系统/第三章：内存管理/基本分段式存储结构.html">
+            
+                <a href="../../操作系统/第三章：内存管理/基本分段式存储结构.html">
+            
+                    
+                    基本分段式存储结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.10" data-path="../../操作系统/第三章：内存管理/段页式管理方式.html">
+            
+                <a href="../../操作系统/第三章：内存管理/段页式管理方式.html">
+            
+                    
+                    段页式管理方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.11" data-path="../../操作系统/第三章：内存管理/虚拟内存.html">
+            
+                <a href="../../操作系统/第三章：内存管理/虚拟内存.html">
+            
+                    
+                    虚拟内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.12" data-path="../../操作系统/第三章：内存管理/页面置换算法.html">
+            
+                <a href="../../操作系统/第三章：内存管理/页面置换算法.html">
+            
+                    
+                    页面置换算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.13" data-path="../../操作系统/第三章：内存管理/页面分配策略概述.html">
+            
+                <a href="../../操作系统/第三章：内存管理/页面分配策略概述.html">
+            
+                    
+                    页面分配策略概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.3.14" data-path="../../操作系统/第三章：内存管理/内存映射文件.html">
+            
+                <a href="../../操作系统/第三章：内存管理/内存映射文件.html">
+            
+                    
+                    内存映射文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4" data-path="../../操作系统/第四章：文件管理/">
+            
+                <a href="../../操作系统/第四章：文件管理/">
+            
+                    
+                    第四章：文件管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.4.1" data-path="../../操作系统/第四章：文件管理/文件管理概述.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件管理概述.html">
+            
+                    
+                    文件管理概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.2" data-path="../../操作系统/第四章：文件管理/文件逻辑结构.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件逻辑结构.html">
+            
+                    
+                    文件逻辑结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.3" data-path="../../操作系统/第四章：文件管理/文件目录.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件目录.html">
+            
+                    
+                    文件目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.4" data-path="../../操作系统/第四章：文件管理/文件的物理结构.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件的物理结构.html">
+            
+                    
+                    文件的物理结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.5" data-path="../../操作系统/第四章：文件管理/文件存储空间.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件存储空间.html">
+            
+                    
+                    文件存储空间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.6" data-path="../../操作系统/第四章：文件管理/文件操作.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件操作.html">
+            
+                    
+                    文件操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.7" data-path="../../操作系统/第四章：文件管理/文件共享.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件共享.html">
+            
+                    
+                    文件共享
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.8" data-path="../../操作系统/第四章：文件管理/文件保护.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件保护.html">
+            
+                    
+                    文件保护
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.9" data-path="../../操作系统/第四章：文件管理/文件系统中的层次结构.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件系统中的层次结构.html">
+            
+                    
+                    文件系统中的层次结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.10" data-path="../../操作系统/第四章：文件管理/文件系统的布局.html">
+            
+                <a href="../../操作系统/第四章：文件管理/文件系统的布局.html">
+            
+                    
+                    文件系统的布局
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.4.11" data-path="../../操作系统/第四章：文件管理/虚拟文件系统和文件系统的挂载.html">
+            
+                <a href="../../操作系统/第四章：文件管理/虚拟文件系统和文件系统的挂载.html">
+            
+                    
+                    虚拟文件系统和文件系统的挂载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5" data-path="../../操作系统/第五章：输入输出管理/">
+            
+                <a href="../../操作系统/第五章：输入输出管理/">
+            
+                    
+                    第五章：输入输出管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.2.5.1" data-path="../../操作系统/第五章：输入输出管理/IO设备管理的概念和分类.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/IO设备管理的概念和分类.html">
+            
+                    
+                    IO设备管理的概念和分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.2" data-path="../../操作系统/第五章：输入输出管理/IO控制器和控制方式.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/IO控制器和控制方式.html">
+            
+                    
+                    IO控制器和控制方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.3" data-path="../../操作系统/第五章：输入输出管理/IO软件层次结构.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/IO软件层次结构.html">
+            
+                    
+                    IO软件层次结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.4" data-path="../../操作系统/第五章：输入输出管理/输入输出应用程序接口和驱动程序接口.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/输入输出应用程序接口和驱动程序接口.html">
+            
+                    
+                    输入输出应用程序接口和驱动程序接口
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.5" data-path="../../操作系统/第五章：输入输出管理/IO核心子技术.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/IO核心子技术.html">
+            
+                    
+                    IO核心子技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.6" data-path="../../操作系统/第五章：输入输出管理/假脱机技术.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/假脱机技术.html">
+            
+                    
+                    假脱机技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.7" data-path="../../操作系统/第五章：输入输出管理/设备的分配和回收.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/设备的分配和回收.html">
+            
+                    
+                    设备的分配和回收
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.8" data-path="../../操作系统/第五章：输入输出管理/缓冲区管理.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/缓冲区管理.html">
+            
+                    
+                    缓冲区管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.9" data-path="../../操作系统/第五章：输入输出管理/磁盘的相关结构.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/磁盘的相关结构.html">
+            
+                    
+                    磁盘的相关结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.10" data-path="../../操作系统/第五章：输入输出管理/磁盘调度算法.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/磁盘调度算法.html">
+            
+                    
+                    磁盘调度算法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.11" data-path="../../操作系统/第五章：输入输出管理/减少延迟时间.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/减少延迟时间.html">
+            
+                    
+                    减少延迟时间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.12" data-path="../../操作系统/第五章：输入输出管理/磁盘管理.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/磁盘管理.html">
+            
+                    
+                    磁盘管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2.5.13" data-path="../../操作系统/第五章：输入输出管理/固态硬盘.html">
+            
+                <a href="../../操作系统/第五章：输入输出管理/固态硬盘.html">
+            
+                    
+                    固态硬盘
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    计算机组成原理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.1" data-path="../第一章：计算机系统概述/">
+            
+                <a href="../第一章：计算机系统概述/">
+            
+                    
+                    第一章：计算机系统概述
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.1.1" data-path="../第一章：计算机系统概述/计算机硬件.html">
+            
+                <a href="../第一章：计算机系统概述/计算机硬件.html">
+            
+                    
+                    计算机硬件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.1.2" data-path="../第一章：计算机系统概述/计算机软件.html">
+            
+                <a href="../第一章：计算机系统概述/计算机软件.html">
+            
+                    
+                    计算机软件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.1.3" data-path="../第一章：计算机系统概述/计算机系统的层次结构.html">
+            
+                <a href="../第一章：计算机系统概述/计算机系统的层次结构.html">
+            
+                    
+                    计算机系统的层次结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.1.4" data-path="../第一章：计算机系统概述/计算机系统的工作原理.html">
+            
+                <a href="../第一章：计算机系统概述/计算机系统的工作原理.html">
+            
+                    
+                    计算机系统的工作原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.1.5" data-path="../第一章：计算机系统概述/计算机的性能指标.html">
+            
+                <a href="../第一章：计算机系统概述/计算机的性能指标.html">
+            
+                    
+                    计算机的性能指标
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2" data-path="../第二章：数据的表示和运算/">
+            
+                <a href="../第二章：数据的表示和运算/">
+            
+                    
+                    第二章：数据的表示和运算
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.2.1" data-path="../第二章：数据的表示和运算/进位计数制及其相互转换.html">
+            
+                <a href="../第二章：数据的表示和运算/进位计数制及其相互转换.html">
+            
+                    
+                    进位计数制及其相互转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.2" data-path="../第二章：数据的表示和运算/定点数的编码表示.html">
+            
+                <a href="../第二章：数据的表示和运算/定点数的编码表示.html">
+            
+                    
+                    定点数的编码表示
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.3" data-path="../第二章：数据的表示和运算/C语言中的整数类型和数据转换.html">
+            
+                <a href="../第二章：数据的表示和运算/C语言中的整数类型和数据转换.html">
+            
+                    
+                    C语言中的整数类型和数据转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.4" data-path="../第二章：数据的表示和运算/逻辑门电路.html">
+            
+                <a href="../第二章：数据的表示和运算/逻辑门电路.html">
+            
+                    
+                    逻辑门电路
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.5" data-path="../第二章：数据的表示和运算/多路选择器和三态门.html">
+            
+                <a href="../第二章：数据的表示和运算/多路选择器和三态门.html">
+            
+                    
+                    多路选择器和三态门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.6" data-path="../第二章：数据的表示和运算/基本运算部件.html">
+            
+                <a href="../第二章：数据的表示和运算/基本运算部件.html">
+            
+                    
+                    基本运算部件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.7" data-path="../第二章：数据的表示和运算/定点数的加减运算.html">
+            
+                <a href="../第二章：数据的表示和运算/定点数的加减运算.html">
+            
+                    
+                    定点数的加减运算
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.8" data-path="../第二章：数据的表示和运算/定点数的乘法运算.html">
+            
+                <a href="../第二章：数据的表示和运算/定点数的乘法运算.html">
+            
+                    
+                    定点数的乘法运算
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.9" data-path="../第二章：数据的表示和运算/无符号数的除法.html">
+            
+                <a href="../第二章：数据的表示和运算/无符号数的除法.html">
+            
+                    
+                    无符号数的除法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.10" data-path="../第二章：数据的表示和运算/浮点数的表示（IEEE754）.html">
+            
+                <a href="../第二章：数据的表示和运算/浮点数的表示（IEEE754）.html">
+            
+                    
+                    浮点数的表示(IEEE754)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.2.11" data-path="../第二章：数据的表示和运算/数据的存储和排列.html">
+            
+                <a href="../第二章：数据的表示和运算/数据的存储和排列.html">
+            
+                    
+                    数据的存储和排列
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3" data-path="../第三章：存储系统/">
+            
+                <a href="../第三章：存储系统/">
+            
+                    
+                    第三章：存储系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.3.1" data-path="../第三章：存储系统/存储系统基本概念.html">
+            
+                <a href="../第三章：存储系统/存储系统基本概念.html">
+            
+                    
+                    存储系统基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.2" data-path="../第三章：存储系统/主存储器的基本组成.html">
+            
+                <a href="../第三章：存储系统/主存储器的基本组成.html">
+            
+                    
+                    主存储器的基本组成
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.3" data-path="../第三章：存储系统/SRAM,DRAM,ROM.html">
+            
+                <a href="../第三章：存储系统/SRAM,DRAM,ROM.html">
+            
+                    
+                    SRAM, DRAM, ROM
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.4" data-path="../第三章：存储系统/多模块存储器.html">
+            
+                <a href="../第三章：存储系统/多模块存储器.html">
+            
+                    
+                    多模块存储器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.5" data-path="../第三章：存储系统/主存储器与CPU的连接.html">
+            
+                <a href="../第三章：存储系统/主存储器与CPU的连接.html">
+            
+                    
+                    主存储器与CPU的连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.6" data-path="../第三章：存储系统/磁盘存储器.html">
+            
+                <a href="../第三章：存储系统/磁盘存储器.html">
+            
+                    
+                    磁盘存储器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.7" data-path="../第三章：存储系统/Cache基本原理.html">
+            
+                <a href="../第三章：存储系统/Cache基本原理.html">
+            
+                    
+                    Cache基本原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.8" data-path="../第三章：存储系统/Cache与主存的映射关系.html">
+            
+                <a href="../第三章：存储系统/Cache与主存的映射关系.html">
+            
+                    
+                    Cache与主存的映射关系
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.9" data-path="../第三章：存储系统/Cache替换方法.html">
+            
+                <a href="../第三章：存储系统/Cache替换方法.html">
+            
+                    
+                    Cache替换方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.3.10" data-path="../第三章：存储系统/Cache写策略.html">
+            
+                <a href="../第三章：存储系统/Cache写策略.html">
+            
+                    
+                    Cache写策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    第四章：指令系统
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.3.4.1" data-path="指令的基本格式.html">
+            
+                <a href="指令的基本格式.html">
+            
+                    
+                    指令的基本格式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.4.2" data-path="拓展操作码.html">
+            
+                <a href="拓展操作码.html">
+            
+                    
+                    拓展操作码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.4.3" data-path="指令寻址.html">
+            
+                <a href="指令寻址.html">
+            
+                    
+                    指令寻址
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.4.4" data-path="数据寻址.html">
+            
+                <a href="数据寻址.html">
+            
+                    
+                    数据寻址
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3.4.5" data-path="汇编指令快速入门.html">
+            
+                <a href="汇编指令快速入门.html">
+            
+                    
+                    汇编指令快速入门
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.1.3.4.6" data-path="跳转指令的机器代码.html">
+            
+                <a href="跳转指令的机器代码.html">
+            
+                    
+                    跳转指令的机器代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../../计算机网络/">
+            
+                <a href="../../计算机网络/">
+            
+                    
+                    计算机网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://github.com/honkit/honkit" target="blank" class="gitbook-link">
+            Published with HonKit
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >跳转指令的机器代码</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="跳转指令的机器代码">跳转指令的机器代码</h1>
+<h2 id="一、选择语句的机器级表示">一、选择语句的机器级表示</h2>
+<h3 id="1-程序中的选择语句">1. 程序中的选择语句</h3>
+<h4 id="1-无条件转移指令">1) 无条件转移指令</h4>
+<ul>
+<li><strong>PC 寄存器作用</strong>：<strong>程序计数器 (PC)</strong> 用于指向下一条即将执行的指令地址。在 x86 处理器中，它通常被称为 <strong>IP (Instruction Pointer) 寄存器</strong>。</li>
+</ul>
+<h4 id="无条件转移指令的灵活使用">无条件转移指令的灵活使用</h4>
+<ul>
+<li><strong>基本格式</strong>：<code>jmp &lt;地址&gt;</code>，使 PC 无条件跳转到指定地址执行。</li>
+<li><strong>地址参数形式</strong>：<ul>
+<li><strong>常数直接给出</strong>：如 <code>jmp 128</code>。</li>
+<li><strong>来自寄存器</strong>：如 <code>jmp eax</code> (当 <code>eax</code> 值为 128 时，等效于 <code>jmp 128</code>)。</li>
+<li><strong>来自主存</strong>：如 <code>jmp [999]</code> (当主存地址 999 处存储的值为 128 时，等效于 <code>jmp 128</code>)。</li>
+<li><strong>使用标号锚定</strong>：如 <code>jmp NEXT</code>，通过标号标记跳转位置。</li>
+</ul>
+</li>
+</ul>
+<h4 id="无条件转移指令的特征">无条件转移指令的特征</h4>
+<ul>
+<li><strong>标号语法</strong>：标号以冒号结尾，如 <code>NEXT:</code>。名称可自定义（如 <code>L1</code>、<code>L2</code> 等）。</li>
+<li><strong>编程灵活性</strong>：使用标号比直接使用地址更灵活，可以避免因程序存储位置变化导致的跳转错误。</li>
+<li><strong>类比 C 语言</strong>：其功能类似于 <code>goto</code> 语句，会强制改变程序执行流程。</li>
+</ul>
+<h4 id="2-条件转移指令">2) 条件转移指令</h4>
+<ul>
+<li><strong>基本格式</strong>：<code>jxxx &lt;地址&gt;</code>，根据条件判断是否跳转。</li>
+<li><strong>常用指令</strong>：<ul>
+<li><code>je</code>：jump when equal (相等时跳转)</li>
+<li><code>jne</code>：jump when not equal (不等时跳转)</li>
+<li><code>jg</code>：jump when greater than (大于时跳转)</li>
+<li><code>jge</code>：jump when greater or equal (大于或等于时跳转)</li>
+<li><code>jl</code>：jump when less than (小于时跳转)</li>
+<li><code>jle</code>：jump when less or equal (小于或等于时跳转)</li>
+</ul>
+</li>
+<li><strong>配合 <code>cmp</code> 指令</strong>：条件转移前需先用 <code>cmp a,b</code> 比较两个数。实质是计算 <code>a-b</code> 并设置<strong>标志位</strong>，但<strong>不保存结果</strong>。</li>
+</ul>
+<h4 id="3-应用案例：if-else-语句的汇编语言实现">3) 应用案例：<code>if-else</code> 语句的汇编语言实现</h4>
+<p><strong>例题</strong>：<code>if-else</code> 语句的汇编语言实现</p>
+<ul>
+<li><p><strong>实现方式一</strong>：使用 <code>jg</code> 指令。</p>
+<pre><code class="lang-assembly">  ; 假设 eax 存储 a, ebx 存储 b
+  cmp eax, ebx     ; 比较 a 和 b
+  jg  IF_BLOCK     ; 如果 a &gt; b, 跳转到 IF_BLOCK
+  ; else 代码块开始
+  ; ...
+  jmp END_IF       ; 跳过 IF_BLOCK
+  IF_BLOCK:
+  ; if 代码块开始
+  ; ...
+  END_IF:
+</code></pre>
+<p>  这种方式将 <code>else</code> 代码块放在前面，<code>if</code> 代码块放在后面。</p>
+</li>
+<li><strong>寄存器分配</strong>：通常用 <code>eax</code> 存储 <code>a</code>，<code>ebx</code> 存储 <code>b</code>，<code>ecx</code> 存储 <code>c</code>。</li>
+</ul>
+<h4 id="cmp-指令的底层原理"><code>cmp</code> 指令的底层原理</h4>
+<ul>
+<li><strong>运算本质</strong>：<code>cmp a,b</code> 实际执行 <code>a - b</code> 运算，但<strong>不保存结果</strong>，只根据运算结果设置<strong>标志位</strong>。</li>
+<li><strong>标志寄存器</strong>：<ul>
+<li><strong>OF (Overflow Flag - 溢出标志)</strong>：运算溢出时置 1。</li>
+<li><strong>SF (Sign Flag - 符号标志)</strong>：结果为负时置 1 (最高位为 1)。</li>
+<li><strong>ZF (Zero Flag - 零标志)</strong>：结果为零时置 1。</li>
+<li><strong>CF (Carry/Borrow Flag - 进位/借位标志)</strong>：无符号数运算有进位/借位时置 1。</li>
+</ul>
+</li>
+<li><strong>条件判断依据</strong>：<ul>
+<li><code>je</code>：检查 <code>ZF == 1</code></li>
+<li><code>jne</code>：检查 <code>ZF == 0</code></li>
+<li><code>jg</code>：检查 <code>ZF == 0 &amp;&amp; SF == OF</code></li>
+<li><code>jge</code>：检查 <code>SF == OF</code></li>
+<li><code>jl</code>：检查 <code>SF != OF</code></li>
+<li><code>jle</code>：检查 <code>SF != OF || ZF == 1</code></li>
+</ul>
+</li>
+</ul>
+<hr></hr>
+<h2 id="二、循环语句的机器级表示">二、循环语句的机器级表示</h2>
+<h3 id="1-用条件转移指令实现循环">1. 用条件转移指令实现循环</h3>
+<h4 id="1-例题：for-循环求和">1) 例题：<code>for</code> 循环求和</h4>
+<p><strong>实现框架</strong>：用条件转移指令实现循环通常需要以下四个部分构成：</p>
+<ol>
+<li><strong>循环前的初始化</strong>：对循环变量进行初始赋值。例如，<code>mov eax, 0</code> 初始化 <code>result</code> (结果变量)，<code>mov edx, 1</code> 初始化 <code>i</code> (循环变量)。</li>
+<li><strong>是否直接跳过循环</strong>：首次进入循环前，需要判断循环条件。例如，<code>cmp edx, 100</code> 比较 <code>i</code> 和 <code>100</code>，<code>jg L2</code>（如果 <code>i &gt; 100</code>，则跳到 <code>L2</code>，即跳过循环）。</li>
+<li><strong>循环主体处理</strong>：执行循环的核心逻辑。例如，<code>add eax, edx</code> 实现 <code>result += i</code>。</li>
+<li><strong>是否继续循环</strong>：每轮循环结束后，更新循环变量并再次判断条件。例如，<code>inc edx</code> 实现 <code>i++</code>，然后 <code>cmp edx, 100</code> 和 <code>jle L1</code> 判断是否继续循环（如果 <code>i &lt;= 100</code>，则跳回 <code>L1</code> 继续循环）。</li>
+</ol>
+<p><strong>寄存器选择</strong>：通常用 <strong><code>eax</code></strong> 存储结果变量，<strong><code>edx</code></strong> 存储循环变量（如 <code>i</code>）。但具体的寄存器选择需要根据实际情况灵活调整。</p>
+<p><strong>条件转移特点</strong>：通过 <strong><code>cmp</code></strong> 比较指令配合 <strong><code>jg</code>/<code>jle</code></strong> 等条件跳转指令实现循环控制。跳转目标需要用<strong>标号</strong>标记（如 <code>L1</code>、<code>L2</code>）。</p>
+<p><img src="img/Snipaste_2025-06-25_15-54-21.png" alt=""></img></p>
+<h3 id="2-用-loop-指令实现循环">2. 用 <code>loop</code> 指令实现循环</h3>
+<h4 id="1-例题：循环计数">1) 例题：循环计数</h4>
+<p><strong>基本语法</strong>：<code>loop 标号</code>。这条指令会自动执行以下操作：</p>
+<ol>
+<li><strong><code>ecx</code> 寄存器值减 1</strong> (<code>dec ecx</code>)。</li>
+<li>判断 <code>ecx</code> 是否为 0。</li>
+<li>如果 <code>ecx ≠ 0</code>，则跳转到指定标号处执行。</li>
+</ol>
+<p><strong>寄存器限制</strong>：必须使用 <strong><code>ecx</code></strong> 作为计数器，这是 x86 架构的规定。例如，<code>mov ecx, 500</code> 初始化循环次数。</p>
+<p><strong>等价实现</strong>：<code>loop</code> 指令等价于以下三条指令组合：</p>
+<p><img src="img/Snipaste_2025-06-25_15-55-57.png" alt=""></img></p>
+<p>loopnz (Loop Not Zero)：在 ecx ≠ 0 且 ZF = 0 (上次运算结果非零) 时循环。</p>
+<p>loopz (Loop Zero)：在 ecx ≠ 0 且 ZF = 1 (上次运算结果为零) 时循环</p>
+<hr></hr>
+<h3 id="1-高级语言的函数调用">1. 高级语言的函数调用</h3>
+<ul>
+<li><strong>调用栈结构：</strong><ul>
+<li>程序运行时系统分配的内存区域，用于实现函数调用，其作用类似一摞盘子。</li>
+<li><strong>栈底</strong>：存储硬件和系统信息。</li>
+<li><strong>栈顶</strong>：存储当前正在执行函数的<strong>栈帧</strong> (Stack Frame)。</li>
+</ul>
+</li>
+<li><strong>栈帧变化过程：</strong><ul>
+<li>程序从 <code>main</code> 函数开始执行，首先创建 <code>main</code> 函数的栈帧。</li>
+<li>当 <code>main</code> 函数调用 <code>P</code> 函数时，<code>P</code> 的栈帧被<strong>压入栈顶</strong>。</li>
+<li>当 <code>P</code> 函数进一步调用 <code>Q</code> 函数时，<code>Q</code> 的栈帧再次被<strong>压入栈顶</strong>。</li>
+<li>当函数执行完毕返回时，其栈帧会从栈顶<strong>弹出</strong>。</li>
+</ul>
+</li>
+<li><strong>栈帧内容：</strong><ul>
+<li>包含<strong>局部变量</strong>（例如 <code>caller</code> 函数中的 <code>temp1</code>、<code>temp2</code>、<code>sum</code>）。</li>
+<li>包含<strong>函数调用相关信息</strong>（例如传递给 <code>add</code> 函数的参数）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-x86-汇编语言的函数调用">2. x86 汇编语言的函数调用</h3>
+<ul>
+<li><strong>关键指令：</strong><ul>
+<li><strong><code>call</code> 指令</strong>：实现函数调用，语法为 <code>call 标号</code> (例如 <code>call add</code>)。</li>
+<li><strong><code>ret</code> 指令</strong>：实现函数返回。</li>
+</ul>
+</li>
+<li><strong>IP 寄存器作用：</strong><ul>
+<li>即<strong>程序计数器 (PC)</strong>，它始终指向<strong>下一条要执行的指令</strong>的地址。</li>
+<li><code>call</code> 和 <code>ret</code> 指令都会改变 <code>IP</code> 寄存器的值。</li>
+</ul>
+</li>
+<li><strong>调用机制 (call 执行过程)：</strong><ol>
+<li>将<strong>当前 <code>IP</code> 值</strong>（即 <code>call</code> 指令<strong>下一条指令的地址</strong>，也就是函数的<strong>返回地址</strong>）<strong>压入栈中保存</strong>。</li>
+<li>将 <code>IP</code> 寄存器的值修改为被调用函数（如 <code>add</code>）的<strong>第一条指令的地址</strong>，从而实现跳转。</li>
+</ol>
+</li>
+<li><strong>返回机制 (ret 执行过程)：</strong><ol>
+<li>从栈顶<strong>取出之前保存的 <code>IP</code> 旧值</strong>（即返回地址）。</li>
+<li>将 <code>IP</code> 寄存器<strong>恢复为该值</strong>，使程序流回到调用方函数的下一条指令继续执行。</li>
+</ol>
+</li>
+<li><strong>核心问题解决：</strong><ul>
+<li><strong>"过得去"</strong>：通过 <code>call</code> 指令<strong>保存返回地址</strong>并<strong>跳转</strong>到目标函数。</li>
+<li><strong>"回得来"</strong>：通过 <code>ret</code> 指令<strong>恢复返回地址</strong>，使程序返回到调用点。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-函数调用的机器级表示的总结-0718">3. 函数调用的机器级表示的总结 (07:18)</h3>
+<ul>
+<li><strong>调用者行为：</strong><ol>
+<li>执行 <code>call</code> 指令。</li>
+<li><code>call</code> 指令将返回地址（<code>call</code> 下一条指令的地址）压入栈顶。</li>
+<li><code>call</code> 指令跳转到被调用函数的第一条指令。</li>
+</ol>
+</li>
+<li><strong>被调用者行为：</strong><ol>
+<li>执行一系列处理逻辑。</li>
+<li>执行 <code>ret</code> 指令。</li>
+<li><code>ret</code> 指令从栈顶找到并取出返回地址，出栈并恢复 <code>IP</code> 寄存器的值。</li>
+</ol>
+</li>
+<li><strong>指令作用总结：</strong><ul>
+<li><code>call</code> 指令：将 <code>IP</code> 旧值压栈保存（保存在<strong>函数栈帧顶部</strong>）。</li>
+<li><code>ret</code> 指令：从<strong>函数栈帧顶部</strong>找到 <code>IP</code> 旧值，将其出栈并恢复 <code>IP</code> 寄存器。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-问题答疑">4. 问题答疑</h3>
+<ul>
+<li><strong>待解决问题：</strong><ul>
+<li>参数传递机制：<code>call/ret</code> 指令本身不直接带参数，具体如何传递？</li>
+<li>返回值传递机制：函数执行完毕如何将结果返回给调用方？</li>
+<li>栈帧数据访问方式：如何通过指针或寄存器访问栈帧中的数据？</li>
+<li>栈帧具体内容组成：除了局部变量和返回地址，还有哪些信息？</li>
+<li>栈帧排列顺序问题（图示中 <code>add</code> 栈帧在 <code>caller</code> 上方）：栈在内存中是如何增长的？</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-为什么栈底画在上面，栈顶画在下面？">1. 为什么栈底画在上面，栈顶画在下面？</h3>
+<ul>
+<li><strong>地址空间分配：</strong><ul>
+<li>在 32 位系统中，每个进程被分配 4GB 的虚拟地址空间。</li>
+<li>其中，<strong>高地址 1GB</strong> 通常保留给<strong>内核区</strong>使用。</li>
+<li><strong>低地址 3GB</strong> 则分配给<strong>用户区</strong>。</li>
+</ul>
+</li>
+<li><strong>栈的位置特性：</strong><ul>
+<li>函数调用栈位于<strong>用户区</strong>。</li>
+<li><strong>栈底</strong>处于<strong>高地址</strong>（靠近内核区）。</li>
+<li><strong>栈顶</strong>则向<strong>低地址</strong>方向<strong>增长</strong>（向用户区底部扩展）。</li>
+</ul>
+</li>
+<li><strong>图示惯例：</strong><ul>
+<li>教材将栈底画在上方，栈顶画在下方，是为了<strong>直观表示地址的高低关系</strong>。</li>
+<li>这与在数据结构课程中，栈通常被画成从下往上增长的图示方向<strong>相反</strong>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-用汇编语言指令操作栈帧里的数据">2. 用汇编语言指令操作栈帧里的数据</h3>
+<h4 id="21-标记栈帧范围">2.1 标记栈帧范围</h4>
+<ul>
+<li><strong>关键寄存器：</strong><ul>
+<li><strong><code>EBP</code> (Extended Base Pointer)</strong>：32 位扩展基址指针寄存器，通常<strong>指向当前栈帧的底部</strong>（高地址端）。它提供了一个稳定的基准点来访问栈帧中的数据。</li>
+<li><strong><code>ESP</code> (Extended Stack Pointer)</strong>：32 位扩展栈指针寄存器，始终<strong>指向当前栈帧的顶部</strong>（低地址端）。它是栈的实际操作指针。</li>
+</ul>
+</li>
+<li><strong>操作单位：</strong><ul>
+<li>x86 系统默认以<strong>4 字节（DWORD）</strong>为单位进行栈操作（如 <code>push</code> 和 <code>pop</code>）。</li>
+</ul>
+</li>
+<li><strong>动态调整：</strong><ul>
+<li>函数调用和返回时，<code>EBP</code> 和 <code>ESP</code> 会同步更新，以指向新栈帧的边界，从而维护栈的结构。</li>
+</ul>
+</li>
+</ul>
+<h4 id="22-访问栈帧数据-0414">2.2 访问栈帧数据 (04:14)</h4>
+<h5 id="push、pop-指令"><code>push</code>、<code>pop</code> 指令</h5>
+<ul>
+<li><strong>操作特性：</strong><ul>
+<li><code>push 操作数</code>：先将 <code>ESP</code> 寄存器的值<strong>减去 4</strong>（即向下移动 4 字节），然后将 <code>操作数</code> 的值<strong>写入</strong> <code>ESP</code> 指向的内存地址。</li>
+<li><code>pop 目标位置</code>：先将 <code>ESP</code> 指向的内存地址中的值<strong>读取</strong>到 <code>目标位置</code>，然后将 <code>ESP</code> 寄存器的值<strong>加上 4</strong>（即向上移动 4 字节）。</li>
+</ul>
+</li>
+<li><strong>操作数类型：</strong><ul>
+<li><code>push</code> 支持<strong>立即数</strong>、<strong>寄存器值</strong>或<strong>内存数据</strong>。</li>
+<li><code>pop</code> 的结果可存入<strong>寄存器</strong>或<strong>内存地址</strong>。</li>
+</ul>
+</li>
+<li><strong>例题: <code>push</code>/<code>pop</code> 指令应用 (05:24)</strong><ul>
+<li><strong>执行过程分析：</strong><ul>
+<li><code>push eax</code> (假设 <code>eax = 211</code>)：<code>ESP</code> 下移 4 字节，然后将 211 写入新的栈顶位置。</li>
+<li><code>push 985</code>：<code>ESP</code> 再下移 4 字节，然后将立即数 985 写入新的栈顶位置。</li>
+<li><code>push [ebp+8]</code>：读取 <code>ebp</code> 上方 8 字节处的值（假设为 666），然后将其压栈（<code>ESP</code> 下移 4 字节，写入 666）。</li>
+<li><code>pop eax</code>：将当前栈顶值（666）弹出到 <code>eax</code> 寄存器，<code>ESP</code> 上移 4 字节。</li>
+<li><code>pop [ebp+8]</code>：将新的栈顶值（985）写入 <code>ebp+8</code> 的内存位置，<code>ESP</code> 上移 4 字节。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="mov-指令"><code>mov</code> 指令</h5>
+<ul>
+<li><strong>灵活访问：</strong><ul>
+<li>通过 <code>EBP</code>/<code>ESP</code> 寄存器加上或减去<strong>偏移量</strong>，可以直接访问栈中<strong>任意位置</strong>的数据，实现随机存取。</li>
+</ul>
+</li>
+<li><strong>指针调整：</strong><ul>
+<li>使用 <code>sub</code> 或 <code>add</code> 指令直接修改 <code>ESP</code> 寄存器的值，可以<strong>扩展或收缩栈空间</strong>，为局部变量预留空间或释放空间。</li>
+</ul>
+</li>
+<li><strong>例题: <code>mov</code> 指令应用 (08:17)</strong><ul>
+<li><strong>典型操作序列：</strong><ul>
+<li><code>sub esp, 12</code>：将 <code>ESP</code> 减去 12，<strong>扩展 12 字节的栈空间</strong>，通常用于为局部变量分配空间。</li>
+<li><code>mov [esp+8], eax</code>：将 <code>eax</code> 寄存器中的值写入到 <code>ESP</code> 当前指向地址<strong>向上偏移 8 字节</strong>的栈中位置。</li>
+<li><code>mov [esp+4], 985</code>：将立即数 985 写入到 <code>ESP</code> 当前指向地址<strong>向上偏移 4 字节</strong>的栈中位置。</li>
+<li><code>mov eax, [ebp+8]</code>：从 <code>EBP</code> 寄存器指向地址<strong>向上偏移 8 字节</strong>的栈中位置（通常是函数参数）读取值到 <code>eax</code> 寄存器。</li>
+<li><code>add esp, 8</code>：将 <code>ESP</code> 加上 8，<strong>回收 8 字节的栈空间</strong>，通常在函数返回前清理局部变量空间。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-标记栈帧范围">1. 标记栈帧范围</h3>
+<ul>
+<li><strong>寄存器作用：</strong> 在 x86 架构中，CPU 内部的 <strong><code>EBP</code></strong> (Extended Base Pointer) 和 <strong><code>ESP</code></strong> (Extended Stack Pointer) 两个寄存器共同标记了当前正在执行函数的<strong>栈帧范围</strong>。<ul>
+<li><strong><code>EBP</code> 功能</strong>：它始终指向当前栈帧的<strong>底部</strong>（也称为<strong>基地址</strong>或<strong>帧指针</strong>），通常是栈帧中地址<strong>较高</strong>的一端。</li>
+<li><strong><code>ESP</code> 功能</strong>：它始终指向当前栈帧的<strong>顶部</strong>（也称为<strong>栈顶指针</strong>），是栈帧中地址<strong>较低</strong>的一端，所有新的数据操作（如 <code>push</code>）都会从这里开始。</li>
+</ul>
+</li>
+<li><strong>栈操作单位</strong>：x86 系统默认以<strong>4 字节（DWORD）</strong>为基本操作单位进行栈操作（例如 <code>push</code> 和 <code>pop</code>）。</li>
+</ul>
+<h3 id="2-函数调用时，如何切换栈帧">2. 函数调用时，如何切换栈帧</h3>
+<p>当一个函数调用另一个函数时，需要建立新的栈帧：</p>
+<ul>
+<li><strong><code>call</code> 指令的双重作用</strong>：<ol>
+<li>将<strong>返回地址</strong>（即 <code>call</code> 指令<strong>下一条指令的 IP 旧值</strong>）<strong>压入栈中保存</strong>。这相当于执行了一条 <code>push IP</code> 指令。</li>
+<li>设置 <code>IP</code> 寄存器的新值，使其跳转到被调用函数的<strong>第一条指令</strong>的地址。这相当于执行了一条 <code>jump</code> 指令。</li>
+</ol>
+</li>
+<li><strong>栈帧建立步骤</strong>：被调用函数通常会在其开头执行以下操作来建立自己的栈帧：<ol>
+<li><code>push ebp</code>：将<strong>上一层函数（调用者）的栈帧基址</strong>（即旧的 <code>EBP</code> 值）压栈保存。这是为了在函数返回时能恢复到调用者的栈帧。</li>
+<li><code>mov ebp, esp</code>：将当前 <code>ESP</code> 的值赋给 <code>EBP</code>。此时，<code>ESP</code> 指向的是新栈帧的顶部（因为 <code>call</code> 指令和 <code>push ebp</code> 已经移动了 <code>ESP</code>），将这个地址设置为当前函数的<strong>栈帧基址</strong>（新的 <code>EBP</code> 值）。</li>
+</ol>
+</li>
+<li><strong><code>enter</code> 指令</strong>：这个指令可以替代上述的 <code>push ebp</code> 和 <code>mov ebp, esp</code> 两条指令，实现相同的功能，用于更简洁地建立栈帧。</li>
+<li><strong>栈帧链结构</strong>：由于每个栈帧的底部都必然存储了<strong>上一层函数的基地址</strong>（通过 <code>push ebp</code> 保存），因此所有的栈帧会形成一个<strong>链式结构</strong>，使得程序可以沿着这个链条回溯到之前的调用者。</li>
+</ul>
+<h3 id="3-函数返回时，如何切换栈帧">3. 函数返回时，如何切换栈帧</h3>
+<p>当一个函数执行完毕并准备返回给调用者时，需要恢复到调用者的栈帧：</p>
+<ul>
+<li><strong>恢复步骤</strong>：被调用函数通常在其返回前执行以下操作来恢复栈帧：<ol>
+<li><code>mov esp, ebp</code>：将 <code>ESP</code> 寄存器的值设置为 <code>EBP</code> 的值。这会使 <code>ESP</code> 指向当前栈帧的底部，即<strong>清除当前函数的所有局部变量和参数</strong>（因为它们都在 <code>EBP</code> 和旧 <code>ESP</code> 之间）。</li>
+<li><code>pop ebp</code>：从栈顶弹出元素并写入 <code>EBP</code> 寄存器。此时栈顶存放的是之前保存的<strong>上一层函数的 <code>EBP</code> 旧值</strong>，通过 <code>pop</code> 操作将其恢复到 <code>EBP</code> 中。</li>
+</ol>
+</li>
+<li><strong><code>leave</code> 指令</strong>：这个指令等价于上述的 <code>mov esp, ebp</code> 和 <code>pop ebp</code> 两条指令，用于更简洁地恢复栈帧。</li>
+<li><strong><code>ret</code> 指令机制</strong>：在栈帧恢复之后，<code>ret</code> 指令会从栈顶获取之前 <code>call</code> 指令压入的<strong>返回地址</strong>，并将其恢复到 <code>IP</code> 寄存器中，从而实现程序流的返回。</li>
+<li><strong>例行处理</strong>：<strong>所有非 <code>main</code> 函数</strong>在返回前<strong>必须</strong>执行 <code>leave</code> 指令（或其等效操作：<code>mov esp, ebp</code> 和 <code>pop ebp</code>），以正确恢复调用者的栈帧。</li>
+</ul>
+<h3 id="4-函数调用的机器级表示的总结">4. 函数调用的机器级表示的总结</h3>
+<ul>
+<li><strong>调用者流程</strong>：<ul>
+<li>执行 <code>call</code> 指令：它负责<strong>压入返回地址</strong>并<strong>跳转</strong>到被调用函数的入口。</li>
+</ul>
+</li>
+<li><strong>被调用者流程</strong>：<ul>
+<li><strong>开头</strong>：通常是 <code>enter</code> 指令或 <code>push ebp</code> + <code>mov ebp, esp</code> 来<strong>建立新栈帧</strong>。</li>
+<li><strong>中间</strong>：执行函数的<strong>核心功能代码</strong>。</li>
+<li><strong>结尾</strong>：通常是 <code>leave</code> 指令（或 <code>mov esp, ebp</code> + <code>pop ebp</code>）来<strong>恢复旧栈帧</strong>，紧接着是 <code>ret</code> 指令来<strong>返回</strong>到调用者。</li>
+</ul>
+</li>
+<li><strong>关键特征</strong>：所有被调用函数的汇编结构都遵循这个<strong>固定的模式</strong>，形成一个标准的函数调用框架。</li>
+</ul>
+<h3 id="5-一个函数的汇编代码框架">5. 一个函数的汇编代码框架</h3>
+<h4 id="51-例题-函数汇编代码分析">5.1 例题: 函数汇编代码分析</h4>
+<ul>
+<li><strong>题目解析</strong>：<ul>
+<li>函数<strong>开头必现指令</strong>：<code>push ebp</code> (其后通常会隐含 <code>mov ebp, esp</code>)。</li>
+<li>函数<strong>返回前必现指令</strong>：通常会隐含 <code>leave</code> 操作（可能在代码中被省略表示，但逻辑上必须存在）。</li>
+</ul>
+</li>
+<li><strong>结构验证</strong>：一个标准的函数汇编代码框架应<strong>完全符合</strong>上述“开头保存基址 + 结尾恢复基址”的结构。</li>
+<li><strong>递归特征</strong>：在分析中可能会发现函数内部再次 <code>call</code> 自身（例如在 <code>00401025</code> 处的指令），这是<strong>递归函数</strong>的典型特征。</li>
+</ul>
+<h3 id="1-一个栈帧内可能包含哪些内容">1. 一个栈帧内可能包含哪些内容</h3>
+<p>一个函数调用在运行时，会在<strong>栈上创建并维护一个独立的区域，称为栈帧</strong>（Stack Frame）。一个典型的栈帧从底部（高地址）到顶部（低地址）可能包含以下内容：</p>
+<ul>
+<li><strong>底部固定区域：</strong><ul>
+<li>每个栈帧的底部 4 字节必定保存了<strong>上一层栈帧的基址</strong>（即调用者的 <code>EBP</code> 值）。这使得函数返回时能恢复到调用方的栈帧状态，形成一个栈帧链。</li>
+</ul>
+</li>
+<li><strong>局部变量区：</strong><ul>
+<li>紧接着 <code>EBP</code>（但地址更低）是当前函数定义的<strong>局部变量</strong>。</li>
+<li>在 C 语言中，通常<strong>越早定义的变量越靠近栈底（高地址）</strong>，而<strong>越晚定义的变量越靠近栈顶（低地址）</strong>。</li>
+</ul>
+</li>
+<li><strong>空闲区域（Padding）：</strong><ul>
+<li>由于 <strong>GCC 编译器</strong>要求非叶子函数的栈帧大小必须是 <strong>16 字节的整数倍</strong>，可能会产生未使用的“零头”区域来满足对齐要求。</li>
+<li>正在运行的函数（例如mian函数，即不调用其他函数的函数）可以不受 16 字节对齐的限制。</li>
+</ul>
+</li>
+<li><strong>参数传递区：</strong><ul>
+<li>靠近栈顶（但地址更高）存储了调用下层函数时传递的<strong>参数</strong>。</li>
+<li>参数列表中<strong>越靠前的参数越靠近栈顶（低地址）</strong>。</li>
+</ul>
+</li>
+<li><p><strong>返回地址：</strong></p>
+<ul>
+<li>栈顶（最低地址）必定保存着 <code>call</code> 指令压入的 <strong><code>IP</code> 寄存器值</strong>，即<strong>函数的返回地址</strong>。这是函数执行完毕后程序流应该返回的位置。</li>
+</ul>
+</li>
+<li><p><strong>访问规则：</strong></p>
+<ul>
+<li><strong>局部变量访问</strong>：通常通过 <code>EBP - n</code> 的偏移量来访问，其中 <code>n</code> 是相对于 <code>EBP</code> 的负偏移量。例如，<code>[ebp-4]</code> 可能对应于 C 语言中最后定义的局部变量。</li>
+<li><strong>参数访问</strong>：被调用函数通常通过 <code>EBP + n</code> 的偏移量来访问传递进来的参数。例如，<code>[ebp+8]</code> 可能对应于传递给该函数的第一个参数（因为 <code>[ebp]</code> 是旧 <code>EBP</code>，<code>[ebp+4]</code> 是返回地址）。</li>
+<li><strong>返回值传递</strong>：在 x86 体系结构中，单个返回值通常通过 <strong><code>EAX</code> 寄存器</strong>传递。</li>
+</ul>
+</li>
+</ul>
+<h4 id="11-例题-caller-函数汇编代码-0835">1.1 例题: <code>caller</code> 函数汇编代码 (08:35)</h4>
+<ul>
+<li><strong>代码解析：</strong><ul>
+<li><strong>栈帧建立</strong>：<ul>
+<li><code>push ebp</code>：保存上一层（例如 <code>main</code> 函数）的栈帧基址。</li>
+<li><code>mov ebp, esp</code>：设置当前 <code>caller</code> 函数的栈帧基址。</li>
+<li><code>sub esp, 24</code>：为 <code>caller</code> 函数的局部变量和可能的临时数据<strong>分配 24 字节的栈空间</strong>（24 = 16 × 1 + 8，满足 16 字节对齐要求）。</li>
+</ul>
+</li>
+<li><strong>局部变量初始化：</strong><ul>
+<li><code>mov [ebp-12], 125</code>：将 125 写入 <code>ebp</code> 偏移 <code>-12</code> 的位置，对应 <code>temp1 = 125</code>（在 C 语言中，<code>temp1</code> 可能是最后定义的变量，因为它的地址最低）。</li>
+<li><code>mov [ebp-8], 80</code>：将 80 写入 <code>ebp</code> 偏移 <code>-8</code> 的位置，对应 <code>temp2 = 80</code>。</li>
+<li><code>sum</code> 变量的存储位置也位于局部变量区，但在这里未显式初始化。</li>
+</ul>
+</li>
+<li><strong>参数传递过程（给 <code>add</code> 函数）：</strong><ul>
+<li>参数传递通过<strong>寄存器中转</strong>（因为 <code>mov</code> 指令限制不能直接从内存到内存）。</li>
+<li><code>mov eax, [ebp-8]</code>：读取 <code>temp2</code> 的值到 <code>eax</code>。</li>
+<li><code>mov [esp+4], eax</code>：将 <code>eax</code> 的值（<code>temp2</code>）作为<strong>第二个参数 <code>y</code></strong> 写入当前栈帧顶部上方 4 字节处（即 <code>esp+4</code>）。</li>
+<li><code>mov eax, [ebp-12]</code>：读取 <code>temp1</code> 的值到 <code>eax</code>。</li>
+<li><code>mov [esp], eax</code>：将 <code>eax</code> 的值（<code>temp1</code>）作为<strong>第一个参数 <code>x</code></strong> 写入当前栈帧的顶部（即 <code>esp</code>）。</li>
+</ul>
+</li>
+<li><strong>函数调用与返回：</strong><ul>
+<li><code>call add</code>：自动将返回地址压栈，并跳转到 <code>add</code> 函数。</li>
+<li><code>add</code> 函数通过 <strong><code>[ebp+8]</code> 和 <code>[ebp+12]</code></strong> 访问这两个参数。</li>
+<li><code>add</code> 函数的<strong>返回值通过 <code>eax</code> 寄存器</strong>传递回 <code>caller</code> 函数。</li>
+<li><code>caller</code> 函数会将 <code>eax</code> 的值存入其自身的局部变量 <code>sum</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>关键观察：</strong><ul>
+<li><strong>局部变量存储顺序</strong>与 C 语言定义顺序<strong>相反</strong>（后定义的变量地址更低）。</li>
+<li><strong>参数传递</strong>有时必须通过<strong>寄存器中转</strong>（例如，不能直接 <code>mov [mem1], [mem2]</code>）。</li>
+<li><strong>返回值机制</strong>统一使用 <strong><code>EAX</code> 寄存器</strong>。</li>
+<li><strong>栈帧大小设计</strong>通常需要满足 <strong>16 字节对齐</strong>要求。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-函数调用的机器级表示的总结">2. 函数调用的机器级表示的总结</h3>
+<ul>
+<li><strong>核心指令</strong>：函数调用涉及两个关键指令：<strong><code>call</code></strong> 和 <strong><code>ret</code></strong>，它们会改变程序的执行流。</li>
+<li><strong>参数传递</strong>：在 <code>call</code> 指令前，调用参数需要被<strong>写入当前栈帧的顶部区域</strong>。这可以通过 <code>push</code> 指令或 <code>mov</code> 指令配合 <code>ESP</code> 偏移量来实现。</li>
+<li><strong>返回地址处理</strong>：<code>call</code> 指令会自动将<strong>返回地址压栈保存</strong>，并跳转到被调用函数的第一条指令。</li>
+<li><strong>局部变量存储</strong>：函数内部的局部变量通常存储在 <code>EBP</code> 的<strong>负偏移量</strong>处，例如 <code>[ebp-4]</code>、<code>[ebp-8]</code> 等位置。</li>
+<li><strong>返回值传递</strong>：被调用函数通过 <strong><code>EAX</code> 寄存器</strong>向上层函数传递返回值。调用者通过 <code>EAX</code> 寄存器获取并使用这个返回值。</li>
+<li><strong>寄存器保护</strong>：如果调用前某些寄存器（如 <code>EAX</code>、<code>EDX</code>、<code>ECX</code>）存有重要数据，<strong>且被调用函数可能会修改这些寄存器</strong>，那么调用者需要先将它们<strong>压栈保存</strong>，在调用返回后再从栈中<strong>恢复</strong>。</li>
+</ul>
+<h3 id="3-函数调用栈的总结">3. 函数调用栈的总结</h3>
+<h4 id="31-栈帧的概念与结构">3.1 栈帧的概念与结构</h4>
+<ul>
+<li><strong>基本概念</strong>：一个栈帧对应一次函数调用，存储了该函数执行所需的所有相关信息。</li>
+<li><strong>地址方向</strong>：在 x86 体系中，栈的<strong>底部在高地址方向</strong>，<strong>栈顶在低地址方向</strong>，并且以 4 字节为单位进行操作。</li>
+<li><strong>寄存器标记</strong>：<ul>
+<li><strong><code>EBP</code></strong> 指向当前栈帧的底部 4 字节（调用者的 <code>EBP</code> 值）。</li>
+<li><strong><code>ESP</code></strong> 指向当前栈帧的顶部 4 字节（返回地址）。</li>
+</ul>
+</li>
+<li><strong>典型结构（从底向顶，高地址到低地址）</strong>：<ol>
+<li><strong>上一层栈帧基址</strong> (<code>EBP</code> 旧值)</li>
+<li>若干个<strong>局部变量</strong></li>
+<li><strong>未使用区域</strong>（因栈帧大小需为 16 字节整数倍而产生的填充）</li>
+<li>部分<strong>寄存器值</strong>（非必须，视函数和编译器情况保存）</li>
+<li>若干个<strong>调用参数</strong></li>
+<li><strong>返回地址</strong> (<code>IP</code> 旧值)</li>
+</ol>
+</li>
+</ul>
+<h4 id="32-栈帧的切换">3.2 栈帧的切换</h4>
+<ul>
+<li><strong>进入函数</strong>：在函数开头，需要执行 <code>enter</code> 指令（等价于 <code>push ebp</code> + <code>mov ebp, esp</code>）来建立新的栈帧。</li>
+<li><strong>离开函数</strong>：在函数返回前，需要执行 <code>leave</code> 指令（等价于 <code>mov esp, ebp</code> + <code>pop ebp</code>）来恢复上一层的栈帧。</li>
+<li><strong>栈操作指令</strong>：<ul>
+<li><code>push</code>：数据压栈，<code>ESP</code> 值<strong>减 4</strong>。</li>
+<li><code>pop</code>：数据出栈，<code>ESP</code> 值<strong>加 4</strong>。</li>
+</ul>
+</li>
+<li><strong>寄存器保护</strong>：必要时，需要手动保存 <code>EAX</code>、<code>EDX</code>、<code>ECX</code> 等通用寄存器的值到栈中，以防止它们在函数调用过程中被修改而导致中间结果丢失。</li>
+</ul>
+<h4 id="33-函数调用的过程">3.3 函数调用的过程</h4>
+<ul>
+<li><strong>调用前准备</strong>：<ul>
+<li>将函数参数写入当前栈帧的顶部区域（通过 <code>push</code> 或 <code>mov [esp+offset]</code>）。</li>
+<li>保存可能被被调用函数修改的、且调用者后续仍需使用的必要寄存器值。</li>
+</ul>
+</li>
+<li><strong><code>call</code> 指令执行</strong>：<ul>
+<li>将 <code>IP</code> 旧值（返回地址）压栈保存。</li>
+<li>设置 <code>IP</code> 新值，跳转到被调用函数的入口。</li>
+</ul>
+</li>
+<li><strong>返回处理</strong>：<ul>
+<li>被调用函数将返回值写入 <code>EAX</code> 寄存器。</li>
+<li><code>ret</code> 指令从栈顶恢复 <code>IP</code> 旧值，程序流回到调用者。</li>
+</ul>
+</li>
+</ul>
+<h4 id="34-栈帧内部数据的访问">3.4 栈帧内部数据的访问</h4>
+<ul>
+<li><strong>局部变量访问</strong>：通常通过 <code>[ebp-offset]</code>，例如 <code>[ebp-4]</code>、<code>[ebp-8]</code> 等地址来访问。</li>
+<li><strong>参数访问</strong>：通过 <code>[ebp+offset]</code>，例如 <code>[ebp+8]</code>、<code>[ebp+12]</code> 等地址来访问上一层函数传递的参数。</li>
+<li><strong>数据操作方式</strong>：<ul>
+<li>使用 <code>push</code>/<code>pop</code> 指令结合 <code>ESP</code> 操作栈顶数据。</li>
+<li>使用 <code>mov</code> 指令结合 <code>EBP</code>/<code>ESP</code> 加上偏移量来访问栈中任意特定位置的数据。</li>
+</ul>
+</li>
+</ul>
+<script type="text/javascript">var className='atoc';</script>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="汇编指令快速入门.html" class="navigation navigation-prev " aria-label="Previous page: 汇编指令快速入门">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../../计算机网络/" class="navigation navigation-next " aria-label="Next page: 计算机网络">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"跳转指令的机器代码","level":"4.1.3.4.6","depth":4,"next":{"title":"计算机网络","level":"4.1.4","depth":2,"path":"408/计算机网络/README.md","ref":"408/计算机网络/README.md","articles":[]},"previous":{"title":"汇编指令快速入门","level":"4.1.3.4.5","depth":4,"path":"408/计算机组成原理/第四章：指令系统/汇编指令快速入门.md","ref":"408/计算机组成原理/第四章：指令系统/汇编指令快速入门.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","atoc"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"atoc":{"addClass":true,"className":"atoc"},"katex":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"yyym","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56},"embedFonts":false},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"yyym 11408 Notes","language":"cn","gitbook":"*","direction":"ltr"},"file":{"path":"408/计算机组成原理/第四章：指令系统/跳转指令的机器代码.md","mtime":"2025-06-28T06:54:21.024Z","type":"markdown"},"gitbook":{"version":"6.0.3","time":"2025-06-28T14:04:44.749Z"},"basePath":"../../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <noscript>
+        <style>
+            .honkit-cloak {
+                display: block !important;
+            }
+        </style>
+    </noscript>
+    <script>
+        // Restore sidebar state as critical path for prevent layout shift
+        function __init__getSidebarState(defaultValue){
+            var baseKey = "";
+            var key = baseKey + ":sidebar";
+            try {
+                var value = localStorage[key];
+                if (value === undefined) {
+                    return defaultValue;
+                }
+                var parsed = JSON.parse(value);
+                return parsed == null ? defaultValue : parsed;
+            } catch (e) {
+                return defaultValue;
+            }
+        }
+        function __init__restoreLastSidebarState() {
+            var isMobile = window.matchMedia("(max-width: 600px)").matches;
+            if (isMobile) {
+                // Init last state if not mobile
+                return;
+            }
+            var sidebarState = __init__getSidebarState(true);
+            var book = document.querySelector(".book");
+            // Show sidebar if it enabled
+            if (sidebarState && book) {
+                book.classList.add("without-animation", "with-summary");
+            }
+        }
+
+        try {
+            __init__restoreLastSidebarState();
+        } finally {
+            var book = document.querySelector(".book");
+            book.classList.remove("honkit-cloak");
+        }
+    </script>
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-atoc/atoc.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/@honkit/honkit-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

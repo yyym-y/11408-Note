@@ -3,8 +3,14 @@
     "author": "yyym",
     "language": "cn",
     "direction": "ltr",
-    "plugins": ["katex"],
+    "plugins": ["katex", "atoc"],
     "styles": {
         "website": "styles/website.css"
+    },
+    "pluginsConfig": {
+        "atoc": {
+            "addClass": true,
+            "className": "atoc"
+        }
     }
 }
